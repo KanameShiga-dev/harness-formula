@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ハーネスフォーミュラ | HUMAN × AI TEAM RACING</title>
+<meta name="description" content="企業・組織のAI駆動開発をレーシングで学ぶ無料のブラウザゲーム。8つの架空AIチーム、10案件コース、ランダム10問、2D走行リプレイ、車載AIの振り返り、全制覇でX記録発表。">
+<meta name="theme-color" content="#09111f">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="ハーネスフォーミュラ｜人 × AI × チームで走り切れ">
+<meta property="og:description" content="速いAIだけでは勝てない。10問の判断を2Dレースに変えて学ぶ、チームAI駆動開発ゲーム。">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<style>
+:root{--bg:#09111f;--panel:#101d30;--panel2:#15243a;--line:#2a3b51;--ink:#eff7ff;--muted:#9db0c6;--cyan:#65e4fb;--mint:#75ebac;--amber:#ffca6a;--red:#ff7582;--blue:#90b8ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 20% 0%,#19324b 0,#09111f 48%,#070e19 100%);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;color:var(--ink);line-height:1.6}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}.shell{max-width:1280px;margin:0 auto;padding:20px 22px 56px}.mast{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 0 21px;border-bottom:1px solid #30455e}.brand{display:flex;align-items:center;gap:13px}.brandicon{width:48px;height:48px;border:1px solid #39577b;border-radius:13px;display:grid;place-items:center;font-size:29px;background:#183353}.wordmark{font-size:24px;line-height:1.15;font-weight:900;letter-spacing:1px}.wordmark strong{color:var(--cyan)}.brand small{color:var(--muted);letter-spacing:.1em}.tag{font-size:12px;border:1px solid #416580;color:#b3def4;border-radius:30px;padding:5px 10px;background:#102438}.stepper{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 20px}.step{font-size:12px;color:#859bb2;border:1px solid #2a3e54;background:#102034;border-radius:20px;padding:6px 13px}.step.active{color:#061625;background:var(--cyan);border-color:var(--cyan);font-weight:800}.step.done{color:#83e8b5;border-color:#4b8468}.view{display:none}.view.active{display:block;animation:appear .28s ease-out}@keyframes appear{from{opacity:.3;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(28px,4.4vw,56px);letter-spacing:-.045em;line-height:1.28;margin:0 0 13px}h2{font-size:clamp(21px,2.6vw,30px);line-height:1.3}h3{font-size:17px;margin-bottom:8px}.lead{color:#bfd0e2;font-size:16px;max-width:800px}.eyebrow{font-size:12px;color:var(--cyan);letter-spacing:.15em;font-weight:850;margin-bottom:9px}.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:stretch}.panel{background:linear-gradient(150deg,#14263b,#101c2e);border:1px solid var(--line);box-shadow:0 14px 38px #0002;border-radius:18px;padding:23px}.illustration{position:relative;overflow:hidden;display:grid;align-items:center;min-height:300px;border-radius:17px;border:1px solid #31526b;background:repeating-linear-gradient(-18deg,transparent 0 22px,#123047 23px 24px),radial-gradient(ellipse at 80% 5%,#2d6d80,#142b40 55%,#0f2137)}.tracklogo{font-size:clamp(80px,14vw,160px);text-align:center;filter:drop-shadow(0 20px 20px #0008);line-height:1}.ribbon{position:absolute;bottom:20px;right:20px;left:20px;padding:11px 14px;border:1px solid #5ba5ac;background:#081b28df;border-radius:10px;text-align:center;letter-spacing:.02em;font-size:13px}.strong{color:var(--amber);font-weight:800}.muted{color:var(--muted)}.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:17px 0}.machine{border:2px solid #2b4660;border-radius:14px;padding:17px;text-align:left;background:#102036;color:#eaf7ff;transition:.15s;min-height:160px}.machine:hover,.machine.selected{border-color:var(--cyan);background:#16344a;transform:translateY(-1px)}.machine .car{font-size:42px;display:block;line-height:1.15;margin-bottom:5px}.machine h3{margin:0 0 4px;font-size:20px}.machine p{margin:0;font-size:13px;color:#bed0de}.machine.selected:after{content:"選択中";display:inline-block;margin-top:9px;background:#6ae7e6;color:#093047;padding:1px 8px;border-radius:9px;font-size:11px;font-weight:800}.buttons{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.btn{border:1px solid #3b5873;background:#183047;color:#eaf5ff;border-radius:10px;padding:12px 20px;font-weight:750;transition:.14s}.btn:hover{background:#254461}.btn.primary{background:linear-gradient(120deg,#6ce6ed,#6cb7f5);border-color:transparent;color:#082237}.btn.primary:hover{filter:brightness(1.12)}.btn.secondary{background:#15253a}.btn.small{padding:8px 13px;font-size:13px}.btn:disabled{opacity:.35;cursor:not-allowed}.note{font-size:12px;color:#8eaac3;line-height:1.65}.legend{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}.legend>div{background:#0d2033;padding:13px;border:1px solid #243b55;border-radius:10px;font-size:13px}.legend b{display:block;color:#e9f7ff;font-size:15px}.legend span{color:#99b2c9}.pill{display:inline-block;border-radius:20px;padding:3px 10px;font-size:12px;font-weight:750;background:#173951;color:#7bddef}.pill.good{background:#173b31;color:#8becc0}.pill.bad{background:#4a2633;color:#ff9cad}.pill.mid{background:#41341e;color:#ffd083}.progress{height:8px;border-radius:20px;background:#1b3044;overflow:hidden;margin:12px 0 20px}.progress i{display:block;width:0;height:100%;background:linear-gradient(90deg,#4ed8e9,#81ecc2);transition:width .2s}.q-meta{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:12px 0 -7px}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center}.scenario{padding:14px 16px;background:#162e45;border-left:3px solid var(--cyan);border-radius:7px;font-size:14px;color:#c7ddec;margin:15px 0}.option{display:flex;align-items:start;gap:12px;width:100%;border:1px solid #36506b;border-radius:11px;padding:14px 15px;background:#0d1d2e;color:#e6f1fa;text-align:left;margin:9px 0;font-size:15px}.option:hover{background:#18384a;border-color:#54b4c6}.option.chosen{border-color:#79e5e9;background:#154051}.option .key{flex:none;width:25px;height:25px;display:grid;place-items:center;border-radius:6px;background:#233b54;color:#8cdbe6;font-weight:800}.area-summary{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin:14px 0}.area-item{background:#0d2335;border:1px solid #31546a;border-radius:10px;padding:10px 11px}.area-item b{font-size:13px;display:block;line-height:1.4}.area-item span{font-size:12px;color:#afcfe0}.area-item em{font-style:normal;font-weight:800;color:#71e5bc;display:block;font-size:19px;margin-top:3px}.area-item em.needswork{color:#ffc172}.review-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;margin:19px 0}.review-card{background:#12243a;border:1px solid #324d68;border-radius:13px;padding:15px}.review-card.good{border-left:4px solid #70e3af}.review-card.bad{border-left:4px solid #fd7a88}.review-title{display:flex;gap:7px;justify-content:space-between;align-items:center;margin-bottom:7px}.review-card p{font-size:13px;color:#cad8e6;margin:7px 0}.review-card .drivehint{background:#0b1b2b;border-radius:8px;padding:8px 11px;color:#ffc989}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}.stat{background:#14263b;border:1px solid #294157;border-radius:12px;padding:12px 15px}.stat .label{font-size:11px;color:#abc0d3}.stat b{font-size:24px;font-variant-numeric:tabular-nums;letter-spacing:-.025em;display:block}.stat b.cyan{color:var(--cyan)}.stat b.amber{color:var(--amber)}.race-layout{display:grid;grid-template-columns:minmax(0,1fr) 308px;gap:15px;align-items:start}.track-wrap{padding:9px;border-radius:15px;border:1px solid #304d61;background:#09212c}.track-wrap canvas{width:100%;aspect-ratio:1050 / 635;display:block;border-radius:10px;background:#173b3a}.race-sidebar{display:flex;flex-direction:column;gap:12px}.race-sidebar .panel{padding:15px;border-radius:13px}.help-line{font-size:13px;color:#ccdbeb;min-height:74px}.help-line b{color:#fff}.fuelbar{height:13px;width:100%;background:#1c3940;border-radius:10px;overflow:hidden;border:1px solid #315358;margin:9px 0}.fuelbar>div{height:100%;width:100%;background:linear-gradient(90deg,#f76e7b,#f5c160,#5fdea0);transition:width .05s}.track-controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:14px 0}.scrub{width:100%;accent-color:#65e4fb;margin:7px 0 1px}.timecode{display:flex;justify-content:space-between;font-variant-numeric:tabular-nums;font-size:12px;color:#a2b8cb}.control-group{display:flex;gap:5px;align-items:center;flex-wrap:wrap}.mini-btn{border-radius:7px;border:1px solid #375673;background:#173249;color:#def5ff;padding:7px 9px;font-size:12px}.mini-btn:hover,.mini-btn.active{background:#31647a;border-color:#79ddef}.check{display:flex;align-items:center;gap:5px;font-size:12px;color:#d2e2f1;cursor:pointer}.check input{accent-color:var(--cyan)}.checkpoint-list{display:grid;gap:6px;margin-top:10px;max-height:270px;overflow:auto}.checkpoint{display:flex;gap:7px;align-items:center;justify-content:space-between;background:#0c1c2e;color:#ccdcec;border:1px solid #243a4f;border-radius:8px;padding:8px 10px;font-size:12px;text-align:left;width:100%}.checkpoint.current{border-color:var(--cyan);background:#193d50}.checkpoint:hover{border-color:#73b6d8}.timeline{height:8px;border-radius:30px;background:#23415d;margin-top:7px;overflow:hidden;display:flex}.timeline>div{height:100%;transition:width .3s}.outcome{margin-top:13px;padding:12px 14px;border-radius:10px;background:#1e3d43;border:1px solid #427c7b;font-size:14px}.outcome.fail{background:#3c2531;border-color:#90505d}.summary{display:grid;grid-template-columns:1fr 1fr;gap:16px}.result-hero{font-size:38px;font-weight:950;letter-spacing:-.04em}.result-hero.good{color:#83edb4}.result-hero.bad{color:#ff8993}.result-summary li{margin:9px 0}.footer{border-top:1px solid #294255;margin-top:45px;padding-top:17px;font-size:12px;color:#88a1b6}.strip{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:17px 0}.strip div{padding:8px 11px;border:1px solid #314960;background:#0e2034;border-radius:9px;font-size:13px;color:#bcd1df}.accent{color:#70e6f1}@media(max-width:900px){.area-summary{grid-template-columns:repeat(3,minmax(0,1fr))}.hero,.race-layout,.summary{grid-template-columns:1fr}.race-sidebar{display:grid;grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.legend{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.area-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.shell{padding:10px 11px 45px}.panel{padding:17px}.review-grid,.race-sidebar{grid-template-columns:1fr}.brandicon{width:40px;height:40px;font-size:24px}.wordmark{font-size:19px}.mast{align-items:flex-start}.tag{font-size:10px}.machine{min-height:164px;padding:12px}.machine h3{font-size:17px}.machine p{font-size:12px}.stats{grid-template-columns:repeat(2,1fr)}.stat b{font-size:21px}.step{font-size:11px;padding:5px 9px}.hero{gap:16px}.track-wrap{padding:4px}h1{font-size:30px}}
+
+.gearbox-panel{border-color:#42617b!important;background:linear-gradient(145deg,#16314a,#0c1c2d)!important}
+.gear-primary{display:flex;align-items:center;gap:15px;margin:6px 0 12px}
+.gear-big{font-size:53px;line-height:1;font-weight:950;letter-spacing:-.08em;color:#78eaf4;font-variant-numeric:tabular-nums}
+.gear-big.wrong{color:#ffb178}
+.gear-side{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+.gear-side strong{font-size:20px;letter-spacing:.04em}
+.gear-chain{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.gear-chain span{padding:8px 1px;border:1px solid #34516a;color:#718ca9;text-align:center;border-radius:7px;font-size:15px;line-height:1.25;font-weight:850;background:#0a1a2b}
+.gear-chain span.on{color:#12243b;background:#70e2ed;border-color:#70e2ed}
+.gear-chain span.on.wrong{color:#3d2219;background:#ffbd82;border-color:#ffbd82}
+.gear-chain small{display:block;font-size:9px;letter-spacing:-.02em}
+.gear-rpm{height:6px;background:#1a3043;border-radius:5px;margin:12px 0 8px;overflow:hidden}
+.gear-rpm div{height:100%;width:0;background:linear-gradient(90deg,#78e2ff,#ffca7e,#ff777b)}
+.gear-advice{font-size:13px;line-height:1.55;color:#d6eafb;margin:7px 0 9px}
+.shift-list{display:grid;gap:4px;margin-top:11px;max-height:150px;overflow:hidden}
+.shift-entry{background:#0c2538;border-left:3px solid #63d5e6;border-radius:5px;padding:5px 8px;font-size:11px;color:#c5dfed}
+.shift-entry.wrong{border-left-color:#fb9a73;color:#ffd3b9}
+.gear-map{display:grid;grid-template-columns:repeat(15,minmax(0,1fr));gap:4px;margin:9px 1px 10px}
+.gear-cell{padding:5px 0 4px;background:#112b3b;border:1px solid #365068;border-radius:5px;color:#a1d9e9;text-align:center;min-width:0;line-height:1.15;cursor:pointer;font-size:11px;font-weight:800}
+.gear-cell small{font-size:9px;display:block;color:#91adbb;font-weight:500}
+.gear-cell.offgear{border-color:#995f48;color:#ffc59d;background:#342521}
+.gear-cell.active{outline:2px solid #77ebff;outline-offset:1px}
+@media(max-width:620px){.gear-map{grid-template-columns:repeat(10,minmax(0,1fr));gap:3px}.gear-cell{font-size:10px}.gear-cell small{font-size:8px}}
+
+/* TEN COURSE / GARAGE SYSTEM */
+.case-sectors{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px}.case-sectors span{padding:4px 7px;background:#163c49;border:1px solid #37636a;border-radius:6px;color:#bce4e5;font-size:10px}
+
+.course-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:15px 0 20px}
+.course-card{min-width:0;text-align:left;padding:13px;border-radius:12px;color:var(--ink);background:#102237;border:2px solid #304963;min-height:150px;display:flex;flex-direction:column;gap:4px}
+.course-card:hover{border-color:#4cb1c6;background:#193349}.course-card.selected{border-color:#7debdc;background:#174354;box-shadow:inset 0 0 0 1px #7debdc}
+.course-card .c-icon{font-size:25px}.course-card b{font-size:14px;line-height:1.35}.course-card small{font-size:11px;color:#a9c2d5;line-height:1.5}.course-card .c-type{margin-top:auto;font-size:10px;color:#a5efdb}
+.course-main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.92fr);gap:15px}
+.course-preview{border-radius:12px;padding:9px;background:#071e28;border:1px solid #304c62}
+.course-preview canvas{display:block;width:100%;aspect-ratio:1050 / 635;border-radius:8px}
+.setup-row{display:grid;grid-template-columns:130px minmax(0,1fr);gap:9px;align-items:center;border-bottom:1px solid #233c4f;padding:11px 0}
+.setup-row b{font-size:13px}.setup-row small{display:block;font-size:11px;font-weight:400;color:#9bb0c4}
+.level-buttons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}.level-buttons button{border-radius:7px;border:1px solid #3c586f;background:#0c1f32;color:#acc6d9;padding:7px 3px;font-size:12px;min-width:0}.level-buttons button.active{background:#52bed1;border-color:#78e6f2;color:#052235;font-weight:850}
+.course-tag{display:inline-block;font-size:11px;background:#214056;color:#96e4ed;padding:4px 9px;border-radius:20px}
+.course-brief{color:#cee0ef;min-height:52px}.setup-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}.setup-metrics div{border:1px solid #33536a;background:#11273a;border-radius:9px;padding:9px;font-size:12px}.setup-metrics b{display:block;font-size:17px;color:#7ddadf}
+.setup-compare{width:100%;border-collapse:collapse;font-size:12px;margin:12px 0}.setup-compare th,.setup-compare td{border-bottom:1px solid #305066;padding:9px;text-align:left}.setup-compare th{color:#b9d5e9}.setup-compare .miss{color:#ffbf91}.setup-compare .match{color:#7fe6ac}
+@media(max-width:1020px){.course-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.course-main{grid-template-columns:1fr 1fr}}
+@media(max-width:750px){.course-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.course-main{grid-template-columns:1fr}}
+@media(max-width:460px){.course-card{min-height:144px}.setup-row{grid-template-columns:1fr}.course-grid{gap:7px}.course-card{padding:10px}.course-card b{font-size:13px}}
+
+.quiz-config{border-color:#315e68;background:linear-gradient(130deg,#142a3f,#0e2735)}
+.quiz-config-row{display:flex;justify-content:space-between;align-items:center;gap:18px}
+.quiz-config-row label{white-space:nowrap;color:#c6e5f0;font-weight:700;font-size:13px}
+.quiz-config-row select{display:block;min-width:165px;width:100%;margin-top:7px;color:#e9f7ff;background:#0b2032;border:1px solid #53778a;border-radius:8px;padding:11px;font-size:14px}
+.fusion-summary{border:1px solid #377c85;border-radius:14px;background:linear-gradient(115deg,#132a3e,#102c32);padding:18px;margin:14px 0 17px}
+.fusion-heading{display:flex;justify-content:space-between;gap:10px;align-items:center}.fusion-heading b{font-size:17px}.fusion-grade{font-size:40px;color:#77eabd;line-height:1}.fusion-grade small{font-size:12px;color:#9bbec4}
+.fusion-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:16px 0}.fusion-grid>div{border-radius:9px;background:#0b2030;padding:10px;display:grid;gap:5px}.fusion-grid span{color:#b9d4e2;font-size:12px}.fusion-grid b{font-size:21px}.fusion-meter{height:6px;border-radius:5px;background:#294457;overflow:hidden}.fusion-meter i{display:block;height:100%;border-radius:5px;background:#6de4a9}
+@media(max-width:700px){.quiz-config-row{display:grid}.quiz-config-row label{white-space:normal}.fusion-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+
+/* EIGHT MODEL TEAMS — educational and non-benchmark simulation */
+.team-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:10px 0 12px}
+.team-card{display:flex;flex-direction:column;gap:5px;background:#10263b;color:#ebf8ff;border:2px solid #38506b;border-radius:12px;padding:12px;text-align:left;min-width:0;min-height:110px;transition:background .18s,border-color .18s}
+.team-card:hover{background:#1a3d50}.team-card.selected{background:#173b4b;border-color:var(--cyan);box-shadow:inset 0 0 0 1px var(--cyan)}
+.team-card-head{display:flex;align-items:center;gap:7px;font-weight:850;font-size:14px}.team-icon{display:inline-grid;place-items:center;width:25px;height:25px;border-radius:8px;font-size:14px;flex:none}.team-tag{font-size:11px;color:#bad1e2;line-height:1.4}.team-short{font-size:11px;color:#a8efc5;line-height:1.4}
+.team-detail,.team-course-fit{background:#0d2537;border:1px solid #345c73;border-radius:12px;padding:14px 16px;margin:10px 0 18px}
+.team-detail h3{margin:0 0 5px;font-size:17px}.team-detail p{font-size:12px;color:#bbd4e3;margin:0 0 11px}
+.team-bars{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.team-bar-label{display:flex;justify-content:space-between;gap:3px;font-size:11px;color:#cbdfed}.team-bar-track{background:#153044;border-radius:6px;height:8px;margin-top:4px;overflow:hidden}.team-bar-track i{display:block;height:100%;border-radius:6px}
+.team-course-fit{margin:5px 0 17px;border-color:#467076}.team-fitline{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}.fit-big{font-size:24px;font-weight:900;color:#8ee8d3}.team-inline{display:inline-block;background:#123848;border:1px solid #3a6574;color:#c3eefa;border-radius:8px;padding:6px 11px;margin:0 0 12px;font-weight:650;font-size:12px}
+@media(max-width:700px){.team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.team-bars{grid-template-columns:repeat(2,minmax(0,1fr))}.team-card{min-height:96px}}
+
+/* TITLE SCREEN + ALWAYS-AVAILABLE BACK NAVIGATION */
+.stepper[hidden],#appNavigation[hidden],#titleResume[hidden]{display:none!important}
+.app-navigation{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 13px;margin:10px 0 17px;border:1px solid #406076;background:#0c2133f3;border-radius:13px;box-shadow:0 7px 23px #0007;backdrop-filter:blur(8px)}
+.nav-actions{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.nav-position{font-size:13px;color:#c1d7e9;font-weight:700}.app-navigation .btn{min-height:43px}
+.title-splash{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:20px;align-items:stretch;margin:26px 0 21px}
+.title-feature{padding:clamp(25px,4vw,52px);background:linear-gradient(145deg,#153753,#0b192c 72%);border:1px solid #436880;border-radius:23px;min-height:408px;display:flex;flex-direction:column;justify-content:center}
+.title-kicker{font-size:13px;font-weight:900;letter-spacing:.19em;color:#7bebdd;margin-bottom:13px}
+.title-heading{font-size:clamp(39px,5.4vw,75px);line-height:1.03;letter-spacing:.04em;margin:0 0 13px;font-weight:1000}
+.title-heading span{display:block;color:#77e7f1}.title-sub{font-size:clamp(17px,2.1vw,24px);font-weight:850;line-height:1.6;margin:0 0 12px;color:#f6e4be}
+.title-description{font-size:15px;color:#c1d8e9;max-width:600px;margin-bottom:23px}
+.title-buttons{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.title-buttons .btn{font-size:16px;padding:15px 23px}
+.title-circuit{min-height:410px;position:relative;overflow:hidden;border:1px solid #3b6479;border-radius:23px;background:radial-gradient(circle at 74% 22%,#2b6958,#123343 48%,#0b2234 100%);display:flex;align-items:center;justify-content:center}
+.title-circuit svg{width:100%;height:100%;max-height:440px;display:block}.title-circuit-caption{position:absolute;bottom:18px;left:16px;right:16px;background:#071a28db;border:1px solid #579ba9;border-radius:11px;padding:10px 14px;text-align:center;font-size:12px;font-weight:800;letter-spacing:.06em}
+.title-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px;margin-bottom:25px}
+.title-facts div{padding:15px;background:#10273a;border:1px solid #325267;border-radius:12px;color:#bcd9e9;font-size:12px}.title-facts strong{display:block;font-size:18px;color:#e7f9ff;margin-bottom:3px}
+@media(max-width:800px){.title-splash{grid-template-columns:1fr}.title-feature{min-height:0}.title-circuit{min-height:255px}.title-facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:540px){.app-navigation{align-items:flex-start;flex-wrap:wrap}.nav-position{order:2;width:100%}.title-splash{margin-top:10px}.title-feature{padding:24px 20px}.title-heading{font-size:44px}.title-circuit{min-height:235px}.title-buttons .btn{width:100%}.title-facts{gap:7px}.title-facts div{padding:11px}.title-facts strong{font-size:15px}}
+
+/* Dual camera replay and fictional onboard guidance */
+.camera-switch{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:14px 0 12px;padding:11px 13px;border:1px solid #365773;border-radius:12px;background:#10263b}
+.camera-switch strong{font-size:13px;color:#b6d5eb;margin-right:5px}
+.camera-switch button.active{background:#58d7de;color:#062131;border-color:#58d7de;font-weight:900}
+.camera-unit{min-width:0}
+.camera-caption{font-size:12px;color:#a9cbe0;padding:8px 3px 4px}
+.driver-wrap{position:relative;padding:9px;border-radius:15px;border:1px solid #54768a;background:#0b2337;overflow:hidden}
+.driver-wrap canvas{display:block;width:100%;height:auto;aspect-ratio:1050/520;border-radius:10px;background:#304e68}
+.camera-unit[hidden]{display:none!important}
+.ai-radio{padding:14px 15px!important;border-color:#5f82a0!important;background:linear-gradient(155deg,#19374b,#101f35)!important}
+.ai-radio-title{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:10px}
+.ai-radio-avatar{width:37px;height:37px;border-radius:12px;display:grid;place-items:center;background:#205064;color:#ecfcff;font-weight:900;font-size:20px;border:1px solid #5c9db1}
+.ai-radio-id{font-size:14px;font-weight:850;color:#fff}
+.ai-radio-role{font-size:11px;color:#a8c7dc}
+.ai-bubble{background:#0a1b2bd9;border:1px solid #5a8496;border-radius:12px;padding:12px 13px;line-height:1.75;color:#effcff;font-size:14px;font-weight:650;min-height:76px}
+.ai-basis{margin:9px 0 0;color:#a9c9df;font-size:12px;line-height:1.6}
+.ai-log{border-top:1px solid #34536a;margin-top:12px;padding-top:10px;display:grid;gap:7px;max-height:166px;overflow-y:auto}
+.ai-log-entry{display:flex;gap:8px;align-items:flex-start;font-size:11px;color:#bbd5e7}
+.ai-log-entry strong{flex:none;color:#94dddf;font-variant-numeric:tabular-nums}
+.ai-radio-actions{margin-top:10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+@media(max-width:620px){.camera-switch{gap:6px}.camera-switch strong{width:100%}.camera-switch button{flex:1;padding:9px 4px;min-width:0}.driver-wrap{padding:5px}.ai-bubble{font-size:13px}}
+
+/* Stage 05 is the external 2D replay; stage 06 is cockpit after-action review. */
+.stage06{margin-top:30px;padding:22px;background:linear-gradient(145deg,#162d45,#101d31);border:1px solid #456780;border-radius:18px;scroll-margin-top:18px}
+.stage06 h2{margin-bottom:10px}
+.review-driving-layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;align-items:start;gap:14px;margin-top:18px}
+.review-driving-main,.review-driving-ai{min-width:0}
+.review-driving-ai{display:flex;flex-direction:column;gap:12px}
+.review-driving-ai .panel{padding:16px}
+.review-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:12px 0}
+.review-controls .check{padding:7px 4px}
+.review-checkpoint-summary{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:12px;background:#0b1d31;border:1px solid #36526c;border-radius:10px;padding:12px}
+.review-checkpoints{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}
+.review-cp{display:flex;flex-direction:column;gap:3px;align-items:start;text-align:left;border-radius:8px;border:1px solid #355673;background:#11283d;color:#dcecf6;padding:9px;font:inherit;font-size:12px;min-height:76px;min-width:0}
+.review-cp small{font-size:11px;color:#9fbdd0;line-height:1.35;overflow-wrap:anywhere}
+.review-cp:hover,.review-cp.active{border-color:#69d6e9;background:#24445a}
+.review-cp.missed strong{color:#ffa0a6}
+.review-cp.passed strong{color:#80e2b1}
+.ai-radio[data-tone="scold"]{border-color:#b85a64!important;background:linear-gradient(140deg,#371e32,#172237)!important}
+.ai-radio[data-tone="scold"] .ai-bubble{border-left:4px solid #f67d8c}
+.ai-radio[data-tone="advice"]{border-color:#a78c54!important}
+.ai-radio[data-tone="advice"] .ai-bubble{border-left:4px solid #f9c878}
+.ai-radio[data-tone="praise"]{border-color:#357b71!important}
+.ai-radio[data-tone="praise"] .ai-bubble{border-left:4px solid #72e5ab}
+@media(max-width:960px){.review-driving-layout{grid-template-columns:1fr}.review-checkpoints{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media(max-width:680px){.stage06{padding:13px}.review-checkpoints{grid-template-columns:repeat(2,minmax(0,1fr))}.review-cp{min-height:64px}}
+
+/* CHAMPIONSHIP: all 10 distinct project courses must clear quality and finish gates */
+.championship{margin:18px 0 8px;padding:22px;background:linear-gradient(145deg,#162d45,#102a30);border:1px solid #48898f;border-radius:18px}
+.championship h2{margin:0 0 6px}.champ-top{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.champ-counter{font-size:clamp(25px,3vw,38px);font-weight:950;color:#93ebce;font-variant-numeric:tabular-nums}
+.champ-progress{background:#1f4052;border-radius:22px;height:11px;overflow:hidden;margin:13px 0 18px}
+.champ-progress div{height:100%;background:linear-gradient(90deg,#44bdf4,#80edaa);transition:width .25s;width:0}
+.champ-records{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin-bottom:17px}
+.champ-record{border:1px solid #355365;background:#0c2234;border-radius:11px;padding:11px;min-width:0}
+.champ-record.cleared{border-color:#4ca686;background:#10382f}
+.champ-record .name{display:block;color:#d9e9f6;font-size:12px;line-height:1.4;font-weight:750}
+.champ-record .best{display:block;color:#90aabd;font-size:14px;font-weight:800;font-variant-numeric:tabular-nums;margin-top:5px}
+.champ-record.cleared .best{color:#aaf3ca}.champ-record .small-detail{font-size:10px;color:#9db8c9}
+.champ-celebrate{background:linear-gradient(110deg,#15513c,#163d52);border:1px solid #6ddcb2;border-radius:12px;padding:15px 17px;margin-top:13px}
+.champ-celebrate h3{color:#bafcbb;font-size:20px;margin-bottom:6px}.champ-share{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:13px}
+.champ-share a{display:inline-block;text-decoration:none}.champ-share .btn{display:inline-block}
+.champ-share-preview{white-space:pre-wrap;color:#d6edf2;background:#0a2130;border:1px solid #456e79;border-radius:8px;padding:11px;font-size:12px;line-height:1.7;margin-top:13px}
+.champ-unlock-label{font-size:12px;color:#bdcfe0}.champ-status{font-size:13px;color:#b8d5dc}
+@media(max-width:960px){.champ-records{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:560px){.championship{padding:15px}.champ-records{grid-template-columns:repeat(2,minmax(0,1fr))}}
+[hidden].champ-celebrate{display:none!important}
+</style>
+</head>
+<body>
+<main class="shell">
+<header class="mast"><div class="brand"><span class="brandicon">🏁</span><div><div class="wordmark">HARNESS <strong>FORMULA</strong></div><small>判断が、走りになる。</small></div></div><span class="tag">10 JOB CIRCUITS / 10 Q PER RACE / 130 Q BANK</span></header>
+<nav class="stepper" aria-label="進行状況" hidden><span class="step active" data-step="start">01 チーム・マシン</span><span class="step" data-step="course">02 案件・設定</span><span class="step" data-step="quiz">03 判断クイズ</span><span class="step" data-step="review">04 答え合わせ</span><span class="step" data-step="race">05 走行リプレイ</span><span class="step" data-step="result">06 振り返り</span></nav>
+<div class="app-navigation" id="appNavigation" hidden aria-label="画面移動">
+  <div class="nav-actions"><button type="button" class="btn secondary small" id="backScreen" aria-label="一つ前の画面へ戻る">← 前の画面へ戻る</button><button type="button" class="btn secondary small" id="homeScreen">⌂ タイトルへ</button></div>
+  <div class="nav-position" id="navPosition" aria-live="polite">チーム・マシン選択</div>
+</div>
+<section class="view active" id="view-title">
+  <div class="title-splash">
+    <div class="title-feature">
+      <div class="title-kicker">HUMAN × AI × TEAM / CIRCUIT LEARNING</div>
+      <h1 class="title-heading">HARNESS<span>FORMULA</span></h1>
+      <p class="title-sub">速いAIが勝つんじゃない。<br>人とAIが、一緒に走るチームが勝つ。</p>
+      <p class="title-description">企業・組織・チームのAI駆動開発を、レーシングで体験。案件コースを選び、ハーネスを整え、10問の判断でチームの走りがどう変わるか確かめよう。</p>
+      <div class="title-buttons"><button class="btn primary" id="enterGarage" type="button">🏁 ゲームスタート →</button><button class="btn secondary" id="titleResume" type="button" hidden>▶ 続きから再開</button></div>
+      <p class="note" style="margin:18px 0 0">10コース / 架空8チーム / 毎回ランダム10問 / 05 俯瞰2D → 06 ドライバーズビュー</p>
+    </div>
+    <div class="title-circuit" role="img" aria-label="テクニカルサーキットとフォーミュラカーのイラスト">
+      <svg viewBox="0 0 520 430" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="roadGradient" x1="0" x2="1"><stop stop-color="#21394b"/><stop offset="1" stop-color="#263b4a"/></linearGradient></defs>
+        <path d="M93 345 C30 282 88 196 172 215 C256 238 299 153 251 104 C212 64 307 47 371 89 C431 133 454 186 397 233 C340 275 411 326 312 362 C227 392 133 393 93 345Z" fill="none" stroke="#0b1620" stroke-width="78" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M93 345 C30 282 88 196 172 215 C256 238 299 153 251 104 C212 64 307 47 371 89 C431 133 454 186 397 233 C340 275 411 326 312 362 C227 392 133 393 93 345Z" fill="none" stroke="#dfe4e1" stroke-width="62" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M93 345 C30 282 88 196 172 215 C256 238 299 153 251 104 C212 64 307 47 371 89 C431 133 454 186 397 233 C340 275 411 326 312 362 C227 392 133 393 93 345Z" fill="none" stroke="url(#roadGradient)" stroke-width="53" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M93 345 C30 282 88 196 172 215 C256 238 299 153 251 104 C212 64 307 47 371 89 C431 133 454 186 397 233 C340 275 411 326 312 362 C227 392 133 393 93 345Z" fill="none" stroke="#55dcd8" stroke-width="3.5" stroke-dasharray="12 10" stroke-linecap="round"/>
+        <g transform="translate(168 217) rotate(22)"><rect x="-23" y="-12" width="46" height="24" rx="7" fill="#ffca72" stroke="#fff1d0" stroke-width="2"/><rect x="-11" y="-8" width="21" height="16" rx="3" fill="#1c5265"/><path d="M20 -16 L26 -16 L26 16 L20 16 M-23 -17 L-16 -17 L-16 17 L-23 17" stroke="#091622" stroke-width="6"/></g>
+        <g transform="translate(362 254) rotate(-26)"><rect x="-23" y="-12" width="46" height="24" rx="7" fill="#6af3bf" stroke="#dafff4" stroke-width="2"/><rect x="-11" y="-8" width="21" height="16" rx="3" fill="#17605a"/><path d="M20 -16 L26 -16 L26 16 L20 16 M-23 -17 L-16 -17 L-16 17 L-23 17" stroke="#091622" stroke-width="6"/></g>
+        <g font-family="sans-serif" font-size="15" font-weight="800" fill="#d4f8fa"><text x="18" y="33">MODEL</text><text x="18" y="54">× EFFORT</text><text x="363" y="402">HUMAN × AI</text></g>
+      </svg>
+      <div class="title-circuit-caption">判断 × セッティング × 協働 = チームの走り</div>
+    </div>
+  </div>
+  <div class="title-facts"><div><strong>01 / 選ぶ</strong>AIチームとマシン</div><div><strong>02 / 設計する</strong>案件に応じたハーネス</div><div><strong>03 / 判断する</strong>ランダム10問</div><div><strong>04 / 振り返る</strong>05 俯瞰2D → 06 ドライバーズビュー</div></div>
+<section class="championship" id="titleChampionship" aria-label="10コース制覇の達成状況">
+  <div class="eyebrow">CHAMPIONSHIP / ALL 10 COURSE RECORDS</div>
+  <div class="champ-top"><div><h2>10コース制覇へのロードマップ</h2><p class="note">3周完走とコース別の品質基準を両方満たすとクリア。各コースの最速レコードをブラウザ内に保存します（ブラウザのデータ削除などで消える場合があります）。</p></div><strong class="champ-counter" data-champ-count>0 / 10</strong></div>
+  <div class="champ-progress" aria-label="制覇進捗"><div data-champ-progress></div></div><div class="champ-records" data-champ-records></div>
+  <p class="champ-status" data-champ-status>全コース制覇でX投稿が解放されます。</p>
+  <div class="champ-celebrate" data-champ-celebrate hidden>
+    <h3>🏆 10コース制覇！ コースレコード解禁</h3>
+    <p class="note">あなたの全10コースの自己ベストをXで発表できます。投稿前に文面を確認・編集できます。</p>
+    <div class="champ-share"><a class="btn primary" data-champ-x target="_blank" rel="noopener noreferrer">𝕏 コースレコードを発表する</a><button type="button" class="btn secondary" data-champ-copy>投稿文をコピー</button></div>
+    <div class="champ-share-preview" data-champ-preview></div>
+  </div>
+</section>
+</section>
+<section class="view" id="view-start">
+  <div class="hero"><div class="panel"><div class="eyebrow">LEARNING EXPERIENCE / SIMULATION</div><h1>チーム全体で速く走るには、<br><span class="accent">AIとの連携が必要。</span></h1><p class="lead">8つの架空レーシングチームとPlus / Proを選び、10種類の案件で1レース10問の判断クイズに挑戦。130問の問題バンクから毎回ランダム出題し、回答がブレーキング・ライン取り・シフトチェンジ・燃料配分となって2Dサーキットに現れます。楽しみながら、人とAIのチーム連携を振り返ろう。</p><div class="strip"><div>実務判断を選ぶ</div><span>→</span><div>答え合わせ</div><span>→</span><div>レース再生</div><span>→</span><div>原因を振り返る</div></div><h3>レーシングチームを選択 <small class="note">8チームすべて架空。得意分野はゲーム用の能力値です。</small></h3>
+<div id="teamGrid" class="team-grid" aria-label="架空レーシングチーム選択"></div>
+<div id="teamDetail" class="team-detail" aria-live="polite"></div>
+<h3>マシンを選択 <small class="note">チームの特性と、Plus / Pro の出力枠は別々に設定</small></h3><div class="cards"><button class="machine selected" data-machine="plus"><span class="car">🚙</span><h3>PLUS</h3><p>標準出力 / 省燃料 / 安定。基礎が身についていれば着実に完走。</p></button><button class="machine" data-machine="pro"><span class="car">🏎️</span><h3>PRO</h3><p>高出力 / 高速 / 燃料管理がシビア。判断ミスが損失に直結。</p></button></div><div class="buttons"><button class="btn primary" id="startQuiz">10案件コース・セッティング選択へ →</button><button class="btn secondary" id="demoNovice">デモ：初心者の走り</button><button class="btn secondary" id="demoExpert">デモ：模範走行</button></div></div>
+  <div class="illustration"><div class="tracklogo">🏎️</div><div class="ribbon"><span class="strong">チーム特性 × 人とAIの協働 = 成果</span>　AIの提案と人間の判断を組織の成果に変える。</div></div></div>
+  <div class="legend"><div><b>① ブレーキング</b><span>要件確認・停止判断</span></div><div><b>② ライン取り</b><span>タスク分解・進め方</span></div><div><b>③ シフトチェンジ</b><span>エフォート選択・負荷適応</span></div><div><b>④ 燃料配分</b><span>利用量・コスト管理</span></div></div>
+  <p class="note">注：すべてのチーム名・車両型式・能力値・案件適性・10案件コース・出題・融合度スコアは教育目的の架空設定です。実在するAI企業・モデルとの一対一の対応付けではありません。PLUS / PRO は教育目的の架空のマシン区分です。実在サービスのプラン性能、課金額、トークン単価、実測の開発生産性を表すものではありません。自動走行もクイズ回答を因果関係として可視化した教材用シミュレーションです。ギアは推論エフォートの段階を示す比喩で、実車の変速機と同じ物理特性ではありません。画像制作の能力値は単独の言語モデルではなく、画像生成ツールを含む制作ワークフローの仮想評価です。実在のAIモデルのベンチマーク順位や実際のAPI料金を表すものではありません。</p>
+</section>
+
+<section class="view" id="view-course">
+ <div class="eyebrow">GARAGE / PROJECT COURSE SELECTION</div>
+ <h1>案件を選び、マシンを仕立てる。</h1>
+ <p class="lead">案件によって、適切なハーネス・スキル・検証・情報管理は異なります。コースを選んだら6種類のセッティングを調整し、同じ回答でも走行結果がどう変わるか確認してください。</p>
+ <div class="course-grid" id="courseCards" aria-label="10種類の案件コース"></div><div id="teamCourseFit" class="team-course-fit" aria-live="polite"></div>
+ <div class="course-main">
+  <div class="panel"><div class="eyebrow">COURSE PROFILE / 案件特性</div><h2 id="courseTitle">—</h2><div id="courseTags" style="margin-bottom:12px"></div><p id="courseBrief" class="course-brief"></p>
+  <div class="course-preview"><canvas id="coursePreview" width="1050" height="635" role="img" aria-label="選択した案件コースの平面図"></canvas></div>
+  <p id="courseRisk" class="note" style="margin:12px 0 0"></p><div id="courseSectors" class="case-sectors"></div></div>
+  <div class="panel"><div class="eyebrow">GARAGE / DEVELOPMENT SETUP</div><h2 style="margin-bottom:5px">6つのセッティング</h2><p class="note">軽量・標準・強化を選択。強化が常に正解とは限りません。過剰装備は遅延・燃料浪費、不足装備は品質不良・手戻りの原因になります。</p>
+   <div id="setupControls"></div>
+   <div class="setup-metrics"><div>導入負荷<b id="setupCost">—</b></div><div>保護・品質の装備<b id="setupDefense">—</b></div><div>総設定レベル<b id="setupTotal">—</b></div></div>
+  </div>
+ </div>
+ <div class="panel quiz-config" style="margin-top:15px"><div class="eyebrow">QUICK RACE / RANDOM QUESTION BANK</div><div class="quiz-config-row"><div><b>1レース10問。130問から毎回ランダム。</b><p class="note">10領域から1問ずつ、案件専用問題も2〜3問。選択肢もシャッフルします。暗記試験ではなく、判断がどんな走りになるかを楽しむゲームです。</p></div><span class="pill good" style="white-space:nowrap">10問 / 1レース</span></div><div class="note">PM・PL・設計・開発・テスト・運用が協働する状況を題材に、人とAIの役割分担・承認・提案の扱い方を体験します。判定はゲーム用であり資格試験ではありません。</div></div>
+<div class="buttons" style="justify-content:space-between;margin-top:16px"><button class="btn secondary" id="backToMachines">← マシン選択</button><div class="buttons"><button class="btn secondary" id="resetSetup">標準設定に戻す</button><button class="btn primary" id="confirmSetup">この設定でスタート →</button></div></div>
+ <p class="note" style="margin-top:12px">設定を選択した時点では正解は非表示です。答え合わせと走行後、案件ごとの推奨設定・品質スコア・タイムを比較できます。推奨設定はゲーム上の設計値です。</p>
+</section>
+<section class="view" id="view-quiz"><div class="panel" style="max-width:830px;margin:auto"><div class="qhead"><div><div class="eyebrow">TEAM DECISION CHECK / HUMAN × AI</div><h2 id="qTitle" style="margin:0"></h2></div><span class="pill" id="qCounter"></span></div><div class="progress"><i id="qProgress"></i></div><div class="q-meta"><span class="pill" id="qLevel"></span><span class="note" id="qSection"></span></div><div id="qScene" class="scenario"></div><div id="qOptions"></div><div class="buttons" style="justify-content:space-between;margin-top:25px"><button class="btn secondary" id="prevQuiz">← 前の問題</button><button class="btn primary" id="nextQuiz" disabled>次へ →</button></div></div></section>
+<section class="view" id="view-review"><div class="eyebrow">HUMAN × AI / ANSWER REVIEW</div><div id="teamReviewBadge" class="team-inline"></div><h1>判断が、どんな走りになるか。</h1><p class="lead">ここで答え合わせを行います。選択した案件コースとセッティングも評価します。正解数だけではなく、<b>選んだ回答に対応する運転のクセ</b>を10セクター・10チェックポイントに割り当てました。どこでロスが生じるか確認してからリプレイしてください。</p><div class="stats"><div class="stat"><span class="label">正解数</span><b id="reviewCorrect" class="cyan">—</b></div><div class="stat"><span class="label">選択マシン</span><b id="reviewMachine" style="font-size:clamp(13px,1.6vw,19px)">—</b></div><div class="stat"><span class="label">改善が必要な回答</span><b id="reviewBad" class="amber">—</b></div><div class="stat"><span class="label">リプレイ</span><b>3 LAPS</b></div></div><h2 style="margin:20px 0 10px">10領域の判断傾向 <span class="note">（各領域1問・習熟度の認定ではありません）</span></h2><div id="fusionSummary" class="fusion-summary" aria-label="人とAIの協働評価"></div><div id="areaSummary" class="area-summary"></div><div class="buttons" style="margin:18px 0 6px"><button class="mini-btn active" id="reviewShowAll">全10問を表示</button><button class="mini-btn" id="reviewShowMiss">改善が必要な回答のみ</button></div><div id="reviewGrid" class="review-grid"></div><div class="buttons"><button class="btn primary" id="toReplay">05：俯瞰2D走行を再生 ▶</button><button class="btn secondary" id="backToQuiz">クイズを見直す</button></div></section>
+<section class="view" id="view-race"><div class="eyebrow">DECISION REPLAY / 2D TECHNICAL CIRCUIT</div><div id="teamReplayBadge" class="team-inline"></div><h1>案件に合わせた判断と設定を、コース上で再生。</h1><p class="lead">05ではコース全体を俯瞰で再生します。06では運転席で車載AIの助言を確認できます。青があなた、緑が理想判断のゴースト。回答に応じてエフォートが <b>G1 LOW → G2 MEDIUM → G3 HIGH → G4 XHIGH</b> とシフトチェンジします。難所だけ上げ、平易な区間では下げる判断が燃費・タイムを左右します。</p><div class="stats"><div class="stat"><span class="label">経過タイム</span><b id="hudTime" class="cyan">00:00.0</b></div><div class="stat"><span class="label">周回</span><b id="hudLap">1 / 3</b></div><div class="stat"><span class="label">速度（ゲーム内）</span><b id="hudSpeed">0</b></div><div class="stat"><span class="label">燃料（利用枠）</span><b id="hudFuel" class="amber">100%</b></div></div><div class="race-layout"><div>
+<div class="camera-unit" id="mapCamera"><div class="track-wrap"><canvas id="track" width="1050" height="635" role="img" aria-label="回答によって走行軌跡が変わる2Dコース俯瞰リプレイ"></canvas></div><div class="camera-caption">俯瞰2D：実際の走行軌跡・理想ゴースト・コースアウト地点を比較</div></div>
+<div class="gear-map" id="gearMap" aria-label="10問のエフォートギア選択マップ"></div><div class="track-controls"><button class="btn primary small" id="togglePlay">▶ 再生</button><button class="mini-btn" id="restartReplay">↺ 最初から</button><button class="mini-btn" id="nextEvent">⏭ 次の区間</button><div class="control-group"><span class="note">再生速度</span><button class="mini-btn" data-speed="1">1×</button><button class="mini-btn active" data-speed="3">3×</button><button class="mini-btn" data-speed="6">6×</button></div><label class="check"><input id="showGhost" type="checkbox" checked>理想ゴースト</label><label class="check"><input id="autoPause" type="checkbox">毎区間で解説停止</label></div><input class="scrub" type="range" min="0" max="1000" step="1" value="0" id="scrubber" aria-label="再生位置"><div class="timecode"><span id="timeStart">00:00.0</span><span id="timeTotal">00:00.0</span></div><div id="endState" style="display:none" class="outcome"></div></div><aside class="race-sidebar"><div class="panel gearbox-panel" aria-live="off">
+<div class="eyebrow">EFFORT / SHIFT CHANGE</div>
+<div class="gear-primary"><span class="gear-big" id="gearNow">G2</span><div class="gear-side"><strong id="gearName">MEDIUM</strong><span id="gearMatch" class="pill">走行準備</span></div></div>
+<div class="gear-chain" id="gearChain"><span>G1<small>LOW</small></span><span>G2<small>MEDIUM</small></span><span>G3<small>HIGH</small></span><span>G4<small>XHIGH</small></span></div>
+<div class="gear-rpm"><div id="gearRpm"></div></div><p class="gear-advice" id="gearAdvice">回答に応じてシフトを自動選択。ギアは推論エフォートの比喩です。</p>
+<div class="note" id="gearIdeal">理想ギア：—</div>
+<div class="shift-list" id="gearShifts"></div></div>
+<div class="panel"><div class="eyebrow" style="margin-bottom:7px">NOW PLAYING / 判断の影響</div><h3 id="nowHeading">スタート待機</h3><p id="nowDescription" class="help-line">再生すると、クイズの回答が区間ごとに走りへ反映されます。</p><div class="note" id="nowAnswer" style="white-space:pre-line"></div><div class="fuelbar"><div id="fuelbar"></div></div><div class="note" id="fuelMessage">燃料は利用枠の比喩です。</div></div><div class="panel"><div style="display:flex;justify-content:space-between;align-items:center"><h3 style="margin:0">10の判断ポイント</h3><span class="pill" id="sectorCount">0/10</span></div><div id="checkpointList" class="checkpoint-list"></div><p class="note" style="margin:12px 0 0">区間を押すと、その判断が現れる地点へジャンプします。</p></div><div class="panel"><h3>視覚化の読み方</h3><div class="note"><span style="color:var(--cyan)">● 青：あなた</span>　<span style="color:var(--mint)">● 緑：理想</span><br>赤いライン＝判断ミスによる軌道の乱れ<br>G1–G4＝推論エフォート（シフト）<br>ギア不一致＝過剰投入／能力不足<br>燃料残量＝利用枠の消費イメージ</div></div></aside></div><div class="buttons" style="margin-top:24px"><button class="btn primary" id="showResult">走行結果を確認 →</button><button class="btn secondary" id="replayQuiz">別の10問に挑戦</button></div></section>
+<section class="view" id="view-result"><div class="eyebrow">TEAM PERFORMANCE / AFTER ACTION REVIEW</div><div id="teamResultBadge" class="team-inline"></div><h1>走りを、開発プロセスに戻す。</h1><div class="summary"><div class="panel"><div id="finalStatus" class="result-hero">—</div><p id="resultText" class="lead"></p><div class="stats" style="grid-template-columns:repeat(2,1fr)"><div class="stat"><span class="label">シミュレーションタイム</span><b id="finalTime">—</b></div><div class="stat"><span class="label">模範タイム</span><b id="ghostTime">—</b></div><div class="stat"><span class="label">燃料残量</span><b id="finalFuel">—</b></div><div class="stat"><span class="label">手戻りペナルティ</span><b id="finalPenalty">—</b></div></div><div class="buttons"><button class="btn primary" id="raceAgain">もう一度リプレイ ▶</button><button class="btn secondary" id="driverReview">↓ 06：車載AIとの振り返りへ</button><button class="btn secondary" id="retry">新しい10問で再挑戦</button></div></div><div class="panel"><h2 style="margin-bottom:13px">案件セッティング診断</h2><div id="fusionResult" class="fusion-summary" aria-label="人とAIの協働評価結果"></div><div id="setupResult"></div><div class="buttons" style="margin:12px 0 17px"><button class="btn primary" id="retuneSame">同じ解答で設定を変えて再走行 →</button></div><h2 style="margin-bottom:13px">改善すべきドライビング</h2><div id="resultFeedback" class="result-summary"></div><div class="outcome" style="margin-top:20px">大切なのは「高性能マシンを持つこと」ではなく、案件に合った装備を準備し、<strong>タスクを適切に進め、制御し、検証し、利用量を配分すること</strong>です。</div></div></div>
+<div class="stage06" id="stage06">
+  <div class="eyebrow">06 / DRIVER REVIEW &amp; ONBOARD AI COACH</div>
+  <h2>ドライバーズビューで、判断を一つずつ振り返る。</h2>
+  <p class="lead">05はコース全体を俯瞰、06はドライバーの目線。チェックポイントで<strong>車載AIが称賛・叱責・改善アドバイス</strong>を行います。失敗そのものではなく、次の周回で何を変えるかを学びます。</p>
+  <div class="review-driving-layout">
+    <div class="review-driving-main">
+      <div class="camera-unit" id="driverCamera"><div class="driver-wrap"><canvas id="driverView" width="1050" height="520" role="img" aria-label="同期されたコクピット視点の走行リプレイ。曲がり方、ギア、速度、燃料を表示"></canvas></div><div class="camera-caption">ドライバーズビュー：同じ走行データを運転席から再生。車載AIが判断ポイントを解説</div></div>
+
+      <div class="review-controls" aria-label="06の車載リプレイ操作">
+       <button class="btn primary small" id="reviewPlay" type="button">▶ 車載リプレイを再生</button>
+       <button class="mini-btn" id="reviewRestart" type="button">↺ 最初から</button>
+       <button class="mini-btn" id="reviewNext" type="button">⏭ 次のチェックポイント</button>
+       <label class="check"><input type="checkbox" id="reviewAutoPause" checked> 1周目はCPで自動停止</label>
+      </div>
+      <input class="scrub" id="reviewScrubber" type="range" min="0" max="1000" value="0" aria-label="ドライバーズビューの再生位置">
+      <div class="timecode"><span id="reviewTimeNow">00:00.0</span><span id="reviewTimeTotal">00:00.0</span></div>
+      <div class="review-checkpoint-summary"><span class="pill" id="reviewTone">走行準備</span><strong id="reviewSectorTitle">チェックポイントを選択してください</strong><span id="reviewGearFuel" class="note"></span></div>
+      <h3 style="margin-top:16px">チェックポイントを選んで振り返る</h3>
+      <div class="review-checkpoints" id="reviewCheckpointList" aria-label="振り返りの10チェックポイント"></div>
+    </div>
+    <aside class="review-driving-ai">
+      <div class="panel ai-radio" aria-live="polite">
+<div class="eyebrow" style="margin-bottom:8px">ONBOARD AI / TEAM STRATEGIST</div>
+<div class="ai-radio-title"><div class="ai-radio-avatar" id="aiAvatar">AI</div><div><div class="ai-radio-id" id="aiName">車載AI</div><div class="ai-radio-role" id="aiRole">チームのナビゲーター</div></div></div>
+<div class="ai-bubble" id="aiSpeech">レース開始後、この区間の判断を分析してアドバイスします。</div>
+<div class="ai-basis" id="aiBasis">走行中の区間と回答に紐づくシナリオ型の助言です。</div>
+<div class="ai-radio-actions"><button type="button" class="mini-btn" id="aiReadAloud">🔊 この助言を読み上げ</button><span class="note">音声は手動再生・端末対応時のみ</span></div>
+<div class="ai-log" id="aiLog" aria-label="車載AIの直近の助言ログ"></div>
+</div>
+      <div class="panel ai-learning-note"><h3>リプレイの読み方</h3><p class="note">車載AIの叱責は<strong>判断と行動</strong>に対するものです。実際のAI駆動開発でも、人間が目的・権限・承認を担い、AIの提案を検証して組織として改善します。</p><p class="note">この助言はルールベースのゲーム演出であり、実際のモデルを呼び出しているわけではありません。</p></div>
+    </aside>
+  </div>
+</div>
+<section class="championship" id="resultChampionship" aria-label="10コース制覇の達成状況">
+  <div class="eyebrow">CHAMPIONSHIP / ALL 10 COURSE RECORDS</div>
+  <div class="champ-top"><div><h2>10コース制覇へのロードマップ</h2><p class="note">3周完走とコース別の品質基準を両方満たすとクリア。各コースの最速レコードをブラウザ内に保存します（ブラウザのデータ削除などで消える場合があります）。</p></div><strong class="champ-counter" data-champ-count>0 / 10</strong></div>
+  <div class="champ-progress" aria-label="制覇進捗"><div data-champ-progress></div></div><div class="champ-records" data-champ-records></div>
+  <p class="champ-status" data-champ-status>全コース制覇でX投稿が解放されます。</p>
+  <div class="champ-celebrate" data-champ-celebrate hidden>
+    <h3>🏆 10コース制覇！ コースレコード解禁</h3>
+    <p class="note">あなたの全10コースの自己ベストをXで発表できます。投稿前に文面を確認・編集できます。</p>
+    <div class="champ-share"><a class="btn primary" data-champ-x target="_blank" rel="noopener noreferrer">𝕏 コースレコードを発表する</a><button type="button" class="btn secondary" data-champ-copy>投稿文をコピー</button></div>
+    <div class="champ-share-preview" data-champ-preview></div>
+  </div>
+</section>
+</section>
+<footer class="footer">ハーネスフォーミュラ — チーム研修向け・ブラウザ学習用体験版。AI提案は事前設定された正解例であり、実際の推論ではありません。ゲーム自体はネットワーク通信・アカウント登録・外部AI API呼び出しなし。Xボタンは全コースクリア後、ユーザー操作時のみXの投稿作成画面を開きます。クイズ正誤と走行挙動の対応はゲーム設計上の仮定であり、個人・組織の実際の能力や安全性を認定するものではありません。短いセッションを繰り返し、判断の変化を楽しむための教材です。　8チームと車載AIの性格はすべて架空の設定です。車載AIの助言はクイズ解答と走行データから組み立てるシナリオ式であり、外部モデルに推論させているものではありません。</footer>
+</main>
+<script>
+'use strict';
+const QUESTION_BANK=[{"id":"Q1","title":"競合する受入条件の整理","scene":"発注側はアップロード容量を無制限にしたい。一方、セキュリティ部門は20MB上限を要求。実装開始前に優先すべき対応は？","sector":"第1ヘアピン","kind":"brake","correct":1,"reason":"相反する制約をAIに推測させない。責任者間で決定し、合意済みの受入条件として記録してから実装する。","choices":[["上限20MBで仮実装し、後から発注側へ説明する","判断を先送りして進入速度が高過ぎる。",2],["双方と制約を整理し、決裁者に判断を求めて受入条件を確定する","適切にブレーキし、コーナー進入が安定。",0],["容量チェックだけ設定化して、受入条件は決めずに進める","出口側の手戻りに備えきれない。",2],["競合内容をAIへ伝え、最も合理的な値を決めてもらう","仕様決裁なしのままコースを外れる。",3]],"level":"応用","idealGear":2,"course":null},{"id":"Q2","title":"不確実な外部APIの見積もり","scene":"納期が2週間で、外部APIの応答仕様が一部未公開。設計・実装方針として最善なのは？","sector":"第1ヘアピン","kind":"brake","correct":2,"reason":"未知部分を短期間の技術検証で明らかにし、インターフェースを固定してから本実装する。リスクを可視化できる。","choices":[["公開情報だけで全工程を設計し、一括生成を依頼する","読み違いに気付かずブレーキが遅れる。",3],["未公開仕様が判明するまで開発全体を無期限停止する","必要以上に減速してタイムを失う。",2],["モックと小規模スパイクで確認し、未確定条件を管理する","不確実性を減らし、適切な進入速度を確保。",0],["仮定だけを仕様書に追記し、検証せず実装を並行する","出口で整合が取れず、立て直しが発生。",2]],"level":"上級","idealGear":2,"course":null},{"id":"Q3","title":"本番障害対応の停止基準","scene":"AIが本番障害の復旧案として未検証のDB更新SQLを提示。復旧を急ぐ状況で取るべき判断は？","sector":"第1ヘアピン","kind":"brake","correct":0,"reason":"データ変更は破壊的になり得る。承認・バックアップ・影響評価・検証手順を先行し、復旧優先でも安全境界を守る。","choices":[["実行を止め、影響範囲・復旧可能性・承認経路を確かめる","危険域の前で減速し、スピンを回避。",0],["最小件数にLIMITを付けて本番SQLをすぐ実行する","安全そうに見えてコース外へ流れる。",3],["AIに別案を3つ生成させ、最短のSQLを採用する","検証のない加速でブレーキが効かない。",3],["実行後に監査ログを確認し、問題があれば復旧する","遅れてブレーキを踏み、手戻りが増える。",2]],"level":"エキスパート","idealGear":2,"course":null},{"id":"Q4","title":"依存関係を含む開発順序","scene":"認証・API・UI・監査ログを複数エージェントに並列実装させる。仕様変更に強いタスク分解は？","sector":"複合S字","kind":"line","correct":3,"reason":"共有契約と依存関係を先に定義し、独立して検証できる縦方向の単位で分割する。","choices":[["実装ファイルの数が均等になるように担当を決める","分割は均等でもラインがジグザグに。",2],["各エージェントに全体を一括実装させ、良いものを選ぶ","重複走行と衝突で大回りする。",3],["UIだけ完成させてからAPIと認証をまとめて連携する","依存を後回しにしてコーナーで膨らむ。",2],["API契約・受入条件を揃え、独立した機能スライスに分ける","最速に近いラインで切り返しを通過。",0]],"level":"応用","idealGear":2,"course":null},{"id":"Q5","title":"共有モジュール変更と影響分析","scene":"共通バリデータをAIが変更。依存するサービスが15ある。作業指示として最も適切なのは？","sector":"複合S字","kind":"line","correct":1,"reason":"変更の波及を先に分析し、契約テストと利用箇所を確認した上で境界を絞る。","choices":[["変更は1ファイルなので、そのままマージする","小さな変更でも連鎖してラインが膨らむ。",3],["依存グラフと契約テストを確認し、互換性を確保して変更する","出口を見据え、無理のないラインを取る。",0],["全サービスに同じ修正を一括適用して辻褄を合わせる","余計な切り返しが増えて失速する。",3],["バリデータ変更を避け、各サービスに個別パッチを追加する","一時回避はできても走行距離が長くなる。",2]],"level":"上級","idealGear":2,"course":null},{"id":"Q6","title":"並列エージェントの競合制御","scene":"3つのエージェントが同じディレクトリのファイルを編集し始めた。品質と速度を両立するには？","sector":"複合S字","kind":"line","correct":2,"reason":"作業単位とファイル所有権を区切り、変更統合を小さく行う。並列数を増やすだけでは競合が増える。","choices":[["編集競合した部分だけ最後にAIへ自動解決させる","衝突が積み重なり大きくラインを外す。",3],["各エージェントに再試行させ、成功したコミットを採用する","同じ区間を何度も走り直す。",2],["担当境界を再設定し、独立ブランチと小刻みな統合テストを使う","切り返しを整理して滑らかに抜ける。",0],["衝突するエージェントだけ高性能モデルに切り替える","馬力で補ってもハンドリングが乱れる。",2]],"level":"エキスパート","idealGear":2,"course":null},{"id":"Q7","title":"定型処理と高負荷作業のシフト配分","scene":"G1=LOW／G2=MEDIUM／G3=HIGH／G4=XHIGH。200ファイルの単純置換と例外系の再設計を行う。エフォートのギア選択と作業分担は？","sector":"出力制御ストレート","kind":"throttle","correct":2,"reason":"決定的な置換はスクリプトやツールで実行し、難しい設計論点に推論リソースを振り分ける。","choices":[["両作業とも高推論エフォートで順に生成する","過剰な全開加速で燃料を浪費。",3,"overdrive"],["両作業とも低推論エフォートで結果だけ確認する","再設計にパワー不足で失速。",2,"underpower"],["単純置換はツール化し、再設計に必要な推論を割り当てる","必要な区間で加速し、燃料を温存。",0],["置換を手作業へ戻して推論利用量をゼロにする","燃料は減らないが時間ロスが大きい。",2,"underpower"]],"level":"応用","idealGear":1,"course":null},{"id":"Q8","title":"失敗分析時のシフトアップ判断","scene":"G1=LOW／G2=MEDIUM／G3=HIGH／G4=XHIGH。低エフォートで修正を2回試したが失敗。ログと最小再現ケースがある。どうシフトチェンジする？","sector":"出力制御ストレート","kind":"throttle","correct":1,"reason":"観測情報を整理して原因を特定する。必要に応じてモデルやエフォートを上げるが、同一指示の反復を避ける。","choices":[["同じ指示のまま最高エフォートで10回再試行する","全開を続けて燃料が急減する。",3,"overdrive"],["失敗差分とログから仮説を立て、必要に応じて推論を増やす","原因の難度に合わせて出力を調整。",0],["最小エフォートのまま成功するまで繰り返す","低出力で引っ張り、直線で速度が乗らない。",2,"underpower"],["リポジトリ全体を読み込ませ、高性能モデルに最初から全面再実装させる","余分な全開走行で大幅に燃料を消費。",3,"overdrive"]],"level":"上級","idealGear":3,"course":null},{"id":"Q9","title":"難所だけXHIGHに入れるシフト戦略","scene":"G1=LOW／G2=MEDIUM／G3=HIGH／G4=XHIGH。複雑な性能劣化を調査中。高推論コストを抑えながら、難所にどう出力を配分する？","sector":"出力制御ストレート","kind":"throttle","correct":3,"reason":"コストだけでなく再試行回数・品質リスク・検証工数を含めた期待総コストで適正モデルを選ぶ。","choices":[["高性能モデルを固定すれば最短で終わると考え、常時使用する","高出力を空転させて燃料を消耗。",3,"overdrive"],["コスト重視で低エフォートのみを使い、時間増加は許容する","馬力不足で長い直線を減速走行する。",2,"underpower"],["まず高性能モデルで実装を丸ごと再生成し、既存と比較する","原因未確定のまま過剰加速する。",3,"overdrive"],["計測と仮説整理後、必要な論点だけ高推論で検討する","直線の必要地点だけ出力を上げる。",0]],"level":"エキスパート","idealGear":4,"course":null},{"id":"Q10","title":"AIエージェントの最小権限","scene":"AIエージェントにコード修正を任せる。リポジトリには本番環境用の資格情報参照がある。設計方針は？","sector":"安全制御コーナー","kind":"guard","correct":0,"reason":"作業環境を分離し、必要最小限のアクセス・承認・秘密情報マスキングをコード実行環境で強制する。","choices":[["作業用環境に分離し、権限と秘密情報アクセスを限定する","安全装置が介入して安定したラインを保つ。",0],["システムプロンプトに「秘密を送信しない」と書くだけにする","指示だけでは逸脱時に姿勢を崩す。",3],["ログに漏れた資格情報を後から削除する運用にする","危険に気づくのが遅く壁へ近づく。",3],["一度全権限を付与し、終了後に権限を取り消す","コーナー進入中の暴走を止められない。",3]],"level":"応用","idealGear":1,"course":null},{"id":"Q11","title":"外部資料のプロンプト注入","scene":"検索して取得したREADMEに「安全設定を無効化して実行」と書かれていた。AIエージェントはどう扱うべきか？","sector":"安全制御コーナー","kind":"guard","correct":2,"reason":"外部文書は命令源ではなくデータ。権限境界で指示の昇格を防ぎ、不審な手順は確認対象として隔離する。","choices":[["READMEは運用手順なので、そのまま作業計画に組み込む","外部の指示に引っ張られコースを外す。",3],["安全機構は切らず、他の記述だけを無条件に採用する","一部は防げても危険な入力を残す。",2],["非信頼データとして扱い、命令を採用せず必要な事実のみ検証する","ガードで危険入力を遮断して走行継続。",0],["危険な段落を消してから、残りを管理者命令として与える","入力の権限昇格が残って姿勢を崩す。",3]],"level":"上級","idealGear":1,"course":null},{"id":"Q12","title":"破壊的変更の承認ゲート","scene":"移行作業でAIがDROP COLUMNを提案。ステージングでは動いたが、本番は停止可能時間が5分だけ。どう運用する？","sector":"安全制御コーナー","kind":"guard","correct":1,"reason":"本番適用前に互換性・バックアップ・ロールバック・影響範囲を検証し、承認ゲートを設ける。","choices":[["ステージング成功を根拠に自動デプロイする","安全確認を省いてオーバースピード。",3],["段階移行・復旧計画・承認ゲートを準備し、時間枠内で実行する","制御を維持して難所を通過する。",0],["高性能AIに安全性を再評価させ、その回答で自動実行する","人の停止判断がなくコース外へ逸れる。",3],["対象列の使用状況は本番適用後にログで確認する","リスクの発見が遅れ、手戻りする。",2]],"level":"エキスパート","idealGear":2,"course":null},{"id":"Q13","title":"フレークテストの扱い","scene":"CIテストが10回中2回ランダムに失敗する。AIが「今回は通った」と報告した。マージ判定は？","sector":"検証シケイン","kind":"test","correct":3,"reason":"不安定なテストは結果の信頼性を下げる。再現条件と原因を特定し、修正・隔離する際も根拠と承認を残す。","choices":[["成功した最新の実行だけを正式結果として採用する","見えない不具合でコーナー途中にスピン。",3],["失敗したテストだけ常時スキップし、後日確認する","その場は進めても後で大きく失速する。",2],["試行回数を100回に増やし、成功回数が多ければ採用する","コストを使って不安定さを隠してしまう。",2],["失敗条件を調査し、テストの信頼性と変更影響を確認する","正しいタイミングで検証し、安定して通過。",0]],"level":"応用","idealGear":2,"course":null},{"id":"Q14","title":"外部サービス連携の受入検証","scene":"AI実装の単体テストは成功。ただし本番では外部決済サービスを利用し、タイムアウトと二重送信のリスクがある。次は？","sector":"検証シケイン","kind":"test","correct":0,"reason":"外部I/Oを含む契約・冪等性・障害復旧を確かめる統合テストが必要。単体テスト合格だけでは不十分。","choices":[["サンドボックスで契約・タイムアウト・冪等性を検証する","先を見て減速し、シケインを抜ける。",0],["単体テストが成功したため、そのまま本番へ反映する","後から発覚する問題でスピンする。",3],["AIにコードの説明を追加させ、テストを省略する","文章は増えるがグリップを失う。",3],["障害処理は運用チームが対応すると決めてリリースする","問題を押し付けたまま走行が乱れる。",2]],"level":"上級","idealGear":3,"course":null},{"id":"Q15","title":"DB移行の品質ゲート","scene":"AIが作成したマイグレーションはテストDBで成功。しかし本番は大量データがあり長時間ロックの恐れ。最適な検証は？","sector":"検証シケイン","kind":"test","correct":2,"reason":"本番相当データで実行時間・ロック・互換性・回復手順を事前に検証する。AI生成コード自体の正しさだけでは足りない。","choices":[["マイグレーションは同じSQLなので性能確認を不要とする","検証不足のままコーナーでスピン。",3],["高性能モデルにロックしないと保証してもらう","未検証の保証に頼り姿勢を崩す。",3],["本番相当で負荷とロックを検証し、段階適用・復旧を準備する","検証シケインを安全な姿勢で通過。",0],["低トラフィック時間帯に動かし、問題時に判断する","発生してから対処するため進入が乱れる。",2]],"level":"エキスパート","idealGear":3,"course":null},{"id":"Q16","title":"スキルと決定的処理の分離","scene":"毎日同じCSV正規化・検証をAIが自然言語で処理し、結果に微差が出る。最もよい改善は？","sector":"再現性S字","kind":"skill","correct":1,"reason":"決定的な変換はテスト可能なスクリプト化、判断が必要な部分だけスキル化することで再現性とコストを改善する。","choices":[["毎回プロンプトを長くして解釈差を抑える","細かなハンドル補正が増え蛇行する。",2],["変換とバリデーションをスクリプト化し、例外判断をスキル化する","同じ曲率を安定したラインで通過。",0],["前回の成功結果をそのまま次回の入力に添付する","余計な荷物で走行が不安定になる。",2],["高出力モデル固定で誤差がなくなるまで生成する","全開で燃料を使いながらふらつく。",3]],"level":"応用","idealGear":1,"course":null},{"id":"Q17","title":"スキルの仕様陳腐化","scene":"保存したスキルが旧API仕様を前提としている。最近の処理で一部成功・一部失敗。どう修正する？","sector":"再現性S字","kind":"skill","correct":2,"reason":"前提条件と入出力契約をテストで確認し、バージョン管理して変更履歴と対応範囲を明らかにする。","choices":[["成功したケースがあるため、そのまま稼働を継続する","毎周違う位置でコーナーを外す。",3],["毎回人が手修正すればよいので、スキルは変えない","補正舵が増え続けタイムを失う。",2],["入出力契約を再検証し、スキルを更新・版管理する","操作が標準化されラインが安定する。",0],["古いスキルはすべて破棄し、毎回ゼロから生成する","基礎が消え、同じコーナーで再学習。",2]],"level":"上級","idealGear":2,"course":null},{"id":"Q18","title":"スキル変更の回帰確認","scene":"ログ解析スキルに1つ新ルールを追加した後、従来ケースの分類が悪化した。どの改善プロセスが適切か？","sector":"再現性S字","kind":"skill","correct":0,"reason":"代表入力で回帰テストを行い、差分の原因を特定して適用範囲と閾値を調整する。変更履歴を残す。","choices":[["旧ケースと新ケースを比較する回帰セットを回し、変更点を局所修正する","同じコーナーの走行再現性が回復。",0],["旧ケースは過去仕様として除外し、新ケースだけ通せばよい","ラインの安定性が失われていく。",3],["モデル温度だけ下げて同じプロンプトを再実行する","根本原因が残り蛇行を繰り返す。",2],["スキル全体を大型モデルで自動書き換えし、再テストは省く","新たなブレを増やしコーナーで失速。",3]],"level":"エキスパート","idealGear":2,"course":null},{"id":"Q19","title":"新旧資料の矛盾解消","scene":"検索結果には旧設計書と最新の変更要求が混在。AIへ実装を指示する際の資料選択は？","sector":"視界不良コーナー","kind":"context","correct":3,"reason":"情報の鮮度と正本を確認し、矛盾を解決してから関連部分だけを渡す。","choices":[["取得日時が新しい順に全文をコンテキストへ投入する","必要情報が埋まり視界が悪化する。",2],["過去の議事録だけを正として参照する","旧ラインに引っ張られ外へ膨らむ。",3],["最も長い設計書を選び、変更要求はAIに推論させる","曖昧さが残りハンドルが遅れる。",3],["正本・版・適用範囲を確定し、関係する差分を渡す","曲がり角の先が見え、適切なラインを維持。",0]],"level":"応用","idealGear":2,"course":null},{"id":"Q20","title":"検索RAGの失敗と再検索","scene":"AIが社内手順を検索し、根拠のない設定値を回答した。再発を減らす設計は？","sector":"視界不良コーナー","kind":"context","correct":1,"reason":"出典を追える検索と根拠確認、不一致時の保留・追加検索を設計する。見つからない情報を断定しない。","choices":[["検索対象を全社に広げ、常に最多ヒットの文書を採用する","ノイズが増えて視界が乱れる。",2],["出典と適用版を示し、根拠不足なら保留して再検索する","進路の根拠が見え、落ち着いて曲がる。",0],["見つからない値は一般的な初期値で補完する","見えていない曲率を想像して膨らむ。",3],["検索結果を全文投入し、LLMに正しい値を確信させる","情報量に頼って旋回が不安定になる。",3]],"level":"上級","idealGear":2,"course":null},{"id":"Q21","title":"検索時の社外情報漏洩","scene":"外部検索エージェントが障害原因を調べるため、社内ホスト名・社員名・ログを検索クエリに含めようとしている。適切な制御は？","sector":"視界不良コーナー","kind":"context","correct":0,"reason":"許可範囲判定と機密情報の削除・抽象化をモデル外の仕組みで実施し、送信前に検証する。","choices":[["外部送信前に分類・秘匿化し、一般化した症状だけ検索する","視界を保ちながら境界内を走る。",0],["プロンプトに個人情報を出さないと書き、検索を任せる","境界管理が弱く、外へラインを外す。",3],["検索履歴を消せるなら実ログのまま送信する","外部転送後の削除では復旧できない。",3],["高性能モデルに検索クエリの妥当性を一任する","根本の送信制御がなく視界を失う。",3]],"level":"エキスパート","idealGear":1,"course":null},{"id":"Q22","title":"開発工程の利用量配賦","scene":"開発工程は実装・テスト・統合の3段階。現在の利用枠は70%で、実装が未完成。最適な運用は？","sector":"燃料戦略セクター","kind":"fuel","correct":2,"reason":"残作業のリスクと消費量を見積もり、検証のための枠を残す。計測なしで全区間最大出力にしない。","choices":[["今の実装を最速で終えるため、残枠を全て使う","序盤で燃料を使い尽くして失速。",3],["新規実装は停止して枠を残し、期限まで待つ","燃料は残るが前へ進めない。",2],["残り工程を見積もり、難所に出力を割き検証用枠を確保する","最後の周回まで燃料を確保できる。",0],["利用枠の問題を回避するためテストを最小化する","燃料は節約できても手戻りが増える。",3]],"level":"応用","idealGear":2,"course":null},{"id":"Q23","title":"ツール呼出回数の最適化","scene":"エージェントがリポジトリ全体検索を毎回行い、同じファイルを繰り返し読む。最初に改善するのは？","sector":"燃料戦略セクター","kind":"fuel","correct":0,"reason":"対象の絞り込み・重複取得の削減・キャッシュを先に検討し、無駄なI/Oとコンテキストを削る。","choices":[["取得範囲を限定し、重複参照をキャッシュして差分だけ確認する","無駄な燃料を抑えて速度を維持。",0],["モデルを最高性能に変え、読込回数の多さを推論で補う","高出力なのに燃料が大きく減る。",3],["検索結果を1回ですべて投入して、後続の検索はなくす","必要以上の読み込みで燃費が落ちる。",2],["ログを止め、実際に何回呼び出したか計測しない","燃料の減少原因が見えなくなる。",3]],"level":"上級","idealGear":1,"course":null},{"id":"Q24","title":"コスト削減と品質劣化のトレードオフ","scene":"スキル化で利用量を30%削減できた一方、重大障害の検知率が下がった。改善責任者はどう判断する？","sector":"燃料戦略セクター","kind":"fuel","correct":1,"reason":"利用量効率は品質制約の範囲で評価する。重大品質の劣化を見過ごして削減率だけを成果としない。","choices":[["削減率が改善しているので、スキル化を全業務に展開する","燃費だけ重視し、後半で大きく失速。",3],["検知率を回復する評価・検証を行い、品質ゲート達成後に採用する","燃費と完走条件を両立する。",0],["検知できなかった障害は対象範囲から除外して再集計する","指標をごまかしてラインを外す。",3],["高性能モデルに全部戻して、コスト計測自体をやめる","性能は戻るが燃料浪費の原因を放置。",2]],"level":"エキスパート","idealGear":2,"course":null},{"id":"Q25","title":"失敗ループの停止条件","scene":"AIが同じテスト失敗を3回繰り返し、修正案を広げ続けている。次の対応として適切なのは？","sector":"改善ループ連続コーナー","kind":"loop","correct":3,"reason":"失敗回数や変更範囲の閾値でループを停止し、ログ・原因仮説・人の介入へ切り替える。","choices":[["成功率が上がると期待して、同じ処理を継続する","毎周同じラインで失敗を繰り返す。",3],["より大きなモデルに変更し、検証なしで実装を全面改修する","修正が広がり周回が遅くなる。",3],["テストの失敗部分を削除して処理を再開する","原因を隠したまま立ち上がりが乱れる。",2],["再試行を停止し、失敗を分類して局所修正・再検証する","周回ごとに学びを活かしてタイムを改善。",0]],"level":"応用","idealGear":2,"course":null},{"id":"Q26","title":"再試行の原因別ルーティング","scene":"ビルド失敗、仕様不一致、外部API障害が混在している。AIの改善ループはどう設計する？","sector":"改善ループ連続コーナー","kind":"loop","correct":1,"reason":"問題種類ごとに対応を変える。決定的エラーは自動修正、仕様問題は確認、外部障害はバックオフと中断が適する。","choices":[["失敗原因に関係なく同じリトライ間隔で再実行する","同じコーナーの失敗を延々と反復する。",3],["失敗を分類し、修正・人への確認・待機を使い分ける","走行条件に応じて周回パターンを改善。",0],["全失敗を高性能モデルに渡し、一律にコードを変更する","不要な修正が重なり燃料が減る。",2],["外部API障害でも毎回コードを再生成する","原因が別なのに操作だけ増える。",3]],"level":"上級","idealGear":2,"course":null},{"id":"Q27","title":"ループの成果の評価","scene":"3回の修正でテスト数は増えたが、顧客の受入シナリオは依然として失敗する。改善として最も適切なのは？","sector":"改善ループ連続コーナー","kind":"loop","correct":2,"reason":"成功条件はテスト実行量ではなく受入要件の達成。失敗箇所へ焦点を戻し、根拠ある修正を行う。","choices":[["テストが増えたことを進捗としてマージする","ラップ数だけ増え、タイムが改善しない。",3],["別の問題を追加実装して、成果を増やしてから判断する","遠回りして周回ごとにロスが増える。",2],["受入シナリオとのギャップを特定し、対象を絞って修正する","改善方向が定まりラップタイムが縮まる。",0],["再度同じテストを実行し、偶然成功するまで継続する","進歩のない周回で燃料を浪費する。",3]],"level":"エキスパート","idealGear":3,"course":null},{"id":"Q28","title":"変更承認と責任分界","scene":"AIが「既存仕様と矛盾するため、要件を変更すべき」と提案。権限と責任の整理として妥当なのは？","sector":"最終コーナー","kind":"human","correct":0,"reason":"AIに提案・影響分析を任せても、要件変更と最終受入の承認は責任者が行う。","choices":[["AIが影響案を提示し、責任者が変更の是非と受入基準を承認する","人がハンドルを握り、最終コーナーを通過。",0],["変更理由が合理的ならAIへ仕様変更を自動承認させる","最終判断を手放して大きくコースを外れる。",3],["変更承認を省き、実装後に利用者に説明する","判断が後回しになり出口が乱れる。",3],["全ての軽微変更も経営層の個別承認が終わるまで停止する","必要以上に操舵を制限してタイムロス。",2]],"level":"応用","idealGear":2,"course":null},{"id":"Q29","title":"人間のレビュー能力の限界","scene":"複数AIエージェントが1日に100件のPRを作るが、レビュー担当者は2人。組織として取るべき対応は？","sector":"最終コーナー","kind":"human","correct":2,"reason":"品質ゲート・危険度に応じた優先順位・変更単位の抑制を行い、人間の承認能力と処理量を整合させる。","choices":[["作成されたPRはCIが通れば自動承認し、レビュー人数を固定する","高速化だけして出口で制御を失う。",3],["すべてのPRを2人へ均等配分し、レビュー待ちは無制限に積む","渋滞が生まれ、出口が大きく膨らむ。",2],["変更規模を絞り、リスク別ゲートと人の判断余力を設計する","人の制御を保ちながら素早く立ち上がる。",0],["高性能AIで相互レビューさせ、人間の検証を全廃する","判断責任が曖昧になりコースアウト。",3]],"level":"上級","idealGear":3,"course":null},{"id":"Q30","title":"AI導入の投資対効果判定","scene":"チームから高額プランへの増枠要望。開発手法も未標準化で成果データはない。承認判断として最も適切なのは？","sector":"最終コーナー","kind":"human","correct":1,"reason":"学習用試行と生産性投資を区別し、品質・工数・利用量・停止時間を計測して本当の制約を確認する。","choices":[["希望者が多いので全員一律に増枠し、効果は後から検証する","馬力任せで最終コーナーを曲がり切れない。",3],["現行枠で小規模実証し、成果と利用枠制約を測って増枠を判断する","必要な出力を見極め、確実にゴールへ向かう。",0],["ループやハーネスの完全習熟まで一切の実験を禁止する","安全側だが学習する機会まで失ってしまう。",2],["増枠分だけ成果が比例して上がる前提で投資対効果を算定する","燃料と馬力を混同して操舵が乱れる。",3]],"level":"エキスパート","idealGear":2,"course":null},{"id":"G1-1","title":"運用開始前の責任合意","scene":"複数部門がAI作成の業務アプリを受け取るが受入責任者が未定。最初に行うべきことは？","sector":"区間1","kind":"brake","correct":0,"reason":"利用部門と責任者、受入基準、承認経路を合意する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["利用部門と責任者、受入基準、承認経路を合意する","人とAIの役割が噛み合い、安定した走行につながる。",0],["開発担当の判断で受入完了とする","制約の未確定で減速判断が遅れ、手戻りが増える",1,""],["AIに一般的な受入基準を生成させ確定する","判断停止が遅れて進入ラインが膨らむ",2,""],["実装が完成してから責任者を募る","承認前の突入で大幅な修正が発生する",3,""]],"level":"上級","idealGear":2,"course":null},{"id":"G1-2","title":"曖昧な依頼の見積もり","scene":"発注者の「いい感じの資料」だけでは用途と決裁基準が不明。まず何をする？","sector":"区間1","kind":"brake","correct":0,"reason":"読み手、意思決定、根拠、完成条件を確認する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["読み手、意思決定、根拠、完成条件を確認する","人とAIの役割が噛み合い、安定した走行につながる。",0],["過去資料から自動的に構成を生成する","制約の未確定で減速判断が遅れ、手戻りが増える",1,""],["AIに想定読者を推論させて制作する","判断停止が遅れて進入ラインが膨らむ",2,""],["全ページを作ってから意向を聞く","承認前の突入で大幅な修正が発生する",3,""]],"level":"エキスパート","idealGear":2,"course":null},{"id":"G1-3","title":"追加要求の受入判断","scene":"期限直前に新機能追加を要望された。品質を維持する最善の対応は？","sector":"区間1","kind":"brake","correct":0,"reason":"影響・優先度・期限を見積もり変更承認を得る。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["影響・優先度・期限を見積もり変更承認を得る","人とAIの役割が噛み合い、安定した走行につながる。",0],["追加機能だけを先に実装して後報告する","制約の未確定で減速判断が遅れ、手戻りが増える",1,""],["AIで実装時間を短縮できる前提で即了承する","判断停止が遅れて進入ラインが膨らむ",2,""],["既存テストを省略して納期を守る","承認前の突入で大幅な修正が発生する",3,""]],"level":"応用","idealGear":2,"course":null},{"id":"G1-4","title":"停止条件の明示","scene":"AI実装が未解決エラーを繰り返している。最も安全な切替点は？","sector":"区間1","kind":"brake","correct":0,"reason":"反復回数と失敗条件に基づき停止し、人が原因を切り分ける。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["反復回数と失敗条件に基づき停止し、人が原因を切り分ける","人とAIの役割が噛み合い、安定した走行につながる。",0],["同じ指示を変更せず継続する","制約の未確定で減速判断が遅れ、手戻りが増える",1,""],["より強いモデルへ切り替えて自動継続する","判断停止が遅れて進入ラインが膨らむ",2,""],["失敗ログを消去して最初からやり直す","承認前の突入で大幅な修正が発生する",3,""]],"level":"上級","idealGear":2,"course":null},{"id":"G1-5","title":"前提条件の食い違い","scene":"営業部と法務部の資料に矛盾があり、AIが片方だけ採用した。対処は？","sector":"区間1","kind":"brake","correct":0,"reason":"適用範囲と正本を確認し決裁した前提を共有する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["適用範囲と正本を確認し決裁した前提を共有する","人とAIの役割が噛み合い、安定した走行につながる。",0],["最新ファイル名の資料を常に優先する","制約の未確定で減速判断が遅れ、手戻りが増える",1,""],["分量が多い資料を優先する","判断停止が遅れて進入ラインが膨らむ",2,""],["二つの主張の中間値にする","承認前の突入で大幅な修正が発生する",3,""]],"level":"エキスパート","idealGear":2,"course":null},{"id":"G1-6","title":"高リスク判断の委譲","scene":"AIが本番データを変更する案を提示。実行前の正しい流れは？","sector":"区間1","kind":"brake","correct":0,"reason":"影響と復旧計画を確認し権限者が承認する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["影響と復旧計画を確認し権限者が承認する","人とAIの役割が噛み合い、安定した走行につながる。",0],["検証環境で動いたので本番も自動実行する","制約の未確定で減速判断が遅れ、手戻りが増える",1,""],["AIに自分の提案を再評価させたら即実行する","判断停止が遅れて進入ラインが膨らむ",2,""],["監査ログだけ残して無承認で実行する","承認前の突入で大幅な修正が発生する",3,""]],"level":"応用","idealGear":2,"course":null},{"id":"G2-1","title":"機能単位の切り出し","scene":"4人とAIエージェントで新機能を分担する。統合負荷を下げる方法は？","sector":"区間2","kind":"line","correct":0,"reason":"受入条件とインターフェースを決めた機能スライスに分ける。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["受入条件とインターフェースを決めた機能スライスに分ける","人とAIの役割が噛み合い、安定した走行につながる。",0],["各自が共通ファイルを自由に編集する","役割の重なりで走行ラインが乱れる",1,""],["画面部分だけを独立させAPI設計を後回しにする","統合までの遠回りが増える",2,""],["AIごとに好きな技術を選ばせる","チームの変更が衝突して大幅な蛇行となる",3,""]],"level":"上級","idealGear":2,"course":null},{"id":"G2-2","title":"共通部品の責任範囲","scene":"複数チームが同じ認証部品を更新する。最初に整える仕組みは？","sector":"区間2","kind":"line","correct":0,"reason":"部品オーナーと変更契約、互換性確認を定義する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["部品オーナーと変更契約、互換性確認を定義する","人とAIの役割が噛み合い、安定した走行につながる。",0],["全チームに同じ編集権限を付与する","役割の重なりで走行ラインが乱れる",1,""],["最速のAIエージェントに変更を一任する","統合までの遠回りが増える",2,""],["最後に統合担当が手動で調整する","チームの変更が衝突して大幅な蛇行となる",3,""]],"level":"エキスパート","idealGear":2,"course":null},{"id":"G2-3","title":"並列タスクの依存整理","scene":"API仕様が確定していないのにUIとバックエンドを並列開発したい。何が有効？","sector":"区間2","kind":"line","correct":0,"reason":"API契約とモックを共有して依存を管理する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["API契約とモックを共有して依存を管理する","人とAIの役割が噛み合い、安定した走行につながる。",0],["双方で各自のインターフェースを定義する","役割の重なりで走行ラインが乱れる",1,""],["先に画面を完成させてAPIを合わせる","統合までの遠回りが増える",2,""],["統合日にAIへ一括調整を依頼する","チームの変更が衝突して大幅な蛇行となる",3,""]],"level":"応用","idealGear":2,"course":null},{"id":"G2-4","title":"成果物の統合ゲート","scene":"チームAとBのAI実装を同時にマージするとき優先すべきことは？","sector":"区間2","kind":"line","correct":0,"reason":"変更範囲と契約の整合性を確認し統合テストする。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["変更範囲と契約の整合性を確認し統合テストする","人とAIの役割が噛み合い、安定した走行につながる。",0],["双方の単体テストが通れば一括マージする","役割の重なりで走行ラインが乱れる",1,""],["動く方のコードをそのまま採用する","統合までの遠回りが増える",2,""],["マージ衝突の解決を無検証でAIへ委任する","チームの変更が衝突して大幅な蛇行となる",3,""]],"level":"上級","idealGear":2,"course":null},{"id":"G2-5","title":"役割の重複を発見","scene":"設計レビューを全担当AIが実施し同じ指摘を繰り返している。改善案は？","sector":"区間2","kind":"line","correct":0,"reason":"レビュー観点を分担し統合責任者を決める。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["レビュー観点を分担し統合責任者を決める","人とAIの役割が噛み合い、安定した走行につながる。",0],["レビュー回数を増やして確実性を上げる","役割の重なりで走行ラインが乱れる",1,""],["各AIのコンテキストを無条件で統合する","統合までの遠回りが増える",2,""],["最も長いレビューだけを残す","チームの変更が衝突して大幅な蛇行となる",3,""]],"level":"エキスパート","idealGear":2,"course":null},{"id":"G2-6","title":"担当交代と引継ぎ","scene":"主要担当が離脱した際、AIと次担当が安全に継続できる条件は？","sector":"区間2","kind":"line","correct":0,"reason":"決定事項・前提・未解決課題・検証手順を引き継ぐ。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["決定事項・前提・未解決課題・検証手順を引き継ぐ","人とAIの役割が噛み合い、安定した走行につながる。",0],["会話ログ全体を無選別で渡す","役割の重なりで走行ラインが乱れる",1,""],["AIの自己要約だけで引継ぎを完了する","統合までの遠回りが増える",2,""],["稼働コードがあれば設計背景を残さない","チームの変更が衝突して大幅な蛇行となる",3,""]],"level":"応用","idealGear":2,"course":null},{"id":"G3-1","title":"単純作業の出力選択","scene":"大量の定型Excel整形を行う。AI利用効率が高い選択は？","sector":"区間3","kind":"throttle","correct":0,"reason":"処理をスクリプト化し例外時のみAI判断を使う。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["処理をスクリプト化し例外時のみAI判断を使う","人とAIの役割が噛み合い、安定した走行につながる。",0],["各セルの書式を高エフォートで判断する","出力配分のずれで加速にロスが生じる",1,""],["毎回異なる生成プロンプトを用いる","ギア選択が不適切で燃料を無駄に使う",2,""],["全データを毎回高性能モデルへ送り直す","無理なシフトにより急激な燃料消費を招く",3,"overdrive"]],"level":"上級","idealGear":3,"course":null},{"id":"G3-2","title":"難所だけ高推論","scene":"通常の文面校閲に難しい法令解釈の疑問が1点だけある。運用は？","sector":"区間3","kind":"throttle","correct":0,"reason":"一般校閲は軽量にし論点限定で専門レビューと高推論を使う。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["一般校閲は軽量にし論点限定で専門レビューと高推論を使う","人とAIの役割が噛み合い、安定した走行につながる。",0],["文書すべてを最高エフォートで再生成する","出力配分のずれで加速にロスが生じる",1,""],["高推論を避けて平均的な文章だけで済ませる","ギア選択が不適切で燃料を無駄に使う",2,""],["AIの断定を人の確認なしに最終採用する","無理なシフトにより急激な燃料消費を招く",3,"overdrive"]],"level":"エキスパート","idealGear":3,"course":null},{"id":"G3-3","title":"シフトダウンの判断","scene":"複雑な原因究明が終わり、残りはテスト結果の定型集計。適切な方針は？","sector":"区間3","kind":"throttle","correct":0,"reason":"定型工程へ移る際に低負荷な処理へ切り替える。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["定型工程へ移る際に低負荷な処理へ切り替える","人とAIの役割が噛み合い、安定した走行につながる。",0],["原因究明と同じ高エフォートを維持する","出力配分のずれで加速にロスが生じる",1,""],["再度全コードの原因究明を行う","ギア選択が不適切で燃料を無駄に使う",2,""],["テスト結果もAIの記憶から推測させる","無理なシフトにより急激な燃料消費を招く",3,"overdrive"]],"level":"応用","idealGear":3,"course":null},{"id":"G3-4","title":"モデル切替の評価","scene":"モデル切替でコストが減るが一部の回帰テストが不安定。適切なのは？","sector":"区間3","kind":"throttle","correct":0,"reason":"同じ評価セットで品質とコストを比較して切り替える。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["同じ評価セットで品質とコストを比較して切り替える","人とAIの役割が噛み合い、安定した走行につながる。",0],["安いモデルが有利なので即切り替える","出力配分のずれで加速にロスが生じる",1,""],["平均処理時間だけで切り替える","ギア選択が不適切で燃料を無駄に使う",2,""],["一度成功したので検証なく全社展開する","無理なシフトにより急激な燃料消費を招く",3,"overdrive"]],"level":"上級","idealGear":3,"course":null},{"id":"G3-5","title":"複数エージェントの使い所","scene":"短いFAQ文書の校正に8エージェントを並列投入したい。何を判断する？","sector":"区間3","kind":"throttle","correct":0,"reason":"連携コストと品質改善が見合うか小規模比較する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["連携コストと品質改善が見合うか小規模比較する","人とAIの役割が噛み合い、安定した走行につながる。",0],["AIの数が多いほど精度が増すと考える","出力配分のずれで加速にロスが生じる",1,""],["全エージェントに同一質問を投げ続ける","ギア選択が不適切で燃料を無駄に使う",2,""],["検証担当まで自動化して独立した確認をなくす","無理なシフトにより急激な燃料消費を招く",3,"overdrive"]],"level":"エキスパート","idealGear":3,"course":null},{"id":"G3-6","title":"緊急作業の出力配分","scene":"障害対応で残り利用枠が少なく、復旧と報告が必要。何を優先する？","sector":"区間3","kind":"throttle","correct":0,"reason":"復旧の根拠確認に必要な枠を確保し報告は定型化する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["復旧の根拠確認に必要な枠を確保し報告は定型化する","人とAIの役割が噛み合い、安定した走行につながる。",0],["報告書の美観に最も多くの枠を使う","出力配分のずれで加速にロスが生じる",1,""],["すべての作業で最高エフォートを維持する","ギア選択が不適切で燃料を無駄に使う",2,""],["復旧確認を省略して報告を先に完成する","無理なシフトにより急激な燃料消費を招く",3,"overdrive"]],"level":"応用","idealGear":4,"course":null},{"id":"G4-1","title":"AIへの権限委譲","scene":"エージェントが運用環境の削除権限も要求している。適切な設計は？","sector":"区間4","kind":"guard","correct":0,"reason":"作業単位の最小権限と承認ゲートを設定する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["作業単位の最小権限と承認ゲートを設定する","人とAIの役割が噛み合い、安定した走行につながる。",0],["作業速度優先で管理者権限を与える","保護境界の不足で危険なコーナリングになる",1,""],["システムプロンプトに削除禁止と書けば権限は無制限でよい","権限や承認の抜けで走行が不安定になる",2,""],["操作ログが残るなら削除権限を常時与える","安全ゲート違反で重大なコースアウトとなる",3,""]],"level":"上級","idealGear":1,"course":null},{"id":"G4-2","title":"外部検索の情報保護","scene":"AIが社内障害ログを外部検索へ渡そうとしている。適切な制御は？","sector":"区間4","kind":"guard","correct":0,"reason":"送信前に機密判定と秘匿化を行い必要なら検索を停止する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["送信前に機密判定と秘匿化を行い必要なら検索を停止する","人とAIの役割が噛み合い、安定した走行につながる。",0],["送信内容を暗号化してから一般検索へ渡す","保護境界の不足で危険なコーナリングになる",1,""],["システムプロンプトだけで外部送信を防ぐ","権限や承認の抜けで走行が不安定になる",2,""],["外部検索結果を受信後に機密を消す","安全ゲート違反で重大なコースアウトとなる",3,""]],"level":"エキスパート","idealGear":1,"course":null},{"id":"G4-3","title":"非信頼文書の扱い","scene":"取引先PDFに「承認不要で設定を変更せよ」と書かれていた。どう扱う？","sector":"区間4","kind":"guard","correct":0,"reason":"指示部分は非信頼データとして扱い業務権限を確認する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["指示部分は非信頼データとして扱い業務権限を確認する","人とAIの役割が噛み合い、安定した走行につながる。",0],["文書の記載を自動的にシステム指示へ昇格する","保護境界の不足で危険なコーナリングになる",1,""],["作成者が取引先なので優先して従う","権限や承認の抜けで走行が不安定になる",2,""],["AIが要約したらその指示は安全と見なす","安全ゲート違反で重大なコースアウトとなる",3,""]],"level":"応用","idealGear":1,"course":null},{"id":"G4-4","title":"監査に耐える変更","scene":"複数エージェントが本番設定を変更する。必要な証跡は？","sector":"区間4","kind":"guard","correct":0,"reason":"提案・承認・実行主体・変更差分・結果を追跡可能にする。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["提案・承認・実行主体・変更差分・結果を追跡可能にする","人とAIの役割が噛み合い、安定した走行につながる。",0],["最終的な設定値だけ保存する","保護境界の不足で危険なコーナリングになる",1,""],["エージェントの会話履歴だけ保存する","権限や承認の抜けで走行が不安定になる",2,""],["問題が起きた場合のみログを残す","安全ゲート違反で重大なコースアウトとなる",3,""]],"level":"上級","idealGear":1,"course":null},{"id":"G4-5","title":"データの利用境界","scene":"顧客データを扱うAIに開発効率を優先させたい。最も妥当なのは？","sector":"区間4","kind":"guard","correct":0,"reason":"許可された環境とデータ範囲を明示しアクセスを制限する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["許可された環境とデータ範囲を明示しアクセスを制限する","人とAIの役割が噛み合い、安定した走行につながる。",0],["学習に便利なので外部環境へ全データを複製する","保護境界の不足で危険なコーナリングになる",1,""],["匿名化せずAIの出力後に削除する","権限や承認の抜けで走行が不安定になる",2,""],["担当者間で同じ秘密鍵を共有する","安全ゲート違反で重大なコースアウトとなる",3,""]],"level":"エキスパート","idealGear":1,"course":null},{"id":"G4-6","title":"AIの提案への異議","scene":"AIが承認済みの制約を緩めると速くなると提案した。対応は？","sector":"区間4","kind":"guard","correct":0,"reason":"制約の意図を確認し変更するなら責任者の再承認を得る。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["制約の意図を確認し変更するなら責任者の再承認を得る","人とAIの役割が噛み合い、安定した走行につながる。",0],["AIの提案が合理的なら自動的に制約を緩める","保護境界の不足で危険なコーナリングになる",1,""],["速度が上がるなら記録なしで例外許可する","権限や承認の抜けで走行が不安定になる",2,""],["一時的な変更なら承認を省略する","安全ゲート違反で重大なコースアウトとなる",3,""]],"level":"応用","idealGear":1,"course":null},{"id":"G5-1","title":"二重検証の役割","scene":"AIが実装と自己レビューを行った。組織の品質確認として追加すべきことは？","sector":"区間5","kind":"test","correct":0,"reason":"独立したテストと人間の受入判断を組み合わせる。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["独立したテストと人間の受入判断を組み合わせる","人とAIの役割が噛み合い、安定した走行につながる。",0],["同じAIにもう一度問題ないか尋ねる","独立した確認が不足し後工程へ不具合が流れる",1,""],["生成したテストコードは無条件で正しいとする","検証の欠落で手戻りと速度低下が発生する",2,""],["コードが実行できたので受入完了とする","品質ゲートを越えられず大きなスピンとなる",3,""]],"level":"上級","idealGear":3,"course":null},{"id":"G5-2","title":"資料の根拠確認","scene":"AIが経営会議資料に売上予測グラフを作った。レビューでは？","sector":"区間5","kind":"test","correct":0,"reason":"データ源・集計条件・図表の解釈を突合する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["データ源・集計条件・図表の解釈を突合する","人とAIの役割が噛み合い、安定した走行につながる。",0],["図の見た目だけを修正する","独立した確認が不足し後工程へ不具合が流れる",1,""],["AIにグラフの信頼性を自己評価させる","検証の欠落で手戻りと速度低下が発生する",2,""],["過去のグラフと雰囲気が似ていれば採用する","品質ゲートを越えられず大きなスピンとなる",3,""]],"level":"エキスパート","idealGear":3,"course":null},{"id":"G5-3","title":"回帰テストの範囲","scene":"基盤ライブラリを更新し一部の単体テストは合格。次の確認は？","sector":"区間5","kind":"test","correct":0,"reason":"影響範囲を洗い出し契約・統合・回帰テストを行う。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["影響範囲を洗い出し契約・統合・回帰テストを行う","人とAIの役割が噛み合い、安定した走行につながる。",0],["直接変更した関数だけを確認する","独立した確認が不足し後工程へ不具合が流れる",1,""],["最新モデルのコード生成を信じてそのまま本番化する","検証の欠落で手戻りと速度低下が発生する",2,""],["ユーザーから不具合報告が来るまで様子を見る","品質ゲートを越えられず大きなスピンとなる",3,""]],"level":"応用","idealGear":3,"course":null},{"id":"G5-4","title":"検証の自動化境界","scene":"AIがテスト失敗を検知して自動修正したい。適切なのは？","sector":"区間5","kind":"test","correct":0,"reason":"低リスク修正を限定しテスト結果と差分を人に提示する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["低リスク修正を限定しテスト結果と差分を人に提示する","人とAIの役割が噛み合い、安定した走行につながる。",0],["すべての失敗に対して自動で本番修正する","独立した確認が不足し後工程へ不具合が流れる",1,""],["テスト自体を消して合格にする","検証の欠落で手戻りと速度低下が発生する",2,""],["失敗の原因を確認せず変更を重ねる","品質ゲートを越えられず大きなスピンとなる",3,""]],"level":"上級","idealGear":3,"course":null},{"id":"G5-5","title":"受入基準の欠落","scene":"チームで機能は完成したが、受入テストケースがない。どうする？","sector":"区間5","kind":"test","correct":0,"reason":"合意した業務シナリオを整備して受入検証する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["合意した業務シナリオを整備して受入検証する","人とAIの役割が噛み合い、安定した走行につながる。",0],["開発者の動作確認だけで検収する","独立した確認が不足し後工程へ不具合が流れる",1,""],["生成したテスト数を成果指標にする","検証の欠落で手戻りと速度低下が発生する",2,""],["担当AIの完了宣言を受入証跡にする","品質ゲートを越えられず大きなスピンとなる",3,""]],"level":"エキスパート","idealGear":3,"course":null},{"id":"G5-6","title":"検証結果の食い違い","scene":"性能計測でAIの報告と実測値が異なっている。最初にすべきことは？","sector":"区間5","kind":"test","correct":0,"reason":"計測条件・ログ・再現性を確認して原因を切り分ける。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["計測条件・ログ・再現性を確認して原因を切り分ける","人とAIの役割が噛み合い、安定した走行につながる。",0],["良い数値だけを採用する","独立した確認が不足し後工程へ不具合が流れる",1,""],["AIの解説が詳しければ報告を優先する","検証の欠落で手戻りと速度低下が発生する",2,""],["同じ条件を再確認せずモデルを切り替える","品質ゲートを越えられず大きなスピンとなる",3,""]],"level":"応用","idealGear":4,"course":null},{"id":"G6-1","title":"共通スキルの配布","scene":"チームの定型テストが担当者ごとに違う。何を標準化する？","sector":"区間6","kind":"skill","correct":0,"reason":"入力条件・実行手順・期待結果を共通スキルとして版管理する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["入力条件・実行手順・期待結果を共通スキルとして版管理する","人とAIの役割が噛み合い、安定した走行につながる。",0],["各自のプロンプトを口頭共有する","繰り返し作業の再現性が弱くラインがぶれる",1,""],["一番利用回数が多い手順を無検証で採用する","担当間の差で周回ごとの挙動が乱れる",2,""],["個人の会話履歴をそのまま全員に複製する","非標準手順が累積し大きな手戻りが出る",3,""]],"level":"上級","idealGear":2,"course":null},{"id":"G6-2","title":"スキルの更新権限","scene":"業務手順のスキルを誰でも自由に修正できる状況。望ましい運用は？","sector":"区間6","kind":"skill","correct":0,"reason":"オーナー・レビュー・リリース方法を決める。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["オーナー・レビュー・リリース方法を決める","人とAIの役割が噛み合い、安定した走行につながる。",0],["全員に即時反映権限を与える","繰り返し作業の再現性が弱くラインがぶれる",1,""],["異なる版があっても各自の運用に任せる","担当間の差で周回ごとの挙動が乱れる",2,""],["問題が発生するまで更新履歴を残さない","非標準手順が累積し大きな手戻りが出る",3,""]],"level":"エキスパート","idealGear":2,"course":null},{"id":"G6-3","title":"例外処理の再利用","scene":"RPAが毎週同じ例外で停止する。持続的な改善は？","sector":"区間6","kind":"skill","correct":0,"reason":"発生条件と復旧手順を定型化し回帰検証する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["発生条件と復旧手順を定型化し回帰検証する","人とAIの役割が噛み合い、安定した走行につながる。",0],["毎回高エフォートAIで同じ画面を再解析する","繰り返し作業の再現性が弱くラインがぶれる",1,""],["例外を無条件に無視する","担当間の差で周回ごとの挙動が乱れる",2,""],["失敗するたび運用者へ全作業を戻す","非標準手順が累積し大きな手戻りが出る",3,""]],"level":"応用","idealGear":2,"course":null},{"id":"G6-4","title":"学習結果の再現性","scene":"担当者Aだけが高品質な成果を出せている。チームに展開するには？","sector":"区間6","kind":"skill","correct":0,"reason":"成功条件・判断基準・手順・検証方法を共有する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["成功条件・判断基準・手順・検証方法を共有する","人とAIの役割が噛み合い、安定した走行につながる。",0],["Aの利用枠を増やして代行させる","繰り返し作業の再現性が弱くラインがぶれる",1,""],["Aの全履歴を未整理のままコピーする","担当間の差で周回ごとの挙動が乱れる",2,""],["個人の経験として保持してもらう","非標準手順が累積し大きな手戻りが出る",3,""]],"level":"上級","idealGear":2,"course":null},{"id":"G6-5","title":"テンプレートの過適用","scene":"全案件へ同じ巨大ハーネスを配布した結果、軽作業まで遅い。どう改善する？","sector":"区間6","kind":"skill","correct":0,"reason":"共通の安全基盤と案件別オプションを分離する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["共通の安全基盤と案件別オプションを分離する","人とAIの役割が噛み合い、安定した走行につながる。",0],["どの案件でも設定を最大化する","繰り返し作業の再現性が弱くラインがぶれる",1,""],["ハーネスを全面撤去して速度を優先する","担当間の差で周回ごとの挙動が乱れる",2,""],["一部担当者だけ非公式にルールを迂回する","非標準手順が累積し大きな手戻りが出る",3,""]],"level":"エキスパート","idealGear":2,"course":null},{"id":"G6-6","title":"スキル化の対象選定","scene":"判断が必要な例外と決定的な変換処理を一つのAIスキルにまとめたい。より良い設計は？","sector":"区間6","kind":"skill","correct":0,"reason":"決定的処理はプログラム化し例外判断を明示的に分離する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["決定的処理はプログラム化し例外判断を明示的に分離する","人とAIの役割が噛み合い、安定した走行につながる。",0],["すべて自然言語の推論へ置き換える","繰り返し作業の再現性が弱くラインがぶれる",1,""],["エラーを無視して自動継続する","担当間の差で周回ごとの挙動が乱れる",2,""],["入力仕様を定義せず試行錯誤に任せる","非標準手順が累積し大きな手戻りが出る",3,""]],"level":"応用","idealGear":2,"course":null},{"id":"G7-1","title":"資料の正本管理","scene":"複数部署の古いルールがRAGに混在。適切な対処は？","sector":"区間7","kind":"context","correct":0,"reason":"資料の版・適用日・権限をメタデータで管理する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["資料の版・適用日・権限をメタデータで管理する","人とAIの役割が噛み合い、安定した走行につながる。",0],["一番長い文書を正本とする","前提の整理不足で判断が揺らぐ",1,""],["検索順位が高い文書を必ず正本とする","資料や履歴の混在で走行ラインが逸れる",2,""],["類似文書をすべて同じ権限で公開する","正本不明のまま進み大幅な脱線が起きる",3,""]],"level":"上級","idealGear":2,"course":null},{"id":"G7-2","title":"文脈を縮める判断","scene":"長い開発会話で同じ質問への回答が不安定。何を行う？","sector":"区間7","kind":"context","correct":0,"reason":"決定事項と最新差分を整理し不要履歴を切り離す。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["決定事項と最新差分を整理し不要履歴を切り離す","人とAIの役割が噛み合い、安定した走行につながる。",0],["会話履歴を無制限に付加する","前提の整理不足で判断が揺らぐ",1,""],["モデル出力の長さを最大化する","資料や履歴の混在で走行ラインが逸れる",2,""],["以前の判断を確認せず新しい会話へ移る","正本不明のまま進み大幅な脱線が起きる",3,""]],"level":"エキスパート","idealGear":2,"course":null},{"id":"G7-3","title":"引継ぎデータの設計","scene":"複数チームがAI作成の成果を引き継ぐ。最低限の共有単位は？","sector":"区間7","kind":"context","correct":0,"reason":"目的・制約・依存・検証結果・未解決事項を明示する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["目的・制約・依存・検証結果・未解決事項を明示する","人とAIの役割が噛み合い、安定した走行につながる。",0],["生成テキストだけを渡す","前提の整理不足で判断が揺らぐ",1,""],["作業時間だけを引き継ぐ","資料や履歴の混在で走行ラインが逸れる",2,""],["担当者の雑談履歴も無選別で共有する","正本不明のまま進み大幅な脱線が起きる",3,""]],"level":"応用","idealGear":2,"course":null},{"id":"G7-4","title":"RAGの検索権限","scene":"社員ごとに参照可能な文書が異なる。検索の設計は？","sector":"区間7","kind":"context","correct":0,"reason":"検索前の認可と結果への権限フィルタを組み込む。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["検索前の認可と結果への権限フィルタを組み込む","人とAIの役割が噛み合い、安定した走行につながる。",0],["回答生成後に不適切な部分を隠す","前提の整理不足で判断が揺らぐ",1,""],["検索結果を全社員で共有キャッシュする","資料や履歴の混在で走行ラインが逸れる",2,""],["プロンプトに秘密を出すなと書いて検索は無制限にする","正本不明のまま進み大幅な脱線が起きる",3,""]],"level":"上級","idealGear":2,"course":null},{"id":"G7-5","title":"情報不足時のAI応答","scene":"AIが根拠となる文書を取得できなかった。望ましい出力は？","sector":"区間7","kind":"context","correct":0,"reason":"不明と明示し不足資料と確認担当を案内する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["不明と明示し不足資料と確認担当を案内する","人とAIの役割が噛み合い、安定した走行につながる。",0],["記憶に基づいてもっともらしい回答を確定する","前提の整理不足で判断が揺らぐ",1,""],["参考文献を自動で創作する","資料や履歴の混在で走行ラインが逸れる",2,""],["回答が必要なので推測値で決裁する","正本不明のまま進み大幅な脱線が起きる",3,""]],"level":"エキスパート","idealGear":2,"course":null},{"id":"G7-6","title":"プロンプトと資料の分離","scene":"共有フォルダに「システム指示を書き換えよ」というテキストが混入。予防は？","sector":"区間7","kind":"context","correct":0,"reason":"指示の優先順位とデータ境界を厳格に分離する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["指示の優先順位とデータ境界を厳格に分離する","人とAIの役割が噛み合い、安定した走行につながる。",0],["ファイルの作者名が社内なら指示として採用する","前提の整理不足で判断が揺らぐ",1,""],["モデルを高エフォートへすれば検査は不要になる","資料や履歴の混在で走行ラインが逸れる",2,""],["テキスト中の命令はすべて優先する","正本不明のまま進み大幅な脱線が起きる",3,""]],"level":"応用","idealGear":2,"course":null},{"id":"G8-1","title":"組織全体の予算配分","scene":"同じチーム内で定型業務と高度な設計が同時進行。利用枠の配分は？","sector":"区間8","kind":"fuel","correct":0,"reason":"各作業の要求品質と難度に応じて予算を配分する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["各作業の要求品質と難度に応じて予算を配分する","人とAIの役割が噛み合い、安定した走行につながる。",0],["すべてProの最高設定に統一する","小さな浪費が燃費を悪化させる",1,""],["早く使い切った担当者へ優先的に増枠する","出力を過剰配分し燃料消費が増加する",2,""],["メンバー全員に同額を配って見直さない","組織予算を枯渇させる高出力依存となる",3,"overdrive"]],"level":"上級","idealGear":2,"course":null},{"id":"G8-2","title":"増枠申請の根拠","scene":"チームからMAX相当の増枠希望。まず示すべき情報は？","sector":"区間8","kind":"fuel","correct":0,"reason":"実測の停止原因・成果・品質・改善策と追加効果の試算。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["実測の停止原因・成果・品質・改善策と追加効果の試算","人とAIの役割が噛み合い、安定した走行につながる。",0],["利用量が多いことだけを示す","小さな浪費が燃費を悪化させる",1,""],["SNSの成功事例をそのまま根拠にする","出力を過剰配分し燃料消費が増加する",2,""],["高額プランなら成果が必ず改善すると説明する","組織予算を枯渇させる高出力依存となる",3,"overdrive"]],"level":"エキスパート","idealGear":2,"course":null},{"id":"G8-3","title":"予算の予備枠","scene":"長期案件の序盤でAI利用枠を全投入しようとしている。戦略は？","sector":"区間8","kind":"fuel","correct":0,"reason":"検証・再設計・障害対応のために余力を残す。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["検証・再設計・障害対応のために余力を残す","人とAIの役割が噛み合い、安定した走行につながる。",0],["設計段階で最大投入し後工程は無予算にする","小さな浪費が燃費を悪化させる",1,""],["予算がなくなったらテストを省く","出力を過剰配分し燃料消費が増加する",2,""],["予算配分を現場の先着順にする","組織予算を枯渇させる高出力依存となる",3,"overdrive"]],"level":"応用","idealGear":2,"course":null},{"id":"G8-4","title":"成果当たりのコスト","scene":"チームAは速いが再作業が多い。比較に必要な指標は？","sector":"区間8","kind":"fuel","correct":0,"reason":"受入品質を満たした成果物あたりの総工数とAI利用量。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["受入品質を満たした成果物あたりの総工数とAI利用量","人とAIの役割が噛み合い、安定した走行につながる。",0],["AIが生成した文字数","小さな浪費が燃費を悪化させる",1,""],["プロンプトの平均長","出力を過剰配分し燃料消費が増加する",2,""],["実行したエージェント数","組織予算を枯渇させる高出力依存となる",3,"overdrive"]],"level":"上級","idealGear":2,"course":null},{"id":"G8-5","title":"節約による品質低下","scene":"軽量モデルへ変更後に不具合検出率が低下した。どう判断する？","sector":"区間8","kind":"fuel","correct":0,"reason":"品質要求を満たすまで評価・役割分担を見直す。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["品質要求を満たすまで評価・役割分担を見直す","人とAIの役割が噛み合い、安定した走行につながる。",0],["節約額が大きければ品質低下を容認する","小さな浪費が燃費を悪化させる",1,""],["検知失敗を評価から除外する","出力を過剰配分し燃料消費が増加する",2,""],["検証担当を削減してさらに節約する","組織予算を枯渇させる高出力依存となる",3,"overdrive"]],"level":"エキスパート","idealGear":2,"course":null},{"id":"G8-6","title":"AI停止時の継続計画","scene":"チームの利用枠が尽きたが納期が残る。組織としての準備は？","sector":"区間8","kind":"fuel","correct":0,"reason":"人手または低負荷手段で継続できる縮退運用を定義する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["人手または低負荷手段で継続できる縮退運用を定義する","人とAIの役割が噛み合い、安定した走行につながる。",0],["利用枠がなくなったら全業務を停止する","小さな浪費が燃費を悪化させる",1,""],["無許可の個人アカウントへデータを移す","出力を過剰配分し燃料消費が増加する",2,""],["すべての作業を高負荷AIに集約し続ける","組織予算を枯渇させる高出力依存となる",3,"overdrive"]],"level":"応用","idealGear":2,"course":null},{"id":"G9-1","title":"ループの上限","scene":"同じ失敗をAIが繰り返す自律ループ。設計で必要なのは？","sector":"区間9","kind":"loop","correct":0,"reason":"最大反復数・停止条件・人へのエスカレーションを設ける。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["最大反復数・停止条件・人へのエスカレーションを設ける","人とAIの役割が噛み合い、安定した走行につながる。",0],["成功するまで無制限に実行する","改善効果が乏しく周回の伸びが止まる",1,""],["失敗回数をログに残さない","同じ問題を繰り返して後半ラップが鈍る",2,""],["エラー時はモデルを毎回変更する","止まらない反復で燃料と時間を浪費する",3,""]],"level":"上級","idealGear":2,"course":null},{"id":"G9-2","title":"改善サイクルの測定","scene":"AI導入後の周回タイムだけが短縮した。品質面を含めて確認するには？","sector":"区間9","kind":"loop","correct":0,"reason":"手戻り・テスト合格・受入品質も継続測定する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["手戻り・テスト合格・受入品質も継続測定する","人とAIの役割が噛み合い、安定した走行につながる。",0],["作成ファイル数だけ増えれば成功とする","改善効果が乏しく周回の伸びが止まる",1,""],["速度が改善したので品質測定を終了する","同じ問題を繰り返して後半ラップが鈍る",2,""],["開発者の体感だけで定量評価する","止まらない反復で燃料と時間を浪費する",3,""]],"level":"エキスパート","idealGear":2,"course":null},{"id":"G9-3","title":"失敗パターンの分類","scene":"AIがコード修正でタイムアウトと仕様不一致を同じように再試行。望ましい分岐は？","sector":"区間9","kind":"loop","correct":0,"reason":"原因別に再試行・仕様確認・停止を使い分ける。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["原因別に再試行・仕様確認・停止を使い分ける","人とAIの役割が噛み合い、安定した走行につながる。",0],["全エラーで同じプロンプトを送り直す","改善効果が乏しく周回の伸びが止まる",1,""],["エラーを一括で正常扱いする","同じ問題を繰り返して後半ラップが鈍る",2,""],["成功した直前の応答をそのまま返す","止まらない反復で燃料と時間を浪費する",3,""]],"level":"応用","idealGear":2,"course":null},{"id":"G9-4","title":"改善の組織展開","scene":"ある案件で成功したハーネスが別案件では不適切だった。学びは？","sector":"区間9","kind":"loop","correct":0,"reason":"有効条件を特定し共通部分と案件依存部分を分ける。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["有効条件を特定し共通部分と案件依存部分を分ける","人とAIの役割が噛み合い、安定した走行につながる。",0],["全案件へ変更なしで適用する","改善効果が乏しく周回の伸びが止まる",1,""],["成功事例を過大に一般化する","同じ問題を繰り返して後半ラップが鈍る",2,""],["うまくいかなかった案件の記録を破棄する","止まらない反復で燃料と時間を浪費する",3,""]],"level":"上級","idealGear":2,"course":null},{"id":"G9-5","title":"品質ゲートとループ","scene":"テストに落ちたが納期が近い。次の反復として最も適切なのは？","sector":"区間9","kind":"loop","correct":0,"reason":"リスクを評価し修正計画と受入判断を合意する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["リスクを評価し修正計画と受入判断を合意する","人とAIの役割が噛み合い、安定した走行につながる。",0],["テストを停止して完了扱いする","改善効果が乏しく周回の伸びが止まる",1,""],["AIが問題なしと言うまで再生成する","同じ問題を繰り返して後半ラップが鈍る",2,""],["不合格結果を報告書から隠す","止まらない反復で燃料と時間を浪費する",3,""]],"level":"エキスパート","idealGear":2,"course":null},{"id":"G9-6","title":"学習効果の測定","scene":"研修でクイズ点が上がったが現場で成果が不明。追加検証は？","sector":"区間9","kind":"loop","correct":0,"reason":"類似案件での品質・判断・コスト改善を観測する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["類似案件での品質・判断・コスト改善を観測する","人とAIの役割が噛み合い、安定した走行につながる。",0],["点数上昇だけで投資対効果を確定する","改善効果が乏しく周回の伸びが止まる",1,""],["参加者の満足度だけを成果とする","同じ問題を繰り返して後半ラップが鈍る",2,""],["より難しいモデルを配れば十分とする","止まらない反復で燃料と時間を浪費する",3,""]],"level":"応用","idealGear":2,"course":null},{"id":"G10-1","title":"AI提案の採否","scene":"AIが「危険な変更を止めたほうがよい」と警告。人の適切な役割は？","sector":"区間10","kind":"human","correct":0,"reason":"証拠と影響を確認し停止・続行を責任者が決める。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["証拠と影響を確認し停止・続行を責任者が決める","人とAIの役割が噛み合い、安定した走行につながる。",0],["AIが言うことを無条件に拒否する","人とAIの判断境界が曖昧になりハンドリングが乱れる",1,""],["AIの提案は常に正しいので即自動停止する","提案と承認の不整合で大きく蛇行する",2,""],["警告を隠して予定通り実行する","責任不明のまま進みコースアウトの危険が高まる",3,""]],"level":"上級","idealGear":3,"course":null},{"id":"G10-2","title":"権限を持つレビュアー","scene":"AIが完成した資料を校閲したが法的判断が含まれる。納品前は？","sector":"区間10","kind":"human","correct":0,"reason":"適切な専門担当者が根拠と適用範囲を確認する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["適切な専門担当者が根拠と適用範囲を確認する","人とAIの役割が噛み合い、安定した走行につながる。",0],["AIの自己評価だけで社外送付する","人とAIの判断境界が曖昧になりハンドリングが乱れる",1,""],["ページ数が少なければレビューを省略する","提案と承認の不整合で大きく蛇行する",2,""],["校閲済みラベルだけで承認扱いにする","責任不明のまま進みコースアウトの危険が高まる",3,""]],"level":"エキスパート","idealGear":3,"course":null},{"id":"G10-3","title":"人の介入頻度","scene":"低リスクな定型処理に全件手動承認を義務化し遅延が拡大。見直し方は？","sector":"区間10","kind":"human","correct":0,"reason":"リスク別に自動実行と例外承認を切り分ける。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["リスク別に自動実行と例外承認を切り分ける","人とAIの役割が噛み合い、安定した走行につながる。",0],["承認を完全廃止して全作業を自律化する","人とAIの判断境界が曖昧になりハンドリングが乱れる",1,""],["承認者を増やしてすべての申請を重複審査する","提案と承認の不整合で大きく蛇行する",2,""],["モデルをProに変えれば承認時間も自動で短くなる","責任不明のまま進みコースアウトの危険が高まる",3,""]],"level":"応用","idealGear":3,"course":null},{"id":"G10-4","title":"AIの反論を活用","scene":"チームの予定工数に対しAIが依存関係リスクを指摘した。最善の対応は？","sector":"区間10","kind":"human","correct":0,"reason":"根拠を調査しリスクを計画へ反映するか判断する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["根拠を調査しリスクを計画へ反映するか判断する","人とAIの役割が噛み合い、安定した走行につながる。",0],["予定と異なるため指摘を無視する","人とAIの判断境界が曖昧になりハンドリングが乱れる",1,""],["AIの警告を根拠に全計画を無条件で破棄する","提案と承認の不整合で大きく蛇行する",2,""],["指摘を採用せずにAIへ同意させる","責任不明のまま進みコースアウトの危険が高まる",3,""]],"level":"上級","idealGear":3,"course":null},{"id":"G10-5","title":"複数人と複数AIの責任","scene":"人とAIが並列作業する案件で不具合が発覚。責任所在をどう扱う？","sector":"区間10","kind":"human","correct":0,"reason":"成果物の承認者と変更履歴を追跡し組織として是正する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["成果物の承認者と変更履歴を追跡し組織として是正する","人とAIの役割が噛み合い、安定した走行につながる。",0],["AIの誤答なので責任者は不要とする","人とAIの判断境界が曖昧になりハンドリングが乱れる",1,""],["最後に触れた人だけを責任者にする","提案と承認の不整合で大きく蛇行する",2,""],["ログを削除して原因を不問とする","責任不明のまま進みコースアウトの危険が高まる",3,""]],"level":"エキスパート","idealGear":3,"course":null},{"id":"G10-6","title":"融合の成熟度","scene":"AIの提案を人が評価し、実行結果を次のルール改善へ反映するチーム。維持すべき仕組みは？","sector":"区間10","kind":"human","correct":0,"reason":"役割・権限・フィードバック・改善履歴を制度化する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["役割・権限・フィードバック・改善履歴を制度化する","人とAIの役割が噛み合い、安定した走行につながる。",0],["人の判断を全廃してAIのみで決裁する","人とAIの判断境界が曖昧になりハンドリングが乱れる",1,""],["AIの出力を一切変更できないよう固定する","提案と承認の不整合で大きく蛇行する",2,""],["成功時は評価記録を省略して最適化を続ける","責任不明のまま進みコースアウトの危険が高まる",3,""]],"level":"応用","idealGear":4,"course":null},{"id":"Cweb1-8","title":"受入範囲の統一","scene":"営業は公開日を優先、品質部は認証要件を優先。プロジェクトの初手は？","sector":"区間1","kind":"brake","correct":0,"reason":"納期と最低限の安全要件を整理し承認済みの受入範囲を決める。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["納期と最低限の安全要件を整理し承認済みの受入範囲を決める","人とAIの役割が噛み合い、安定した走行につながる。",0],["公開日だけを採用して認証を後回しにする","制約の未確定で減速判断が遅れ、手戻りが増える",1,""],["品質部の要求だけを採用して納期を通知しない","判断停止が遅れて進入ラインが膨らむ",2,""],["AIに適切な優先度を最終決定させる","承認前の突入で大幅な修正が発生する",3,""]],"level":"エキスパート","idealGear":2,"course":"web"},{"id":"Cweb4-8","title":"開発環境の操作境界","scene":"AIによる環境変数変更で開発環境が頻繁に壊れる。対処は？","sector":"区間4","kind":"guard","correct":0,"reason":"許可対象ファイルと操作権限を限定し復旧手順を用意する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["許可対象ファイルと操作権限を限定し復旧手順を用意する","人とAIの役割が噛み合い、安定した走行につながる。",0],["AIにすべての変更権限を与えて高速化する","保護境界の不足で危険なコーナリングになる",1,""],["指示文に壊さないでと付記するだけにする","権限や承認の抜けで走行が不安定になる",2,""],["変更履歴なしで都度環境を再作成する","安全ゲート違反で重大なコースアウトとなる",3,""]],"level":"エキスパート","idealGear":1,"course":"web"},{"id":"Cweb6-8","title":"画面部品の使い回し","scene":"チームが同じ画面部品を別々に生成している。どう改善する？","sector":"区間6","kind":"skill","correct":0,"reason":"共通UI部品と入出力契約を定義してレビュー付きで再利用する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["共通UI部品と入出力契約を定義してレビュー付きで再利用する","人とAIの役割が噛み合い、安定した走行につながる。",0],["同じプロンプトを全担当へ配布する","繰り返し作業の再現性が弱くラインがぶれる",1,""],["重複を放置して各自で修正する","担当間の差で周回ごとの挙動が乱れる",2,""],["最後に全画面をAIへ一括統合させる","非標準手順が累積し大きな手戻りが出る",3,""]],"level":"エキスパート","idealGear":2,"course":"web"},{"id":"Cweb10-8","title":"公開判断の最終責任","scene":"受入試験完了後に公開する。最終ゲートで必要なのは？","sector":"区間10","kind":"human","correct":0,"reason":"テスト結果・残存リスク・復旧手順を示し権限者が判断する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["テスト結果・残存リスク・復旧手順を示し権限者が判断する","人とAIの役割が噛み合い、安定した走行につながる。",0],["自動テスト全件成功だけで本番公開する","人とAIの判断境界が曖昧になりハンドリングが乱れる",1,""],["開発AIの完成宣言で公開する","提案と承認の不整合で大きく蛇行する",2,""],["担当者の多数決のみで公開する","責任不明のまま進みコースアウトの危険が高まる",3,""]],"level":"エキスパート","idealGear":3,"course":"web"},{"id":"Clegacy1-8","title":"影響範囲の決定","scene":"古いプログラムの仕様が不明で小改修の依頼が来た。どう着手する？","sector":"区間1","kind":"brake","correct":0,"reason":"ログ・呼出関係・利用業務を確認し改修範囲を合意する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["ログ・呼出関係・利用業務を確認し改修範囲を合意する","人とAIの役割が噛み合い、安定した走行につながる。",0],["AIが提案した関数を即書き換える","制約の未確定で減速判断が遅れ、手戻りが増える",1,""],["変更対象を広げて全面リファクタリングする","判断停止が遅れて進入ラインが膨らむ",2,""],["新仕様のみを読んで既存影響を無視する","承認前の突入で大幅な修正が発生する",3,""]],"level":"エキスパート","idealGear":2,"course":"legacy"},{"id":"Clegacy4-8","title":"変更差分の最小化","scene":"AIが依頼にないクラスの再設計を提案。変更管理上どうする？","sector":"区間4","kind":"guard","correct":0,"reason":"依頼範囲を超える変更を分離して承認対象にする。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["依頼範囲を超える変更を分離して承認対象にする","人とAIの役割が噛み合い、安定した走行につながる。",0],["高速化するなら全部まとめて採用する","保護境界の不足で危険なコーナリングになる",1,""],["レビューが楽なので変更を隠す","権限や承認の抜けで走行が不安定になる",2,""],["AIに変更理由を一言説明させて全部採用する","安全ゲート違反で重大なコースアウトとなる",3,""]],"level":"エキスパート","idealGear":1,"course":"legacy"},{"id":"Clegacy6-8","title":"既存処理の定石化","scene":"類似のレガシー修正が多い。持続的な改善策は？","sector":"区間6","kind":"skill","correct":0,"reason":"調査・差分・回帰確認を再利用可能なスキルに整理する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["調査・差分・回帰確認を再利用可能なスキルに整理する","人とAIの役割が噛み合い、安定した走行につながる。",0],["毎回ゼロから同じ調査を繰り返す","繰り返し作業の再現性が弱くラインがぶれる",1,""],["最初の成功例を無検証で全案件に適用する","担当間の差で周回ごとの挙動が乱れる",2,""],["古いコードのログは不要として廃棄する","非標準手順が累積し大きな手戻りが出る",3,""]],"level":"エキスパート","idealGear":2,"course":"legacy"},{"id":"Clegacy10-8","title":"レガシー本番反映","scene":"回帰試験に一部不明結果があるまま反映予定日が来た。対応は？","sector":"区間10","kind":"human","correct":0,"reason":"残存リスクを責任者に報告し可否と切戻しを判断する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["残存リスクを責任者に報告し可否と切戻しを判断する","人とAIの役割が噛み合い、安定した走行につながる。",0],["納期優先で無条件に適用する","人とAIの判断境界が曖昧になりハンドリングが乱れる",1,""],["AIの一般的な成功率を根拠に承認する","提案と承認の不整合で大きく蛇行する",2,""],["検証を行わなかったことを伏せてリリースする","責任不明のまま進みコースアウトの危険が高まる",3,""]],"level":"エキスパート","idealGear":3,"course":"legacy"},{"id":"Capi1-8","title":"契約仕様の変更","scene":"連携先がAPIレスポンス形式を変更予定。チームの最初の判断は？","sector":"区間1","kind":"brake","correct":0,"reason":"契約版と互換性条件を合意して影響を整理する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["契約版と互換性条件を合意して影響を整理する","人とAIの役割が噛み合い、安定した走行につながる。",0],["データ項目を推測して対応する","制約の未確定で減速判断が遅れ、手戻りが増える",1,""],["新仕様だけを先に本番化する","判断停止が遅れて進入ラインが膨らむ",2,""],["AIに接続成功するまで修正させ続ける","承認前の突入で大幅な修正が発生する",3,""]],"level":"エキスパート","idealGear":2,"course":"api"},{"id":"Capi4-8","title":"外部キーの管理","scene":"AIエージェントがAPIキーを外部検索に送信しそう。必要な措置は？","sector":"区間4","kind":"guard","correct":0,"reason":"シークレットをツール境界で遮断し権限を最小化する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["シークレットをツール境界で遮断し権限を最小化する","人とAIの役割が噛み合い、安定した走行につながる。",0],["プロンプトに機密注意と書くだけでよい","保護境界の不足で危険なコーナリングになる",1,""],["通信がHTTPSなら外部送信を許可する","権限や承認の抜けで走行が不安定になる",2,""],["キーの先頭数文字を隠せば全文を渡してよい","安全ゲート違反で重大なコースアウトとなる",3,""]],"level":"エキスパート","idealGear":1,"course":"api"},{"id":"Capi6-8","title":"API接続の共通手順","scene":"各開発者が独自に再試行ロジックを作成。何を揃える？","sector":"区間6","kind":"skill","correct":0,"reason":"タイムアウト・冪等性・エラー分類を共通ライブラリにする。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["タイムアウト・冪等性・エラー分類を共通ライブラリにする","人とAIの役割が噛み合い、安定した走行につながる。",0],["成功した担当のプロンプトだけ共有する","繰り返し作業の再現性が弱くラインがぶれる",1,""],["担当AIへ仕様に合うよう口頭で指示する","担当間の差で周回ごとの挙動が乱れる",2,""],["どのHTTP失敗も同じ回数だけ再実行する","非標準手順が累積し大きな手戻りが出る",3,""]],"level":"エキスパート","idealGear":2,"course":"api"},{"id":"Capi10-8","title":"連携公開の承認","scene":"外部API側の障害で一部機能が使えない。リリース可否は？","sector":"区間10","kind":"human","correct":0,"reason":"影響範囲と代替運用を評価して責任者が承認する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["影響範囲と代替運用を評価して責任者が承認する","人とAIの役割が噛み合い、安定した走行につながる。",0],["一度成功した疎通ログだけで公開する","人とAIの判断境界が曖昧になりハンドリングが乱れる",1,""],["AIが復旧する可能性が高いと答えたら公開する","提案と承認の不整合で大きく蛇行する",2,""],["影響を明示せず予定通り公開する","責任不明のまま進みコースアウトの危険が高まる",3,""]],"level":"エキスパート","idealGear":3,"course":"api"},{"id":"Cmigration1-8","title":"移行対象の確定","scene":"複数部門で旧データの保存義務が異なる。最初に行うことは？","sector":"区間1","kind":"brake","correct":0,"reason":"データ種別と保存要件を合意して移行対象を確定する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["データ種別と保存要件を合意して移行対象を確定する","人とAIの役割が噛み合い、安定した走行につながる。",0],["AIに不要データを推論で削除させる","制約の未確定で減速判断が遅れ、手戻りが増える",1,""],["件数だけで移行対象を決める","判断停止が遅れて進入ラインが膨らむ",2,""],["後から修正できるとして全件移行を開始する","承認前の突入で大幅な修正が発生する",3,""]],"level":"エキスパート","idealGear":2,"course":"migration"},{"id":"Cmigration4-8","title":"個人情報の移行権限","scene":"データ移行AIが全顧客データを無制限に参照する提案。対応は？","sector":"区間4","kind":"guard","correct":0,"reason":"処理に必要な列と期間へ権限を限定する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["処理に必要な列と期間へ権限を限定する","人とAIの役割が噛み合い、安定した走行につながる。",0],["一時作業だから全顧客データを公開する","保護境界の不足で危険なコーナリングになる",1,""],["AIに秘密保持を指示すれば権限管理は不要","権限や承認の抜けで走行が不安定になる",2,""],["ログが残るなら無期限アクセスを許可する","安全ゲート違反で重大なコースアウトとなる",3,""]],"level":"エキスパート","idealGear":1,"course":"migration"},{"id":"Cmigration6-8","title":"照合手順の再利用","scene":"移行リハーサルで件数・合計値照合を毎回手作業している。改善は？","sector":"区間6","kind":"skill","correct":0,"reason":"照合仕様を固定し自動チェックとして再利用する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["照合仕様を固定し自動チェックとして再利用する","人とAIの役割が噛み合い、安定した走行につながる。",0],["照合は初回だけ行い以後は省略する","繰り返し作業の再現性が弱くラインがぶれる",1,""],["AIに一件ずつ目視判定させる","担当間の差で周回ごとの挙動が乱れる",2,""],["件数一致だけで値の整合性を保証する","非標準手順が累積し大きな手戻りが出る",3,""]],"level":"エキスパート","idealGear":2,"course":"migration"},{"id":"Cmigration10-8","title":"移行切戻し判断","scene":"本番移行で一致率が受入基準を下回った。適切な判断は？","sector":"区間10","kind":"human","correct":0,"reason":"移行を停止しログ・戻し手順を確認して責任者が判断する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["移行を停止しログ・戻し手順を確認して責任者が判断する","人とAIの役割が噛み合い、安定した走行につながる。",0],["一致している部分だけを公開する","人とAIの判断境界が曖昧になりハンドリングが乱れる",1,""],["AIの再試行を無制限に続ける","提案と承認の不整合で大きく蛇行する",2,""],["報告値を丸めて合格扱いとする","責任不明のまま進みコースアウトの危険が高まる",3,""]],"level":"エキスパート","idealGear":3,"course":"migration"},{"id":"Crpa1-8","title":"業務自動化の境界","scene":"RPA化する業務に例外的な法務判断が含まれる。何が必要？","sector":"区間1","kind":"brake","correct":0,"reason":"定型処理と承認判断を分けて役割を設計する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["定型処理と承認判断を分けて役割を設計する","人とAIの役割が噛み合い、安定した走行につながる。",0],["法務判断も一括してAIへ委任する","制約の未確定で減速判断が遅れ、手戻りが増える",1,""],["例外を削除して定型化する","判断停止が遅れて進入ラインが膨らむ",2,""],["実際の運用者の確認を不要にする","承認前の突入で大幅な修正が発生する",3,""]],"level":"エキスパート","idealGear":2,"course":"rpa"},{"id":"Crpa4-8","title":"ロボットの実行権限","scene":"RPAが誤って大量削除する可能性がある。最初のガードは？","sector":"区間4","kind":"guard","correct":0,"reason":"削除権限を分離し対象確認と承認を組み込む。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["削除権限を分離し対象確認と承認を組み込む","人とAIの役割が噛み合い、安定した走行につながる。",0],["システムプロンプトで禁止するのみとする","保護境界の不足で危険なコーナリングになる",1,""],["速度優先で管理者権限を渡す","権限や承認の抜けで走行が不安定になる",2,""],["実行失敗後にログを確認する","安全ゲート違反で重大なコースアウトとなる",3,""]],"level":"エキスパート","idealGear":1,"course":"rpa"},{"id":"Crpa6-8","title":"手順変更のスキル更新","scene":"基幹画面のUIが変更されRPAが不安定。対応は？","sector":"区間6","kind":"skill","correct":0,"reason":"共通操作部品を修正し新旧画面で回帰検証する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["共通操作部品を修正し新旧画面で回帰検証する","人とAIの役割が噛み合い、安定した走行につながる。",0],["全ロボットを無条件に再生成する","繰り返し作業の再現性が弱くラインがぶれる",1,""],["担当者の画面だけ直して共有しない","担当間の差で周回ごとの挙動が乱れる",2,""],["すべて高エフォートAIでクリックを推測させる","非標準手順が累積し大きな手戻りが出る",3,""]],"level":"エキスパート","idealGear":2,"course":"rpa"},{"id":"Crpa10-8","title":"運用移管の受入","scene":"RPA作成チームが解散する前に必要な成果は？","sector":"区間10","kind":"human","correct":0,"reason":"例外一覧・再実行手順・監視・責任者を確定する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["例外一覧・再実行手順・監視・責任者を確定する","人とAIの役割が噛み合い、安定した走行につながる。",0],["ソースコードだけを渡す","人とAIの判断境界が曖昧になりハンドリングが乱れる",1,""],["AIが正常終了した記録だけを渡す","提案と承認の不整合で大きく蛇行する",2,""],["作成者の個人アカウントを引き継ぐ","責任不明のまま進みコースアウトの危険が高まる",3,""]],"level":"エキスパート","idealGear":3,"course":"rpa"},{"id":"Cslides1-8","title":"経営資料の意思決定","scene":"役員向け資料の主張が部署ごとに異なる。最初の判断は？","sector":"区間1","kind":"brake","correct":0,"reason":"意思決定事項と評価指標を依頼者と確定する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["意思決定事項と評価指標を依頼者と確定する","人とAIの役割が噛み合い、安定した走行につながる。",0],["見栄えのよいテンプレートを先に決める","制約の未確定で減速判断が遅れ、手戻りが増える",1,""],["全員の主張を無条件にスライドへ載せる","判断停止が遅れて進入ラインが膨らむ",2,""],["AIに最も説得力がある結論を独断で選ばせる","承認前の突入で大幅な修正が発生する",3,""]],"level":"エキスパート","idealGear":2,"course":"slides"},{"id":"Cslides4-8","title":"機密資料の生成範囲","scene":"社内機密数値を外部AI画像生成へ渡したい。どう対応する？","sector":"区間4","kind":"guard","correct":0,"reason":"公開範囲と送信許可を確認し必要なら代替手段を選ぶ。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["公開範囲と送信許可を確認し必要なら代替手段を選ぶ","人とAIの役割が噛み合い、安定した走行につながる。",0],["社内用スライドなら送信を許可する","保護境界の不足で危険なコーナリングになる",1,""],["プロンプトに非公開と記せば送信してよい","権限や承認の抜けで走行が不安定になる",2,""],["出力画像から数字を消せば送信時の問題はない","安全ゲート違反で重大なコースアウトとなる",3,""]],"level":"エキスパート","idealGear":1,"course":"slides"},{"id":"Cslides6-8","title":"スライドテンプレートの共通化","scene":"同じ定例説明の体裁が担当ごとに異なる。改善案は？","sector":"区間6","kind":"skill","correct":0,"reason":"構成とブランドルールを共通テンプレート化する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["構成とブランドルールを共通テンプレート化する","人とAIの役割が噛み合い、安定した走行につながる。",0],["全員が自由に毎回生成する","繰り返し作業の再現性が弱くラインがぶれる",1,""],["最も長いプロンプトだけ配布する","担当間の差で周回ごとの挙動が乱れる",2,""],["AIに都度別デザインで作らせる","非標準手順が累積し大きな手戻りが出る",3,""]],"level":"エキスパート","idealGear":2,"course":"slides"},{"id":"Cslides10-8","title":"資料の最終レビュー","scene":"AIが作った経営資料に因果関係の断定表現がある。誰が確認する？","sector":"区間10","kind":"human","correct":0,"reason":"根拠と組織の説明責任を担当者が確認して承認する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["根拠と組織の説明責任を担当者が確認して承認する","人とAIの役割が噛み合い、安定した走行につながる。",0],["AIの説得力評価が高ければ採用する","人とAIの判断境界が曖昧になりハンドリングが乱れる",1,""],["文章が自然なら裏付け確認を省く","提案と承認の不整合で大きく蛇行する",2,""],["資料の長さが短いので自動承認する","責任不明のまま進みコースアウトの危険が高まる",3,""]],"level":"エキスパート","idealGear":3,"course":"slides"},{"id":"Creport1-8","title":"月次報告の定義","scene":"部門ごとに売上の集計条件が異なる。どう標準化する？","sector":"区間1","kind":"brake","correct":0,"reason":"対象期間・除外条件・定義を合意して集計仕様へ反映する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["対象期間・除外条件・定義を合意して集計仕様へ反映する","人とAIの役割が噛み合い、安定した走行につながる。",0],["数字が大きくなる定義に統一する","制約の未確定で減速判断が遅れ、手戻りが増える",1,""],["各担当AIの出力を平均する","判断停止が遅れて進入ラインが膨らむ",2,""],["報告時に差を口頭説明するだけにする","承認前の突入で大幅な修正が発生する",3,""]],"level":"エキスパート","idealGear":2,"course":"report"},{"id":"Creport4-8","title":"財務データの権限","scene":"月次レポートのAIが全社の人件費まで取得している。どうする？","sector":"区間4","kind":"guard","correct":0,"reason":"必要な範囲にアクセスを絞り権限監査する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["必要な範囲にアクセスを絞り権限監査する","人とAIの役割が噛み合い、安定した走行につながる。",0],["社内AIなので全件アクセスを許可する","保護境界の不足で危険なコーナリングになる",1,""],["出力に載せなければ閲覧権限は不要と考える","権限や承認の抜けで走行が不安定になる",2,""],["集計後に削除すれば制限しない","安全ゲート違反で重大なコースアウトとなる",3,""]],"level":"エキスパート","idealGear":1,"course":"report"},{"id":"Creport6-8","title":"月次処理の標準化","scene":"毎月同じExcel転記を高性能AIで行う。改善策は？","sector":"区間6","kind":"skill","correct":0,"reason":"定型転記を決定的な処理へ移し異常だけAIで判定する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["定型転記を決定的な処理へ移し異常だけAIで判定する","人とAIの役割が噛み合い、安定した走行につながる。",0],["毎月ゼロから新しい生成方法を考える","繰り返し作業の再現性が弱くラインがぶれる",1,""],["すべて高エフォートを維持する","担当間の差で周回ごとの挙動が乱れる",2,""],["転記結果の照合を省略する","非標準手順が累積し大きな手戻りが出る",3,""]],"level":"エキスパート","idealGear":2,"course":"report"},{"id":"Creport10-8","title":"経営提出前の検査","scene":"月次報告の集計値に前月比の異常がある。提出前は？","sector":"区間10","kind":"human","correct":0,"reason":"元データと集計ロジックを確認して原因を説明する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["元データと集計ロジックを確認して原因を説明する","人とAIの役割が噛み合い、安定した走行につながる。",0],["AIが作ったコメントだけで説明する","人とAIの判断境界が曖昧になりハンドリングが乱れる",1,""],["前月比の表示を消して提出する","提案と承認の不整合で大きく蛇行する",2,""],["一定範囲に丸めて提出する","責任不明のまま進みコースアウトの危険が高まる",3,""]],"level":"エキスパート","idealGear":3,"course":"report"},{"id":"Crag1-8","title":"検索対象の選定","scene":"部門横断RAGで規程の版が混在する。最初に決めることは？","sector":"区間1","kind":"brake","correct":0,"reason":"正本・適用版・参照権限を設計する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["正本・適用版・参照権限を設計する","人とAIの役割が噛み合い、安定した走行につながる。",0],["全ファイルを無選別に取り込む","制約の未確定で減速判断が遅れ、手戻りが増える",1,""],["最終更新日だけで正しさを決める","判断停止が遅れて進入ラインが膨らむ",2,""],["AIが信頼できる文書を直感で選ぶ","承認前の突入で大幅な修正が発生する",3,""]],"level":"エキスパート","idealGear":2,"course":"rag"},{"id":"Crag4-8","title":"RAGのアクセス制御","scene":"役職別に閲覧制限のある文書を検索する。何が必要？","sector":"区間4","kind":"guard","correct":0,"reason":"検索時点の認可と文書ACLの適用を担保する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["検索時点の認可と文書ACLの適用を担保する","人とAIの役割が噛み合い、安定した走行につながる。",0],["検索後にAIへ非公開情報を隠すよう頼む","保護境界の不足で危険なコーナリングになる",1,""],["共有索引にはすべての権限を付ける","権限や承認の抜けで走行が不安定になる",2,""],["引用欄を隠せば本文は公開してよい","安全ゲート違反で重大なコースアウトとなる",3,""]],"level":"エキスパート","idealGear":1,"course":"rag"},{"id":"Crag6-8","title":"検索品質の改善","scene":"RAGの誤回答が文書更新後に増えた。改善策は？","sector":"区間6","kind":"skill","correct":0,"reason":"索引更新・評価セット・引用追跡を運用スキル化する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["索引更新・評価セット・引用追跡を運用スキル化する","人とAIの役割が噛み合い、安定した走行につながる。",0],["モデルの温度を上げて回答を増やす","繰り返し作業の再現性が弱くラインがぶれる",1,""],["検索失敗時は推測回答を固定する","担当間の差で周回ごとの挙動が乱れる",2,""],["引用表示をなくして見た目を整える","非標準手順が累積し大きな手戻りが出る",3,""]],"level":"エキスパート","idealGear":2,"course":"rag"},{"id":"Crag10-8","title":"RAG公開前の判断","scene":"一部権限制御テストが失敗したRAGを公開したい。どうする？","sector":"区間10","kind":"human","correct":0,"reason":"公開停止し漏洩リスクを是正して再検証する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["公開停止し漏洩リスクを是正して再検証する","人とAIの役割が噛み合い、安定した走行につながる。",0],["一般ユーザーでのテストだけ通れば公開する","人とAIの判断境界が曖昧になりハンドリングが乱れる",1,""],["精度が高いので権限問題は容認する","提案と承認の不整合で大きく蛇行する",2,""],["AIが安全と言えばテスト未完でも公開する","責任不明のまま進みコースアウトの危険が高まる",3,""]],"level":"エキスパート","idealGear":3,"course":"rag"},{"id":"Cincident1-8","title":"障害対策室の初動","scene":"本番障害で複数チームが独立に修正を進めている。どう統制する？","sector":"区間1","kind":"brake","correct":0,"reason":"影響・指揮系統・変更凍結と作業分担を確認する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["影響・指揮系統・変更凍結と作業分担を確認する","人とAIの役割が噛み合い、安定した走行につながる。",0],["最初に修正を出したチームに全部任せる","制約の未確定で減速判断が遅れ、手戻りが増える",1,""],["同時に多数のAIへ本番修正を許可する","判断停止が遅れて進入ラインが膨らむ",2,""],["障害範囲の確認を後回しにする","承認前の突入で大幅な修正が発生する",3,""]],"level":"エキスパート","idealGear":2,"course":"incident"},{"id":"Cincident4-8","title":"復旧操作の承認","scene":"AIがDB再起動を提案したが影響未確認。最適な対応は？","sector":"区間4","kind":"guard","correct":0,"reason":"業務影響と代替策を確認し権限者が実行を承認する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["業務影響と代替策を確認し権限者が実行を承認する","人とAIの役割が噛み合い、安定した走行につながる。",0],["AIの提案を直ちに自動実行する","保護境界の不足で危険なコーナリングになる",1,""],["理由を問わずAIの提案を拒否する","権限や承認の抜けで走行が不安定になる",2,""],["再起動成功例があるので同じ操作を行う","安全ゲート違反で重大なコースアウトとなる",3,""]],"level":"エキスパート","idealGear":1,"course":"incident"},{"id":"Cincident6-8","title":"復旧手順の型化","scene":"何度も同じ障害を繰り返している。再発時の備えは？","sector":"区間6","kind":"skill","correct":0,"reason":"検知・隔離・復旧・確認手順を更新して訓練する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["検知・隔離・復旧・確認手順を更新して訓練する","人とAIの役割が噛み合い、安定した走行につながる。",0],["毎回生成AIへ全ログを渡して初動を決める","繰り返し作業の再現性が弱くラインがぶれる",1,""],["例外のある手順を削除して簡略化する","担当間の差で周回ごとの挙動が乱れる",2,""],["復旧できたら原因記録を省略する","非標準手順が累積し大きな手戻りが出る",3,""]],"level":"エキスパート","idealGear":2,"course":"incident"},{"id":"Cincident10-8","title":"業務再開の判定","scene":"技術的には回復したが一部取引データに欠落疑い。判断は？","sector":"区間10","kind":"human","correct":0,"reason":"整合性確認と業務責任者の承認を得て再開する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["整合性確認と業務責任者の承認を得て再開する","人とAIの役割が噛み合い、安定した走行につながる。",0],["サーバが応答すれば再開する","人とAIの判断境界が曖昧になりハンドリングが乱れる",1,""],["AIの正常宣言だけで再開する","提案と承認の不整合で大きく蛇行する",2,""],["欠落疑いを報告せず作業を終了する","責任不明のまま進みコースアウトの危険が高まる",3,""]],"level":"エキスパート","idealGear":3,"course":"incident"},{"id":"Cteam1-8","title":"AIチームの作業境界","scene":"人間3名とAIエージェント5体が同じ機能を変更。まず必要なのは？","sector":"区間1","kind":"brake","correct":0,"reason":"責任者・ファイル所有・インターフェース・統合順を決める。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["責任者・ファイル所有・インターフェース・統合順を決める","人とAIの役割が噛み合い、安定した走行につながる。",0],["全員へ全リポジトリの書換権限を付ける","制約の未確定で減速判断が遅れ、手戻りが増える",1,""],["AIに同時編集の調停を無制限に任せる","判断停止が遅れて進入ラインが膨らむ",2,""],["衝突が起きた時だけ担当を決める","承認前の突入で大幅な修正が発生する",3,""]],"level":"エキスパート","idealGear":2,"course":"team"},{"id":"Cteam4-8","title":"AI代理操作の責任","scene":"エージェントがレビュー承認まで自動化したい。どう設計する？","sector":"区間4","kind":"guard","correct":0,"reason":"実装担当と独立検証・承認責任を分ける。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["実装担当と独立検証・承認責任を分ける","人とAIの役割が噛み合い、安定した走行につながる。",0],["自分の変更を自動承認させる","保護境界の不足で危険なコーナリングになる",1,""],["責任者の署名をAIに代行させる","権限や承認の抜けで走行が不安定になる",2,""],["最終レビューの記録を残さない","安全ゲート違反で重大なコースアウトとなる",3,""]],"level":"エキスパート","idealGear":1,"course":"team"},{"id":"Cteam6-8","title":"共通スキルの展開","scene":"AIエージェントごとにテスト手順が異なり結果が衝突。対応は？","sector":"区間6","kind":"skill","correct":0,"reason":"共通の入出力契約と版管理されたテストスキルを用意する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["共通の入出力契約と版管理されたテストスキルを用意する","人とAIの役割が噛み合い、安定した走行につながる。",0],["各エージェントの出力を平均して結果とする","繰り返し作業の再現性が弱くラインがぶれる",1,""],["AIごとに独自のテスト環境を維持して統合しない","担当間の差で周回ごとの挙動が乱れる",2,""],["一番高速なAIの判定だけを信じる","非標準手順が累積し大きな手戻りが出る",3,""]],"level":"エキスパート","idealGear":2,"course":"team"},{"id":"Cteam10-8","title":"チームの成果評価","scene":"各担当者のタスク完了率は高いが統合成果物が未完成。評価は？","sector":"区間10","kind":"human","correct":0,"reason":"受入品質・統合完了・コストをチーム指標で判断する。組織の役割・品質・統制を維持しながらAIの実行能力を活用する判断。","choices":[["受入品質・統合完了・コストをチーム指標で判断する","人とAIの役割が噛み合い、安定した走行につながる。",0],["個人完了率だけで成功とする","人とAIの判断境界が曖昧になりハンドリングが乱れる",1,""],["生成コード量が最大の担当を評価する","提案と承認の不整合で大きく蛇行する",2,""],["統合失敗を担当者以外の責任として扱う","責任不明のまま進みコースアウトの危険が高まる",3,""]],"level":"エキスパート","idealGear":3,"course":"team"}];
+let QUESTIONS=[];
+let SECTOR_SIZE=1;
+
+// Fictional game characteristics, NOT actual benchmark rankings or provider performance promises.
+// visual refers to full production workflows (e.g. dedicated image models), not image generation by every text model.
+const MODEL_TEAMS=[
+ {id:'aurora',name:'オーロラ・レーシング',family:'総合制作型',model:'HF-01 / AURORA',glyph:'◎',color:'#5fe5bc',focus:'総合・資料・アプリ制作',skills:[91,91,91,94],economy:69,brief:'要求整理、文書構成、制作物の仕上げをバランス良く進める万能型。',tools:'図表や画像の制作工程は専用ツールとの連携で補完する。'},
+ {id:'titan',name:'タイタン・ワークス',family:'実装・文章型',model:'HF-02 / TITAN',glyph:'◆',color:'#e2a77f',focus:'大規模実装・文章設計',skills:[95,73,95,91],economy:69,brief:'コード改修・レビューと仕様理解、文章構成を得意とする技術型。',tools:'視覚制作は専門ツールへ適切に分担する。'},
+ {id:'prism',name:'プリズム・レーシング',family:'視覚・制作型',model:'HF-03 / PRISM',glyph:'✦',color:'#95aeff',focus:'画像・マルチモーダル',skills:[89,96,84,90],economy:88,brief:'図解・スライド・視覚表現と多様な情報の統合に重点を置く。',tools:'画像制作工程と分析工程を組み合わせて運用する。'},
+ {id:'vortex',name:'ヴォルテックス・レーシング',family:'探索・創造型',model:'HF-04 / VORTEX',glyph:'✳',color:'#f6b65b',focus:'探索・コード・画像制作',skills:[90,90,83,87],economy:78,brief:'探索的な分析・技術調査とビジュアル表現を組み合わせる。',tools:'専門領域ごとのツールを使い分ける構成。'},
+ {id:'vector',name:'ベクター・テック',family:'コード・効率型',model:'HF-05 / VECTOR',glyph:'≈',color:'#7fb9ff',focus:'コード・推論効率',skills:[94,68,80,88],economy:93,brief:'プログラム実装・問題解決を中心に、利用資源の効率を重視する。',tools:'画像制作は独立した制作担当に振り分ける。'},
+ {id:'orbit',name:'オービット・ラボ',family:'多言語・技術型',model:'HF-06 / ORBIT',glyph:'◈',color:'#c4a5fb',focus:'多言語・汎用・技術',skills:[89,82,88,91],economy:87,brief:'文書・複数言語・技術支援を柔軟に組み合わせる汎用型。',tools:'制作工程には必要に応じて専用ツールを組み込む。'},
+ {id:'fortress',name:'フォートレス・フォージ',family:'統制・運用型',model:'HF-07 / FORTRESS',glyph:'▣',color:'#ff998f',focus:'技術・管理・独自運用',skills:[91,70,88,88],economy:85,brief:'技術実装と企業統制、運用ルールの設計を重視する。',tools:'セキュリティ・監査・変更管理をサポートするチーム設定。'},
+ {id:'enduro',name:'エンデューロ・グリッド',family:'協調・長期実行型',model:'HF-08 / ENDURO',glyph:'◉',color:'#f0d67f',focus:'エージェント・長期実行',skills:[92,71,84,88],economy:86,brief:'長い開発ループ、複数工程、チーム内の協働を重視する。',tools:'各工程での成果確認と引き継ぎを支援する。'}
+];
+// Weights: coding, image/visual work, writing, cross-functional overall.
+const COURSE_TALENTS={web:[.57,.17,.08,.18],legacy:[.64,.03,.05,.28],api:[.64,.02,.07,.27],migration:[.36,.06,.12,.46],rpa:[.58,.05,.10,.27],slides:[.06,.32,.47,.15],report:[.10,.15,.50,.25],rag:[.18,.10,.23,.49],incident:[.43,.02,.09,.46],team:[.34,.08,.17,.41]};
+// Illustrative strategy perks — intentionally distinct for each team. NOT real-world vendor rankings.
+const TEAM_COURSE_BONUS={aurora:{web:2,rag:2},titan:{legacy:4,api:4},prism:{slides:6},vortex:{incident:5},vector:{rpa:4},orbit:{report:7},fortress:{migration:5},enduro:{team:9}};
+const TALENT_NAMES=['コーディング','ビジュアル','文章力','総合力'];
+function chosenTeam(){return MODEL_TEAMS.find(t=>t.id===STATE.team)||MODEL_TEAMS[0]}
+function teamFit(course=ACTIVE_COURSE,team=chosenTeam()){
+ const w=COURSE_TALENTS[course.id]||[.25,.25,.25,.25];
+ const base=w.reduce((acc,n,i)=>acc+n*team.skills[i],0);
+ const bonus=(TEAM_COURSE_BONUS[team.id]||{})[course.id]||0;
+ const score=Math.min(100,base+bonus);
+ const top=w.map((v,i)=>({v,i})).sort((a,b)=>b.v-a.v).slice(0,2).map(o=>TALENT_NAMES[o.i]).join('・');
+ // Modest gameplay variance to keep human/team decisions and setup the dominant factors.
+ return {score,base,bonus,top,speed:Math.max(.93,Math.min(1.055,1+(score-84)*.0035)),fuel:Math.max(.90,Math.min(1.12,1-(team.economy-79)*.0024-(score-84)*.001)),quality:Math.round((score-84)*.34)};
+}
+function renderTeams(){
+ const grid=document.getElementById('teamGrid');if(!grid)return;grid.replaceChildren();
+ MODEL_TEAMS.forEach(t=>{let b=document.createElement('button');b.type='button';b.className='team-card'+(t.id===STATE.team?' selected':'');b.setAttribute('aria-pressed',String(t.id===STATE.team));
+ b.innerHTML='<span class="team-card-head"><span class="team-icon"></span><span class="team-name"></span></span><span class="team-tag"></span><span class="team-short"></span>';
+ b.querySelector('.team-icon').textContent=t.glyph;b.querySelector('.team-icon').style.background=t.color+'33';b.querySelector('.team-icon').style.color=t.color;
+ b.querySelector('.team-name').textContent=t.name;b.querySelector('.team-tag').textContent=t.model;b.querySelector('.team-short').textContent=t.focus;
+ b.addEventListener('click',()=>chooseTeam(t.id));grid.append(b)});
+ const t=chosenTeam(),detail=document.getElementById('teamDetail');detail.replaceChildren();
+ const head=document.createElement('h3');head.textContent=t.family+' / '+t.model;detail.append(head);
+ const p=document.createElement('p');p.textContent=t.brief+' '+t.tools;detail.append(p);
+ const bars=document.createElement('div');bars.className='team-bars';t.skills.forEach((v,i)=>{const box=document.createElement('div');box.innerHTML='<div class="team-bar-label"><span></span><b></b></div><div class="team-bar-track"><i></i></div>';box.querySelector('span').textContent=TALENT_NAMES[i];box.querySelector('b').textContent=v;box.querySelector('i').style.width=v+'%';box.querySelector('i').style.background=t.color;bars.append(box)});detail.append(bars);
+ const foot=document.createElement('p');foot.style.marginTop='12px';foot.textContent='燃料効率：'+t.economy+'/100（ゲーム値）｜全チーム共通で、勝敗の中心は人とAIの判断・設定・品質です。';detail.append(foot);
+ updateTeamFit();
+}
+function updateTeamFit(){
+ const node=document.getElementById('teamCourseFit');if(!node)return;
+ const team=chosenTeam(),v=teamFit(),dominant=COURSE_TALENTS[ACTIVE_COURSE.id].map((p,i)=>({i,p})).sort((a,b)=>b.p-a.p)[0].i;
+ node.innerHTML='<div class="team-fitline"><div><b>AIチームと案件コースの適合</b><div class="note" id="fitExplanation"></div></div><span class="fit-big" id="fitNumber"></span></div><div class="note" id="fitNote"></div>';
+ node.querySelector('#fitExplanation').textContent=chosenTeam().name+' × '+ACTIVE_COURSE.name+' ／ コースが重視する能力：'+v.top;
+ node.querySelector('#fitNumber').textContent=v.score.toFixed(1)+' / 100';
+ node.querySelector('#fitNote').textContent='最重要：'+TALENT_NAMES[dominant]+' ／ チーム別の専用戦略ボーナス +'+v.bonus.toFixed(0)+'（ゲーム内効果）。相性はタイム・燃料・品質に小さく影響し、人間の判断やハーネスの不足を打ち消すものではありません。';
+}
+function chooseTeam(id){if(!MODEL_TEAMS.some(t=>t.id===id))return;STATE.team=id;renderTeams();}
+function renderTeamBadges(){const t=chosenTeam(),v=teamFit();for(const id of ['teamReviewBadge','teamReplayBadge','teamResultBadge']){const e=document.getElementById(id);if(e)e.textContent='TEAM '+t.name+' ｜ '+t.model+' ｜ '+ACTIVE_COURSE.name+'適合 '+v.score.toFixed(1)+'点'};}
+const SETUP_AXES=[
+ {key:'harness',label:'ハーネス',hint:'境界・停止条件・権限',levels:['軽量','標準','厳格']},
+ {key:'skill',label:'スキル化',hint:'定型手順の再利用',levels:['個別','標準化','高度再利用']},
+ {key:'test',label:'検証・テスト',hint:'校閲・自動テスト・受入',levels:['簡易','標準','厳密']},
+ {key:'context',label:'コンテキスト',hint:'参照資料・履歴の整備',levels:['最小','整理','充実']},
+ {key:'guard',label:'情報保護',hint:'機密情報・外部送信',levels:['基本','管理','厳格']},
+ {key:'review',label:'人間レビュー',hint:'承認・品質ゲート',levels:['軽量','通常','多段']}
+];
+// Course specifications are illustrative: needs = desirable investment (0-2), weights = impact of a mismatch.
+const COURSES=[
+ {id:'web',icon:'💻',name:'新規アプリ開発',tag:'開発',diff:'中級',brief:'要求定義からWebアプリを新規作成。品質を保ちつつ初期実装を加速する。',risk:'難所：要求変更、受入テスト、設計の拡張性',needs:[1,1,2,1,1,1],weights:[2,2,3,2,2,2],bias:0,shape:[3,.25,.05],limits:[.75,.90,.83,.60,.72,.86,.68,.91,.81,.72],pass:79},
+ {id:'legacy',icon:'🏚️',name:'レガシー改修',tag:'保守開発',diff:'上級',brief:'仕様書が古く、既存への影響を見落とせない。変更前の調査と回帰検証が鍵。',risk:'難所：影響調査、既存資産、回帰不具合',needs:[2,1,2,2,2,2],weights:[3,2,3,3,3,3],bias:1,shape:[4,.20,1.0],limits:[.80,.65,.77,.60,.68,.76,.56,.85,.65,.74],pass:86},
+ {id:'api',icon:'🔌',name:'外部API連携',tag:'システム連携',diff:'上級',brief:'外部依存と例外系が多いインターフェース連携。契約・境界・リトライを設計。',risk:'難所：API仕様の不確実性、障害復旧、秘密鍵の保護',needs:[2,1,2,2,2,1],weights:[3,2,3,3,3,2],bias:1,shape:[5,.17,2.1],limits:[.71,.65,.94,.58,.73,.62,.79,.85,.69,.70],pass:84},
+ {id:'migration',icon:'🗃️',name:'データ移行',tag:'移行・品質',diff:'エキスパート',brief:'データ欠損と整合性違反を防ぐ移行案件。照合、ロールバック、承認を重視。',risk:'難所：欠損検知、照合、復旧手順、個人情報',needs:[2,1,2,2,2,2],weights:[3,1,3,3,3,3],bias:1,shape:[3,.29,2.8],limits:[.65,.71,.76,.59,.65,.79,.60,.72,.68,.73],pass:90},
+ {id:'rpa',icon:'🤖',name:'RPA自動化',tag:'業務自動化',diff:'中上級',brief:'定型作業をロボット化。例外処理・再実行・ログと手順再利用が重要。',risk:'難所：画面変更への耐性、例外処理、運用引継ぎ',needs:[1,2,2,1,1,1],weights:[2,3,3,2,2,2],bias:0,shape:[4,.24,3.6],limits:[.82,.74,.81,.67,.62,.88,.69,.80,.71,.77],pass:82},
+ {id:'slides',icon:'📊',name:'企画提案資料',tag:'資料作成',diff:'中級',brief:'意思決定者へ提案。論点整理、根拠確認、表現・レビューを最優先する。',risk:'難所：論旨の一貫性、根拠不足、誤解を招く図表',needs:[0,1,1,2,1,2],weights:[1,2,2,3,2,3],bias:-1,shape:[2,.25,4.1],limits:[.94,.86,.91,.70,.86,.88,.75,.92,.79,.83],pass:82},
+ {id:'report',icon:'📝',name:'月次レポート',tag:'資料作成',diff:'中級',brief:'集計から報告までを繰り返す。テンプレート化と数値の根拠、再現性が重要。',risk:'難所：元データの正確性、転記ミス、更新効率',needs:[0,2,1,1,1,1],weights:[1,3,2,2,2,2],bias:-1,shape:[5,.18,5.3],limits:[.94,.85,.94,.77,.82,.92,.85,.88,.91,.80],pass:81},
+ {id:'rag',icon:'📚',name:'社内RAG構築',tag:'AIシステム',diff:'エキスパート',brief:'社内文書を検索して回答する仕組み。権限制御、評価データ、参照品質が要。',risk:'難所：機密情報、誤引用、検索品質、情報更新',needs:[2,2,2,2,2,1],weights:[3,2,3,3,3,2],bias:1,shape:[3,.26,1.6],limits:[.70,.62,.76,.58,.61,.68,.57,.78,.65,.61],pass:88},
+ {id:'incident',icon:'🚨',name:'障害調査・復旧',tag:'運用',diff:'エキスパート',brief:'本番障害の原因を切り分ける。迅速さだけでなく安全な復旧、切戻しを重視。',risk:'難所：影響範囲、ログ保全、最小変更、復旧判定',needs:[2,0,2,2,2,2],weights:[3,1,3,3,3,3],bias:1,shape:[4,.28,4.7],limits:[.68,.57,.77,.59,.68,.71,.61,.66,.73,.60],pass:89},
+ {id:'team',icon:'👥',name:'AIチーム開発',tag:'チーム開発',diff:'上級',brief:'複数担当・複数AIによる共同開発。作業境界、統合、品質ゲートが鍵。',risk:'難所：タスク衝突、統合失敗、責任分界、レビュー遅延',needs:[2,2,2,1,2,2],weights:[3,3,3,2,3,3],bias:0,shape:[5,.23,3.1],limits:[.72,.68,.82,.60,.72,.68,.66,.77,.64,.63],pass:86}
+];
+const COURSE_SEGMENTS={
+ web:['受入条件','機能分解','実装方針','安全境界','品質試験','コンポーネント再利用','文脈整理','推論配分','反復改善','リリース判定'],
+ legacy:['現行仕様調査','影響範囲特定','難解コード解析','変更範囲制限','回帰テスト','既存部品活用','変更履歴の照合','改修コスト管理','段階的改善','本番反映承認'],
+ api:['契約仕様確定','IF分割','例外系の実装','秘密鍵・権限','疎通・負荷試験','接続処理の共通化','仕様差異の追跡','API呼出コスト','リトライ最適化','接続可否の承認'],
+ migration:['移行要件の決裁','データの分割','変換ロジック選択','アクセス制御','件数・値の照合','移行手順の再利用','データ辞書の整理','移行枠と再実行','ドライラン改善','切戻し判定'],
+ rpa:['業務フロー確認','処理の分割','例外処理の設計','実行権限・制約','画面変更テスト','ロボット部品共通化','手順書とログ','実行枠の管理','失敗時の自動復旧','運用引継ぎ'],
+ slides:['主張と目的を確定','章立てと構成','難しい図解の生成','出典と公開範囲','根拠・数値の校閲','スライドテンプレ化','資料ソース整理','生成量の節約','推敲と改善','決裁者レビュー'],
+ report:['報告範囲の確認','集計タスク分割','分析箇所の見極め','入力資料の境界','数値・転記照合','定例テンプレ化','対象月の情報整理','生成・集計の効率化','継続改善','提出前チェック'],
+ rag:['検索対象と権限','文書分割・索引','回答の推論制御','参照権限の防御','評価データテスト','索引更新のスキル化','引用と原文追跡','推論費用の管理','検索品質改善','運用承認'],
+ incident:['影響と復旧目標','原因の切り分け','高度な障害解析','変更・停止権限','復旧確認と検証','復旧手順の再利用','ログと時系列整理','緊急時の利用量','恒久対策の反復','業務再開の承認'],
+ team:['責任境界の合意','作業の分担','担当AIの出力選定','競合変更の制御','統合テスト','共通スキルの整備','情報共有と文脈','チーム利用量配分','継続的統合・改善','レビュー責任の明確化']
+};
+function segmentName(i){return COURSE_SEGMENTS[ACTIVE_COURSE.id][Math.max(0,Math.min(9,i))]}
+const SETUP_SECTORS=[[0,1,3,8,9],[1,5,8],[3,4,8],[0,1,6,9],[3,7,9],[0,4,8,9]];
+let ACTIVE_COURSE=COURSES[0];
+const defaultSetup=()=>[1,1,1,1,1,1];
+function currentCourse(){return ACTIVE_COURSE}
+function evaluateSetup(course,values){
+ let lack=0,extra=0,accuracyCost=0,speedMult=1,fuelMult=1,perAxis=[];
+ values.forEach((v,i)=>{let delta=v-course.needs[i],weight=course.weights[i],under=Math.max(0,-delta),over=Math.max(0,delta);
+ lack+=under*weight;extra+=over*weight;accuracyCost+=under*weight*2.1+over*weight*.22;
+ speedMult*=Math.max(.64,1-under*weight*.016-over*weight*.009);
+ fuelMult*=1+under*weight*.025+over*weight*.021;
+ perAxis.push({under,over,weight,delta});
+ });
+ return {lack,extra,perAxis,speedMult,fuelMult,setupScore:Math.max(0,Math.round(100-lack*4.4-extra*2.2)),accuracyCost};
+}
+function makeCourseWaypoints(course){
+ const [lobes,amp,phase]=course.shape,pts=[];
+ for(let i=0;i<28;i++){
+  const a=-Math.PI/2+i/28*2*Math.PI;
+  const radial=1+amp*Math.cos(lobes*a+phase)+.07*Math.sin((lobes+2)*a-phase*.6);
+  const x=525+Math.cos(a)*339*radial+22*Math.sin(2*a+phase);
+  const y=318+Math.sin(a)*197*radial+13*Math.cos(3*a+phase);
+  pts.push([x,y]);
+ }
+ return pts;
+}
+function renderCourseCards(){
+ const holder=$('courseCards');holder.replaceChildren();
+ COURSES.forEach(c=>{const btn=document.createElement('button');btn.type='button';btn.className='course-card'+(c.id===ACTIVE_COURSE.id?' selected':'');btn.innerHTML='<span class="c-icon"></span><b></b><small></small><span class="c-type"></span>';
+ btn.querySelector('.c-icon').textContent=c.icon;btn.querySelector('b').textContent=c.name;btn.querySelector('small').textContent=c.brief;btn.querySelector('.c-type').textContent=c.tag+' ／ '+c.diff; const record=CHAMP_RECORDS[c.id];if(record){btn.querySelector('.c-type').textContent+=' ／ 🏆 '+clock(record.time)}
+ btn.addEventListener('click',()=>selectCourse(c.id));holder.append(btn)})
+}
+function selectCourse(id){
+ const c=COURSES.find(v=>v.id===id);if(!c)return;
+ if(currentView==='course' && c.id!==ACTIVE_COURSE.id)STATE.courseReturnMode='new';
+ ACTIVE_COURSE=c;
+ WAYPOINTS=makeCourseWaypoints(c);TRACK=buildPath();
+ renderCourseCards();
+ $('courseTitle').textContent=c.icon+' '+c.name;
+ $('courseTags').textContent=c.tag+'　/　難易度：'+c.diff+'　/　合格品質：'+c.pass+'点以上';
+ $('courseBrief').textContent=c.brief;
+ $('courseRisk').textContent=c.risk; $('courseSectors').replaceChildren(...COURSE_SEGMENTS[c.id].map((name,i)=>{const e=document.createElement('span');e.textContent=(i+1)+'. '+name;return e}));
+ drawCoursePreview();
+ updateSetupPanel();updateTeamFit();
+}
+function drawCoursePreview(){
+ const cnv=$('coursePreview');if(!cnv)return;const cc=cnv.getContext('2d');cc.fillStyle='#112f34';cc.fillRect(0,0,W,H);
+ cc.lineCap='round';cc.lineJoin='round';
+ const stroke=(color,width,dashed=false)=>{cc.beginPath();TRACK.raw.forEach((p,i)=>i?cc.lineTo(p.x,p.y):cc.moveTo(p.x,p.y));cc.closePath();cc.lineWidth=width;cc.strokeStyle=color;cc.setLineDash(dashed?[12,15]:[]);cc.stroke();cc.setLineDash([])};
+ stroke('#0a1a20',104);stroke('#b8cfd0',93);stroke('#bd5e63',84,true);stroke('#293b48',76);stroke('#a5dcd862',2,true);
+ for(let i=0;i<10;i++){const pt=atDistance(TRACK.len*(i+.5)/10);cc.fillStyle='#e6eefa';cc.beginPath();cc.arc(pt.x,pt.y,11,0,Math.PI*2);cc.fill();cc.fillStyle='#122132';cc.textAlign='center';cc.textBaseline='middle';cc.font='bold 12px sans-serif';cc.fillText(String(i+1),pt.x,pt.y)}
+ const start=atDistance(0);cc.fillStyle='#73ecb3';cc.beginPath();cc.arc(start.x,start.y,12,0,Math.PI*2);cc.fill();cc.fillStyle='#052431';cc.fillText('S',start.x,start.y);cc.textAlign='left';cc.textBaseline='alphabetic';
+ cc.fillStyle='#e4f2ff';cc.font='bold 19px sans-serif';cc.fillText(ACTIVE_COURSE.name,30,36);
+}
+function renderSetupControls(){
+ const holder=$('setupControls');holder.replaceChildren();
+ SETUP_AXES.forEach((ax,i)=>{const row=document.createElement('div');row.className='setup-row';row.innerHTML='<div><b></b><small></small></div><div class="level-buttons"></div>';
+ row.querySelector('b').textContent=ax.label;row.querySelector('small').textContent=ax.hint;
+ const buttons=row.querySelector('.level-buttons');
+ ax.levels.forEach((level,l)=>{const btn=document.createElement('button');btn.type='button';btn.textContent=level;btn.classList.toggle('active',STATE.setup[i]===l);btn.setAttribute('aria-pressed',String(STATE.setup[i]===l));btn.addEventListener('click',()=>{STATE.setup[i]=l;renderSetupControls();updateSetupPanel()});buttons.append(btn)});holder.append(row)})
+}
+function updateSetupPanel(){
+ if(!$('setupControls'))return;
+ renderSetupControls();const sum=STATE.setup.reduce((a,b)=>a+b,0);
+ $('setupCost').textContent=['低','低','低','中','中','中','中','高','高','高','高','最大','最大'][sum];
+ $('setupDefense').textContent=(STATE.setup[0]+STATE.setup[2]+STATE.setup[4]+STATE.setup[5])+'/8';
+ $('setupTotal').textContent=sum+'/12';
+}
+function setupFactorForSector(sector){
+ let sf=1,ff=1,offset=0,delay=0;
+ const c=ACTIVE_COURSE;
+ STATE.setup.forEach((v,i)=>{if(!SETUP_SECTORS[i].includes(sector))return;
+  const gap=v-c.needs[i],w=c.weights[i];
+  if(gap<0){const d=-gap*w;sf*=Math.max(.73,1-d*.032);ff*=1+d*.049;offset+=((i%2)?-1:1)*d*3.0;delay+=d*.052}
+  else if(gap>0){const d=gap*w;sf*=Math.max(.83,1-d*.017);ff*=1+d*.055;delay+=d*.029}
+ });return {sf,ff,offset,delay}
+}
+function setupQuality(answers){
+ const cfg=evaluateSetup(ACTIVE_COURSE,STATE.setup);
+ const mistakes=answers.reduce((n,a,i)=>n+(a===QUESTIONS[i].correct?0:1),0);
+ return {quality:Math.max(0,Math.min(100,Math.round(100-cfg.accuracyCost-mistakes*26.4/QUESTIONS.length+teamFit().quality))),mistakes,...cfg};
+}
+function renderSetupResult(){
+ const box=$('setupResult'),c=ACTIVE_COURSE,q=setupQuality(STATE.answers);
+ box.replaceChildren();
+ const heading=document.createElement('p');heading.className='lead';heading.textContent=`${c.icon} ${c.name} ／ 設定適合度 ${q.setupScore}点 ／ 成果品質 ${q.quality}点（必要 ${c.pass}点）`;
+ box.append(heading);
+ const t=document.createElement('table');t.className='setup-compare';t.innerHTML='<thead><tr><th>装備</th><th>今回</th><th>案件の推奨</th><th>影響</th></tr></thead><tbody></tbody>';
+ SETUP_AXES.forEach((ax,i)=>{const tr=document.createElement('tr');const d=STATE.setup[i]-c.needs[i];const cells=[ax.label,ax.levels[STATE.setup[i]],ax.levels[c.needs[i]],d<0?'不足：手戻り・品質低下':d>0?'過剰：工数・燃料ロス':'適合'];
+ cells.forEach(v=>{const td=document.createElement('td');td.textContent=v;tr.append(td)});tr.lastChild.className=d===0?'match':'miss';t.tBodies[0].append(tr)});box.append(t);
+ const result=document.createElement('p');result.className='outcome'+(q.quality>=c.pass?'':' fail');result.textContent=q.quality>=c.pass?'品質基準を満たしています。タイムと燃料も見比べましょう。':'完走できても成果品質が要求未達です。セッティングや判断を見直してください。';box.append(result)
+}
+
+// Sample uniformly by learning domain: 3/4/5 questions from each of 10 domains.
+// Retuning the garage deliberately preserves the same question selection and answers.
+const DOMAIN_LABELS=['要件・停止判断','タスク分解・協業','モデル・エフォート','権限・統制','検証・品質保証','共通スキル','文脈・情報連携','チーム利用量','改善ループ','人間とAIの融合'];
+function sectorOf(index){return Math.min(9,Math.floor(index/SECTOR_SIZE));}
+function fisherShuffle(source){let a=source.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function prepareNewQuiz(){
+ const n=10; // One decision per sector: quick, game-first learning.
+ SECTOR_SIZE=1;
+ const oldIds=new Set(STATE.lastQuizIds||[]);
+ const selected=[];
+ const availableCaseSectors=[0,3,5,9];
+ const shuffledCases=fisherShuffle(availableCaseSectors);
+ const caseCount=Math.random()<.5?2:3;
+ const caseSectors=new Set(shuffledCases.slice(0,caseCount));
+ for(let sector=0;sector<10;sector++){
+   let general=QUESTION_BANK.filter(q=>q.kind===['brake','line','throttle','guard','test','skill','context','fuel','loop','human'][sector]&&!q.course);
+   let special=QUESTION_BANK.filter(q=>q.kind===['brake','line','throttle','guard','test','skill','context','fuel','loop','human'][sector]&&q.course===ACTIVE_COURSE.id);
+   // Include 2-3 course-specific prompts in different sectors; vary them between races.
+   let chosen=(special.length&&caseSectors.has(sector))?[fisherShuffle(special)[0]]:[];
+   let fresh=fisherShuffle(general.filter(q=>!oldIds.has(q.id)));
+   let recent=fisherShuffle(general.filter(q=>oldIds.has(q.id)));
+   chosen=chosen.concat(fresh,recent).slice(0,SECTOR_SIZE);
+   if(chosen.length!==SECTOR_SIZE)throw new Error('出題バンク不足: '+sector);
+   for(const raw of fisherShuffle(chosen)){
+      const original=raw.choices.map((c,i)=>({row:c.slice(),key:i}));
+      const options=fisherShuffle(original);
+      selected.push({...raw, choices:options.map(x=>x.row), correct:options.findIndex(x=>x.key===raw.correct)});
+   }
+ }
+ QUESTIONS=selected;
+ STATE.lastQuizIds=selected.map(q=>q.id);
+ STATE.quizComplete=false;STATE.answers=Array(QUESTIONS.length).fill(null);STATE.qi=0;STATE.demo=false;
+}
+function fusionStats(answers){
+ let total=answers.length||1, right=0,severe=0, humanAI=0, humanTotal=0;
+ answers.forEach((a,i)=>{const q=QUESTIONS[i];if(!q)return;const correct=a===q.correct;if(correct)right++;if(!correct && ['guard','human','test'].includes(q.kind) && q.choices[a]?.[2]>=3)severe++;if(['human','line','guard'].includes(q.kind)){humanTotal++;humanAI+=correct?1:0;}});
+ const cfg=evaluateSetup(ACTIVE_COURSE,STATE.setup), q=setupQuality(answers);
+ const decision=Math.round(100*right/total),cooperation=Math.round(100*humanAI/Math.max(1,humanTotal));
+ const synergy=Math.max(0,Math.min(100,Math.round(decision*.32+cooperation*.28+cfg.setupScore*.20+q.quality*.20-severe*1.8)));
+ return {decision,cooperation,setup:cfg.setupScore,quality:q.quality,synergy,severe};
+}
+function renderFusion(id){
+ const v=fusionStats(STATE.answers),node=$(id);if(!node)return;
+ const figures=[['連携・判断',v.cooperation],['チーム判断',v.decision],['案件設定',v.setup],['成果品質',v.quality]];
+ node.innerHTML='<div class="fusion-heading"><div><div class="eyebrow">HUMAN × AI / TEAM SYNERGY</div><b>人とAIの融合度（ゲーム指標）</b></div><strong class="fusion-grade">'+v.synergy+'<small>/ 100</small></strong></div><div class="fusion-grid"></div><p class="note">AI提案を鵜呑みにせず、担当者が確認・承認し、成果に結びつけられたかを評価。重大な権限・品質判断の誤りは減点します。</p>';
+ const grid=node.querySelector('.fusion-grid');
+ for(const [name,val] of figures){const unit=document.createElement('div');unit.innerHTML='<span></span><b></b><div class="fusion-meter"><i></i></div>';unit.querySelector('span').textContent=name;unit.querySelector('b').textContent=val+'点';unit.querySelector('i').style.width=val+'%';grid.append(unit);}
+}
+
+
+// Championship save data: only local browser storage; never transmit data automatically.
+const CHAMP_STORE_KEY='harness_formula_championship_records_v1';
+const SHORT_COURSE_NAMES={web:'新規',legacy:'改修',api:'API',migration:'移行',rpa:'RPA',slides:'企画',report:'月報',rag:'RAG',incident:'復旧',team:'チーム'};
+function readChampRecords(){
+ try{const obj=JSON.parse(localStorage.getItem(CHAMP_STORE_KEY)||'{}');if(!obj||typeof obj!=='object'||Array.isArray(obj))return {};
+   const valid={};for(const c of COURSES){const r=obj[c.id];if(r&&Number.isFinite(r.time)&&r.time>0&&Number.isFinite(r.quality)&&r.quality>=c.pass&&r.finished===true)valid[c.id]=r;}
+   return valid;
+ }catch(_){return {}}
+}
+const CHAMP_RECORDS=readChampRecords();
+function saveChampRecords(){try{localStorage.setItem(CHAMP_STORE_KEY,JSON.stringify(CHAMP_RECORDS));return true}catch(_){return false}}
+function championshipClears(){return COURSES.filter(c=>CHAMP_RECORDS[c.id]).length}
+function bestRecordText(){
+ const lines=['🏁 ハーネスフォーミュラ 全10コース制覇！','コースレコード（ゲーム内の自己ベスト）'];
+ let chunks=[];
+ for(const c of COURSES){const r=CHAMP_RECORDS[c.id];if(!r)return '';chunks.push(SHORT_COURSE_NAMES[c.id]+' '+clock(r.time));}
+ for(let i=0;i<chunks.length;i+=3)lines.push(chunks.slice(i,i+3).join(' / '));
+ lines.push('人×AI×チームで完走！','#ハーネスフォーミュラ');return lines.join('\n');
+}
+function saveCourseRecord(){
+ const sim=STATE.sim,c=ACTIVE_COURSE;
+ if(!sim||!sim.finished||!Number.isFinite(sim.duration)||sim.duration<=0||!Number.isFinite(sim.quality)||sim.quality<c.pass)return false;
+ const old=CHAMP_RECORDS[c.id],candidate={time:Math.round(sim.duration*100)/100,quality:sim.quality,fuel:Math.round(sim.fuel*10)/10,team:STATE.team,machine:STATE.machine,finished:true,createdAt:new Date().toISOString()};
+ if(!old||candidate.time<old.time-.001||(Math.abs(candidate.time-old.time)<.001&&candidate.quality>old.quality)){
+   CHAMP_RECORDS[c.id]=candidate;saveChampRecords();renderCourseCards();return true;
+ }
+ return false;
+}
+function refreshChampionship(){
+ const count=championshipClears(),complete=count===COURSES.length,post=complete?bestRecordText():'';
+ for(const host of document.querySelectorAll('.championship')){
+   host.querySelector('[data-champ-count]').textContent=count+' / '+COURSES.length;
+   host.querySelector('[data-champ-progress]').style.width=count/COURSES.length*100+'%';
+   const records=host.querySelector('[data-champ-records]');records.replaceChildren();
+   for(const c of COURSES){const r=CHAMP_RECORDS[c.id];const cell=document.createElement('div');cell.className='champ-record'+(r?' cleared':'');
+      const name=document.createElement('span');name.className='name';name.textContent=c.icon+' '+c.name;
+      const best=document.createElement('span');best.className='best';best.textContent=r?'🏁 '+clock(r.time):'未クリア';
+      const detail=document.createElement('span');detail.className='small-detail';detail.textContent=r?'品質 '+r.quality+' / 100':'目標品質 '+c.pass+'点';
+      cell.append(name,best,detail);records.append(cell);
+   }
+   host.querySelector('[data-champ-status]').textContent=complete?'全10コースの品質基準を突破しました。自己ベストが更新されると投稿文も更新されます。':`あと${COURSES.length-count}コースでX投稿ボタンが解放されます。`; 
+   const celebration=host.querySelector('[data-champ-celebrate]');celebration.hidden=!complete;
+   if(complete){const a=host.querySelector('[data-champ-x]');a.href='https://x.com/intent/tweet?text='+encodeURIComponent(post);a.setAttribute('aria-label','Xで10コースの記録投稿画面を開く');host.querySelector('[data-champ-preview]').textContent=post;}
+ }
+}
+for(const button of document.querySelectorAll('[data-champ-copy]'))button.addEventListener('click',async()=>{
+ if(championshipClears()!==COURSES.length)return;
+ const text=bestRecordText();let copied=false;
+ try{await navigator.clipboard.writeText(text);copied=true;}catch(_){
+   const el=document.createElement('textarea');el.value=text;el.style.position='fixed';el.style.opacity='0';document.body.appendChild(el);el.select();try{copied=document.execCommand('copy')}catch(__){}el.remove();
+ }
+ button.textContent=copied?'コピーしました':'コピーできませんでした';setTimeout(()=>button.textContent='投稿文をコピー',2000);
+});
+
+const STATE={reviewTime:0,reviewPlaying:false,reviewLast:0,reviewRaf:0,reviewSpeed:2.5,lastAIKey:'',resumeView:null,courseReturnMode:'new',team:'aurora',machine:'plus',course:'web',setup:defaultSetup(),quizComplete:false,answers:[],lastQuizIds:[],qi:0,frames:[],ghost:[],events:[],duration:0,playing:false,speed:3,playTime:0,lastNow:0,tickRaf:0,sim:null,ideal:null,visited:new Set(),demo:false};
+const $=id=>document.getElementById(id);
+let currentView='title';
+const SCREEN_NAMES={title:'タイトル',start:'チーム・マシン選択',course:'案件コース・セッティング',quiz:'判断クイズ',review:'答え合わせ',race:'診断リプレイ',result:'走行結果・振り返り'};
+const PREVIOUS_SCREEN={start:'title',course:'start',quiz:'course',review:'quiz',race:'review',result:'race'};
+function show(view){
+ if(!SCREEN_NAMES[view])return;
+ if(currentView==='race' && view!=='race')stop();
+ if(currentView==='result' && view!=='result')stopReview();
+ document.querySelectorAll('.view').forEach(e=>e.classList.toggle('active',e.id==='view-'+view));
+ const seq=['start','course','quiz','review','race','result'];const j=seq.indexOf(view);
+ document.querySelectorAll('.step').forEach((e,i)=>{e.classList.toggle('active',i===j);e.classList.toggle('done',i<j)});
+ document.querySelector('.stepper').hidden=view==='title';
+ $('appNavigation').hidden=view==='title';
+ $('navPosition').textContent=SCREEN_NAMES[view]+' ・ '+(j>=0?String(j+1)+' / 6':'');
+ $('backScreen').textContent=view==='start'?'← タイトルへ':'← 前の画面へ戻る';
+ currentView=view;
+ if(view==='title'||view==='result')refreshChampionship();
+ if(view==='result' && STATE.sim)requestAnimationFrame(()=>{if(currentView==='result')drawReviewFrame()});
+ $('titleResume').hidden=!STATE.resumeView;
+ window.scrollTo({top:0,behavior:'instant'});
+}
+function goBackOneScreen(){
+ const from=currentView,to=PREVIOUS_SCREEN[from];if(!to)return;
+ if(from==='quiz')STATE.courseReturnMode='resume';
+ if(to==='title')STATE.resumeView=QUESTIONS.length?(STATE.quizComplete?'review':'quiz'):'start';
+ if(from==='review' && QUESTIONS.length){STATE.qi=QUESTIONS.length-1;renderQuestion();}
+ if(from==='result' && STATE.sim){drawRace(STATE.playTime);}
+ show(to);
+}
+function goToTitle(){
+ if(currentView==='title')return;
+ STATE.resumeView=currentView;
+ show('title');
+}
+$('backScreen').addEventListener('click',goBackOneScreen);
+$('homeScreen').addEventListener('click',goToTitle);
+$('enterGarage').addEventListener('click',()=>show('start'));
+$('titleResume').addEventListener('click',()=>{
+ const view=STATE.resumeView||'start';
+ if(view==='quiz' && QUESTIONS.length)renderQuestion();
+ if(view==='review' && QUESTIONS.length)buildReview();
+ if(view==='race' && STATE.sim)drawRace(STATE.playTime);
+ if(view==='result' && STATE.sim){makeResult();makeReviewCheckpoints();}
+ show(view);
+});
+function chooseMachine(m){STATE.machine=m;document.querySelectorAll('.machine').forEach(el=>el.classList.toggle('selected',el.dataset.machine===m))}
+document.querySelectorAll('.machine').forEach(el=>el.addEventListener('click',()=>chooseMachine(el.dataset.machine)));
+$('startQuiz').addEventListener('click',()=>{selectCourse(ACTIVE_COURSE.id);show('course')});
+$('backToMachines').addEventListener('click',()=>show('start'));
+$('resetSetup').addEventListener('click',()=>{STATE.setup=defaultSetup();updateSetupPanel()});
+$('confirmSetup').addEventListener('click',()=>{
+ if(STATE.courseReturnMode==='retune' && STATE.quizComplete){STATE.courseReturnMode='resume';primeReplay();return;}
+ if(STATE.courseReturnMode==='resume' && QUESTIONS.length){renderQuestion();show('quiz');return;}
+ prepareNewQuiz();STATE.courseReturnMode='resume';renderQuestion();show('quiz');
+});
+$('retuneSame').addEventListener('click',()=>{stop();STATE.courseReturnMode='retune';selectCourse(ACTIVE_COURSE.id);show('course')});
+
+$('demoNovice').addEventListener('click',()=>{prepareNewQuiz();STATE.quizComplete=true;STATE.demo=true;STATE.answers=QUESTIONS.map(q=>q.choices.findIndex((c,i)=>i!==q.correct&&c[2]===3));buildReview();show('review')});
+$('demoExpert').addEventListener('click',()=>{prepareNewQuiz();STATE.quizComplete=true;STATE.demo=true;STATE.answers=QUESTIONS.map(q=>q.correct);buildReview();show('review')});
+function renderQuestion(){const q=QUESTIONS[STATE.qi];$('qTitle').textContent=q.title;$('qCounter').textContent=`${STATE.qi+1} / ${QUESTIONS.length}`;$('qProgress').style.width=`${(STATE.qi+1)*100/QUESTIONS.length}%`;$('qScene').textContent=q.scene;$('qLevel').textContent=q.level;$('qSection').textContent=`${ACTIVE_COURSE.name} ／ セクター ${sectorOf(STATE.qi)+1}/10：${segmentName(sectorOf(STATE.qi))}`;const holder=$('qOptions');holder.innerHTML='';q.choices.forEach((c,i)=>{const b=document.createElement('button');b.className='option'+(STATE.answers[STATE.qi]===i?' chosen':'');b.innerHTML=`<span class="key">${'ABCD'[i]}</span><span></span>`;b.lastElementChild.textContent=c[0];b.addEventListener('click',()=>{STATE.answers[STATE.qi]=i;renderQuestion()});holder.appendChild(b)});$('prevQuiz').disabled=STATE.qi===0;$('nextQuiz').disabled=STATE.answers[STATE.qi]===null;$('nextQuiz').textContent=STATE.qi===QUESTIONS.length-1?'答え合わせへ →':'次へ →'}
+$('prevQuiz').addEventListener('click',()=>{if(STATE.qi>0){STATE.qi--;renderQuestion()}});$('nextQuiz').addEventListener('click',()=>{if(STATE.answers[STATE.qi]===null)return;if(STATE.qi===QUESTIONS.length-1){STATE.quizComplete=true;buildReview();show('review')}else{STATE.qi++;renderQuestion()}});
+function isRight(i){return STATE.answers[i]===QUESTIONS[i].correct}
+function getDecision(i){const q=QUESTIONS[i],idx=STATE.answers[i],choice=q.choices[idx];return {q,idx,choice,correct:idx===q.correct,severity:choice[2],kind:q.kind,explain:choice[1]}}
+function buildReview(){renderTeamBadges();let correct=QUESTIONS.reduce((n,q,i)=>n+(isRight(i)?1:0),0);
+ const summary=$('areaSummary');summary.innerHTML='';
+ for(let sector=0;sector<10;sector++){
+  const chunk=QUESTIONS.slice(sector*SECTOR_SIZE,sector*SECTOR_SIZE+SECTOR_SIZE);
+  const points=chunk.reduce((n,_,sub)=>n+(isRight(sector*SECTOR_SIZE+sub)?1:0),0);
+  const el=document.createElement('div');el.className='area-item';
+  el.innerHTML='<b></b><span></span><em></em>';
+  el.querySelector('b').textContent=`${sector+1}. ${['要件・停止','タスク分解','出力制御','ハーネス','テスト','スキル','コンテキスト','利用枠管理','改善ループ','人×AIの意思決定'][sector]}`;
+  el.querySelector('span').textContent=segmentName(sector);
+  el.querySelector('em').textContent=`${points} / ${SECTOR_SIZE}`;
+  if(points<SECTOR_SIZE)el.querySelector('em').classList.add('needswork');
+  summary.append(el);
+ }
+ $('reviewShowAll').classList.add('active');$('reviewShowMiss').classList.remove('active');
+ renderFusion('fusionSummary');$('reviewCorrect').textContent=`${correct} / ${QUESTIONS.length}`;$('reviewBad').textContent=`${QUESTIONS.length-correct} 問`;$('reviewMachine').textContent=chosenTeam().name+' / '+STATE.machine.toUpperCase()+' / '+ACTIVE_COURSE.name;$('reviewGrid').innerHTML='';QUESTIONS.forEach((q,i)=>{const d=getDecision(i),node=document.createElement('article');node.className=`review-card ${d.correct?'good':'bad'}`;node.dataset.correct=String(d.correct);node.innerHTML=`<div class="review-title"><b></b><span class="pill ${d.correct?'good':'bad'}">${d.correct?'適切な判断':'改善が必要'}</span></div><p></p><p style="color:#9fc7db"></p><p class="drivehint"></p>`;node.querySelector('b').textContent=`${i+1}. ${q.title}［${q.level}］`;node.querySelectorAll('p')[0].textContent=`あなたの回答：${d.choice[0]}`;node.querySelectorAll('p')[1].textContent=`解説：${q.reason}`;node.querySelectorAll('p')[2].textContent=`走行への反映：${d.explain}　／　エフォート：G${gearPlan(i,.5,STATE.answers).gear}（理想G${Math.max(1,Math.min(4,q.idealGear+ACTIVE_COURSE.bias))}）`;$('reviewGrid').appendChild(node)});}
+function setReviewFilter(showMiss){
+ $('reviewShowAll').classList.toggle('active',!showMiss);
+ $('reviewShowMiss').classList.toggle('active',showMiss);
+ document.querySelectorAll('#reviewGrid .review-card').forEach(el=>{el.style.display=showMiss&&el.dataset.correct==='true'?'none':'';});
+}
+$('reviewShowAll').addEventListener('click',()=>setReviewFilter(false));
+$('reviewShowMiss').addEventListener('click',()=>setReviewFilter(true));
+$('backToQuiz').addEventListener('click',()=>{STATE.qi=0;renderQuestion();show('quiz')});
+// Track: closed Catmull–Rom spline, sampled uniformly by cumulative length.
+let WAYPOINTS=makeCourseWaypoints(ACTIVE_COURSE);
+const W=1050,H=635;
+function catmull(a,b,c,d,t){const t2=t*t,t3=t2*t;return .5*((2*b)+(-a+c)*t+(2*a-5*b+4*c-d)*t2+(-a+3*b-3*c+d)*t3)}
+function buildPath(){const raw=[];const N=WAYPOINTS.length;for(let i=0;i<N;i++){const p0=WAYPOINTS[(i-1+N)%N],p1=WAYPOINTS[i],p2=WAYPOINTS[(i+1)%N],p3=WAYPOINTS[(i+2)%N];for(let s=0;s<26;s++){const t=s/26;raw.push({x:catmull(p0[0],p1[0],p2[0],p3[0],t),y:catmull(p0[1],p1[1],p2[1],p3[1],t)})}}let len=0;for(let i=0;i<raw.length;i++){const prev=raw[(i-1+raw.length)%raw.length];const delta=Math.hypot(raw[i].x-prev.x,raw[i].y-prev.y);if(i>0)len+=delta;raw[i].d=len}len+=Math.hypot(raw[0].x-raw[raw.length-1].x,raw[0].y-raw[raw.length-1].y);return {raw,len}}
+let TRACK=buildPath();
+function atDistance(distance){let d=((distance%TRACK.len)+TRACK.len)%TRACK.len;let a=TRACK.raw;let lo=0,hi=a.length-1;while(lo<hi){let mid=(lo+hi+1)>>1;if(a[mid].d<=d)lo=mid;else hi=mid-1}const p=a[lo],next=a[(lo+1)%a.length],start=p.d,end=lo===a.length-1?TRACK.len:next.d,ratio=(d-start)/(end-start||1),x=p.x+(next.x-p.x)*ratio,y=p.y+(next.y-p.y)*ratio;let front=a[(lo+2)%a.length],back=a[(lo-1+a.length)%a.length];let angle=Math.atan2(front.y-back.y,front.x-back.x);return {x,y,angle,nx:-Math.sin(angle),ny:Math.cos(angle)}}
+const LIMITS=[.70,.73,1.0,.74,.64,.77,.67,.99,.78,.76];
+// Each case corresponds to an ideal effort gear. This is an educational metaphor, not the mechanics of a literal gearbox.
+const GEAR_NAMES=['','LOW','MEDIUM','HIGH','XHIGH'];
+const GEAR_FUEL=[0,.82,1.00,1.23,1.57];
+function gearPlan(index,local,answers){
+ const q=QUESTIONS[index],answer=answers[index],c=q.choices[answer];
+ const ideal=Math.max(1,Math.min(4,q.idealGear+ACTIVE_COURSE.bias)),correct=answer===q.correct,mode=c[3]||'',sev=c[2];
+ // High gears are deliberately engaged only in the complex portion of an otherwise balanced section.
+ const heavyZone=local>=.29&&local<=.79;
+ const target=(ideal>=3&&!heavyZone)?2:ideal;
+ let gear=target;
+ if(!correct){
+  if(mode==='overdrive')gear=4;
+  else if(mode==='underpower')gear=1;
+  else if(q.kind==='fuel'||q.kind==='skill')gear=4;
+  else if(sev>=3)gear=ideal<=2?4:1;
+  else if(sev>=2)gear=ideal>=3?1:Math.min(4,ideal+1);
+  else gear=ideal===1?2:ideal-1;
+ }
+ return {gear,target,match:gear===target,correct,mode,ideal};
+}
+function gearEffect(g){
+ const shortage=Math.max(0,g.target-g.gear),excess=Math.max(0,g.gear-g.target);
+ const speed=Math.max(.64,1-.105*shortage+.012*excess);
+ const fuel=GEAR_FUEL[g.gear]*(1+excess*.13+shortage*.025);
+ return {speed,fuel,shortage,excess};
+}
+
+function factors(i,lap,answers){
+ const q=QUESTIONS[i],idx=answers[i],d=q.choices[idx],sev=d[2],mode=d[3]||'';
+ let f={speed:1,fuel:1,offset:0,wave:0,delay:0,spin:false,boost:0};
+ if(sev===0){if(q.kind==='loop')f.speed=1+lap*.035;return f;}
+ f.speed-=sev*.063; f.fuel+=sev*.10;
+ switch(q.kind){
+  case 'brake':f.offset=sev*18;f.delay=sev*.55;f.speed-=.06;break;
+  case 'line':f.offset=-sev*10;f.wave=8*sev;f.delay=sev*.38;break;
+  case 'throttle':if(mode==='overdrive'){f.speed+=.22;f.fuel+=sev*.54;f.boost=.22;}
+    else if(mode==='underpower'){f.speed-=.23;f.fuel+=.02;}else{f.fuel+=sev*.46;f.delay=sev*.24;}break;
+  case 'guard':f.offset=sev*18;f.delay=sev*.55;break;
+  case 'test':f.spin=sev>=3;f.delay=sev*.85;f.fuel+=sev*.12;break;
+  case 'skill':f.wave=sev*10;f.delay=sev*.38;break;
+  case 'context':f.offset=-sev*16;f.wave=sev*6;f.delay=sev*.36;break;
+  case 'fuel':f.fuel+=sev*.62;f.speed+=.07;break;
+  case 'loop':f.speed-=(lap*.05)+(sev*.015);f.delay+=lap*.65+sev*.15;break;
+  case 'human':f.offset=sev*19;f.delay=sev*.45;break;
+ }return f;
+}
+function simulate(machine,answers){
+ const isPro=machine==='pro',baseSpeed=isPro?151:119,full=TRACK.len*3,step=8,fuelBase=(isPro?78:29)/full;
+ const frames=[],sectorEvents=[],shifts=[];
+ let t=0,fuel=100,penalty=0,finished=false,lastSector=-1,prevGear=null;
+ let hadSpin=new Set();
+ for(let d=0;d<=full;d+=step){
+  let lap=Math.min(2,Math.floor(d/TRACK.len)),perLap=d-lap*TRACK.len;
+  if(d===full){lap=2;perLap=TRACK.len;}
+  const i=Math.min(QUESTIONS.length-1,Math.floor(perLap/(TRACK.len/QUESTIONS.length)));
+  const local=Math.max(0,Math.min(1,perLap/(TRACK.len/QUESTIONS.length)-i));
+  if(i!==lastSector||d===0){sectorEvents.push({time:t,sector:i,lap,distance:d});lastSector=i;}
+  const g=gearPlan(i,local,answers),ge=gearEffect(g),f=factors(i,lap,answers);
+  if(prevGear!==null&&prevGear!==g.gear){
+   shifts.push({time:t,d,lap,sector:i,from:prevGear,to:g.gear,match:g.match});
+  }
+  prevGear=g.gear;
+  let gp=atDistance(d),apex=Math.pow(Math.max(0,Math.sin(Math.PI*local)),1.2);
+  let perturb=f.offset*apex+f.wave*Math.sin(local*Math.PI*4)*apex;
+  let x=gp.x+gp.nx*perturb,y=gp.y+gp.ny*perturb,heading=gp.angle+f.wave/70*Math.sin(local*15)*apex;
+  let turn=ACTIVE_COURSE.limits[sectorOf(i)];
+  const setupFx=setupFactorForSector(sectorOf(i));
+  x+=gp.nx*setupFx.offset*apex;y+=gp.ny*setupFx.offset*apex;
+  const teamFx=teamFit();
+  let speed=Math.max(33,baseSpeed*turn*f.speed*ge.speed*setupFx.sf*teamFx.speed);
+  if(f.boost)speed*=1+f.boost*.30;
+  let dt=step/speed;
+  if(d!==0){
+   t+=dt;
+   fuel-=fuelBase*step*f.fuel*ge.fuel*setupFx.ff*teamFx.fuel;
+   if(setupFx.delay>0&&local>.30&&local<.65){let bump=step/(TRACK.len/QUESTIONS.length)*setupFx.delay;t+=bump;penalty+=bump;}
+   if(f.delay>0&&local>.37&&local<.62){const bump=step/(TRACK.len/QUESTIONS.length)*f.delay;t+=bump;penalty+=bump;}
+   // Insufficient effort for demanding work creates rework / delay beyond simple speed reduction.
+   if(ge.shortage>0&&local>.36&&local<.59){let bump=step/(TRACK.len/QUESTIONS.length)*ge.shortage*.32;t+=bump;penalty+=bump;}
+   if(f.spin&&local>.48&&local<.53&&!hadSpin.has(lap+'-'+i)){
+    hadSpin.add(lap+'-'+i);
+    for(let a=1;a<=13;a++){
+     t+=.10;fuel-=fuelBase*6;penalty+=.10;
+     frames.push({t,d,lap,sector:i,fuel:Math.max(0,fuel),x,y,heading:heading+a*Math.PI/7,speed:0,spin:true,offTrack:true,gear:g.gear,idealGear:g.target,gearMatch:g.match});
+    }
+   }
+  }
+  const offTrack=Math.abs(perturb+setupFx.offset)>36;
+  frames.push({t,d,lap,sector:i,fuel:Math.max(0,fuel),x,y,heading,speed,spin:false,offTrack,gear:g.gear,idealGear:g.target,gearMatch:g.match});
+  if(fuel<=0){finished=false;break;}
+  if(d>=full-step){finished=true;break;}
+ }
+ return {frames,events:sectorEvents,shifts,duration:frames[frames.length-1].t,finished,fuel:Math.max(0,fuel),distance:frames[frames.length-1].d,penalty,quality:setupQuality(answers).quality};
+}
+
+function currentFrame(sim,time){const ar=sim.frames;let lo=0,hi=ar.length-1;while(lo<hi){let m=(lo+hi+1)>>1;if(ar[m].t<=time)lo=m;else hi=m-1}return ar[lo]}
+function clock(s){const min=Math.floor(s/60),sec=Math.floor(s%60),dec=Math.floor((s%1)*10);return `${String(min).padStart(2,'0')}:${String(sec).padStart(2,'0')}.${dec}`}
+function primeReplay(){stop();STATE.lastAIKey='';renderTeamBadges();STATE.sim=simulate(STATE.machine,STATE.answers);const savedSetup=STATE.setup;STATE.setup=ACTIVE_COURSE.needs.slice();STATE.ideal=simulate(STATE.machine,QUESTIONS.map(q=>q.correct));STATE.setup=savedSetup;STATE.duration=STATE.sim.duration;STATE.playTime=0;STATE.lastSector=-1;STATE.visited=new Set();$('timeTotal').textContent=clock(STATE.duration);$('endState').style.display='none';createCheckpoints();createGearMap();drawRace(0);updateControls();show('race');setTimeout(()=>{if(currentView==='race')start();},80)}
+$('toReplay').addEventListener('click',primeReplay);
+function createCheckpoints(){const list=$('checkpointList');list.innerHTML='';QUESTIONS.forEach((q,i)=>{const b=document.createElement('button');b.className='checkpoint';b.dataset.sector=i;b.innerHTML=`<span>${String(i+1).padStart(2,'0')}　${segmentName(sectorOf(i))}：${q.title}</span><span class="pill ${isRight(i)?'good':'bad'}">${isRight(i)?'適切':'ミス'}</span>`;b.addEventListener('click',()=>{stop();let ev=STATE.sim.events.find(e=>e.sector===i&&e.lap===0);STATE.playTime=ev?Math.min(STATE.duration,ev.time+.45):0;drawRace(STATE.playTime)});list.appendChild(b)})}
+function createGearMap(){
+ const holder=$('gearMap');holder.innerHTML='';
+ QUESTIONS.forEach((q,i)=>{
+  const plan=gearPlan(i,.50,STATE.answers),btn=document.createElement('button');
+  btn.className='gear-cell'+(plan.match?'':' offgear');btn.dataset.q=String(i);
+  btn.innerHTML=`G${plan.gear}<small>${i+1}</small>`;
+  btn.title=`Q${i+1} ${q.title}：選択G${plan.gear}／理想G${Math.max(1,Math.min(4,q.idealGear+ACTIVE_COURSE.bias))}`;
+  btn.addEventListener('click',()=>{stop();const ev=STATE.sim.events.find(x=>x.sector===i&&x.lap===0);STATE.playTime=ev?Math.min(STATE.duration,ev.time+.85):0;drawRace(STATE.playTime)});
+  holder.append(btn);
+ });
+}
+function stop(){STATE.playing=false;if(STATE.tickRaf)cancelAnimationFrame(STATE.tickRaf);STATE.tickRaf=0;$('togglePlay').textContent='▶ 再生'}
+function start(){if(!STATE.sim)return;if(STATE.playTime>=STATE.duration)STATE.playTime=0;STATE.playing=true;STATE.lastNow=0;$('togglePlay').textContent='⏸ 一時停止';STATE.tickRaf=requestAnimationFrame(loop)}
+function loop(now){if(!STATE.playing)return;let dt=STATE.lastNow?Math.min(.07,(now-STATE.lastNow)/1000):0;STATE.lastNow=now;let old=STATE.playTime;STATE.playTime=Math.min(STATE.duration,STATE.playTime+dt*STATE.speed);if($('autoPause').checked && old>0){let prev=currentFrame(STATE.sim,old),next=currentFrame(STATE.sim,STATE.playTime);if(prev.sector!==next.sector || prev.lap!==next.lap){stop();STATE.playTime=STATE.playTime;}}
+ drawRace(STATE.playTime);if(STATE.playTime>=STATE.duration){stop();$('endState').style.display='block';$('endState').className='outcome '+(STATE.sim.finished?'':'fail');$('endState').textContent=STATE.sim.finished?'3周完走。あなたの判断がタイムと燃費にどう反映されたか、結果画面で確認できます。':'燃料切れにより途中停止。どの判断で燃料を浪費したか、区間一覧と答え合わせを確認できます。'}else if(STATE.playing){STATE.tickRaf=requestAnimationFrame(loop)}}
+$('togglePlay').addEventListener('click',()=>STATE.playing?stop():start());$('restartReplay').addEventListener('click',()=>{stop();STATE.playTime=0;drawRace(0);start()});$('nextEvent').addEventListener('click',()=>{stop();let ev=STATE.sim.events.find(e=>e.time>STATE.playTime+.15);STATE.playTime=ev?Math.min(STATE.duration,ev.time+.20):STATE.duration;drawRace(STATE.playTime)});document.querySelectorAll('[data-speed]').forEach(b=>b.addEventListener('click',()=>{STATE.speed=Number(b.dataset.speed);updateControls()}));function updateControls(){document.querySelectorAll('[data-speed]').forEach(b=>b.classList.toggle('active',Number(b.dataset.speed)===STATE.speed))}
+$('scrubber').addEventListener('input',e=>{stop();STATE.playTime=STATE.duration*Number(e.target.value)/1000;drawRace(STATE.playTime)});$('showGhost').addEventListener('change',()=>drawRace(STATE.playTime));
+
+// Fictional onboard personalities: scripted coaching for education, not live LLM inference.
+const PIT_AI_PERSONAS={
+ aurora:{name:'ルミナ',role:'穏やかな全体最適型',symbol:'✦',good:'いい流れです。全体の目的と今の判断がつながっています。',bad:'少し広い視野で整理しましょう。',gear:'目的と負荷を見比べ、必要な区間だけ出力を上げましょう。',fuel:'先の工程に余力を残しておきましょう。'},
+ titan:{name:'ストライク',role:'端的な技術監督型',symbol:'◆',good:'妥当。次は再現性を維持。',bad:'原因を特定。判断を修正。',gear:'負荷に応じたギア選択へ。過剰投入も過小投入も非効率。',fuel:'燃費悪化を検知。投入量を是正せよ。'},
+ prism:{name:'アイリス',role:'視覚的・創造的な解説型',symbol:'◈',good:'ラインがきれいにつながりました。',bad:'ここは軌道が乱れています。',gear:'今の区間に似合うギアへ。線のつながりを意識して。',fuel:'燃料ゲージの色を見て。次のカーブに必要な余白を残そう。'},
+ vortex:{name:'スパーク',role:'好奇心旺盛な探索型',symbol:'✳',good:'おっ、いい攻め方！ 検証も忘れずに。',bad:'この失速、原因を調べるチャンス！',gear:'難所ならシフトアップ、抜けたら軽快にダウン！',fuel:'ガス欠チャレンジは不要！ 次の作戦を試そう。'},
+ vector:{name:'ゼロ',role:'効率・数値重視型',symbol:'∑',good:'効率良好。投入と成果の比率を維持。',bad:'ロス発生。改善対象を特定。',gear:'推論コストを最適化。G4固定は燃費面で不利。',fuel:'残量低下。不要な高出力区間を削減。'},
+ orbit:{name:'ノヴァ',role:'論理的・多角的な分析型',symbol:'◇',good:'前提と結果が整合しています。',bad:'別の前提を検証しましょう。',gear:'必要な推論深度と作業範囲を分けて考えましょう。',fuel:'この消費率が続く場合の後工程への影響を考慮。'},
+ fortress:{name:'ガード',role:'安全・統制重視型',symbol:'▣',good:'判断と統制条件の整合を確認。',bad:'注意。制御境界を再確認してください。',gear:'安全余裕を確保し、必要な負荷のみ投入。',fuel:'残燃料不足の兆候。品質ゲート前の停止条件を確認。'},
+ enduro:{name:'リンク',role:'協働・伴走型',symbol:'◎',good:'チームの連携ができています。このまま次へ。',bad:'ここは人とAIの受け渡しを整えましょう。',gear:'担当ごとに必要なギアへ合わせていこう。',fuel:'みんなの作業を完走させるため、後半の予算を確保しよう。'}
+};
+const PIT_FOCUS={
+ brake:'要件・承認が曖昧なまま進めないこと。',line:'依存関係と分担範囲を整え、手戻りを避けること。',throttle:'モデル・エフォートの過不足を調整すること。',guard:'権限・情報保護・停止条件を守ること。',test:'テストと受入条件で品質を確かめること。',skill:'チームの再利用可能な作業手順を整えること。',context:'参照資料と前提を維持・整理すること。',fuel:'後工程まで利用量を配分すること。',loop:'実装・検証・修正を繰り返し改善すること。',human:'人間の判断とAIの実行の責任分界を明確にすること。'
+};
+
+const PIT_REBUKES={
+ aurora:'その判断はチーム全体に手戻りを生みます。まず目的と前提を整理しましょう。',
+ titan:'判断が甘い。根拠を確認してから進め。作業を増やすな。',
+ prism:'そのラインは乱れています。完成形を思い描き、手順を組み直しましょう。',
+ vortex:'勢いだけで突っ込むのは禁止！ 仮説と検証をセットにして攻めよう。',
+ vector:'非効率な選択です。時間と利用量の損失を見直してください。',
+ orbit:'その判断では論理がつながりません。前提条件を再検討してください。',
+ fortress:'警告。統制と確認を欠いた進行は承認できません。',
+ enduro:'今の進め方では仲間に負担がかかるよ。まず役割と確認点を共有しよう。'
+};
+function pitPersona(){return PIT_AI_PERSONAS[STATE.team]||PIT_AI_PERSONAS.aurora}
+function pitAdvice(frame){
+ const d=getDecision(frame.sector),p=pitPersona();
+ const wrong=!d.correct, mismatch=!frame.gearMatch;
+ const tone=wrong?'scold':mismatch?'advice':'praise';
+ const prefix=wrong?'【叱責 / 判断を修正】':mismatch?'【助言 / シフトを修正】':'【称賛 / 良い判断】';
+ const selected=d.choice[0],recommended=d.q.choices[d.q.correct][0];
+ const intro=wrong?PIT_REBUKES[STATE.team]||PIT_REBUKES.aurora:mismatch?p.gear:p.good;
+ const cause=wrong?'今回の選択「'+selected+'」により、'+d.explain:'今回の選択「'+selected+'」は、この区間の目的に適合しています。';
+ const correction=wrong?'次は「'+recommended+'」を選びましょう。': 'この判断をチームの標準手順として再現できるか検討してください。';
+ const gear=mismatch?' 推奨G'+frame.idealGear+'、現在G'+frame.gear+'。'+p.gear:'';
+ const fuel=frame.fuel<22?' 【燃料注意】'+p.fuel:'';
+ return {tone,prefix,speech:prefix+' '+intro+' '+cause+' '+correction+gear+fuel,
+  basis:'CP'+String(frame.sector+1).padStart(2,'0')+'・L'+(frame.lap+1)+' / '+d.q.title+'｜'+PIT_FOCUS[d.kind]+'｜あなたの判断：'+selected,
+  short:prefix+' '+d.q.title+(mismatch?' / シフト要調整':'')};
+}
+function updatePitAI(frame){
+ const p=pitPersona(),key=STATE.team+'|'+frame.lap+'|'+frame.sector;
+ if(STATE.lastAIKey===key)return;
+ STATE.lastAIKey=key;
+ $('aiName').textContent=p.name+' / '+chosenTeam().name;
+ $('aiRole').textContent=p.role;
+ $('aiAvatar').textContent=p.symbol;$('aiAvatar').style.color=chosenTeam().color;
+ const entry=pitAdvice(frame);
+ $('aiSpeech').textContent=entry.speech;$('aiBasis').textContent=entry.basis;
+ document.querySelector('.ai-radio').dataset.tone=entry.tone;
+ $('reviewTone').textContent=entry.prefix;
+ $('reviewTone').className='pill '+(entry.tone==='scold'?'bad':entry.tone==='praise'?'good':'mid');
+ const log=$('aiLog');log.replaceChildren();
+ const recent=STATE.sim.events.filter(e=>e.time<=STATE.reviewTime+.02).slice(-5).reverse();
+ for(const e of recent){const f=currentFrame(STATE.sim,Math.min(STATE.duration,e.time+.02)),a=pitAdvice(f),line=document.createElement('div');line.className='ai-log-entry';const when=document.createElement('strong'),msg=document.createElement('span');when.textContent='L'+(e.lap+1)+' CP'+String(e.sector+1).padStart(2,'0');msg.textContent=a.short;line.append(when,msg);log.append(line)}
+}
+$('aiReadAloud').addEventListener('click',()=>{
+ if(!('speechSynthesis' in window)||!('SpeechSynthesisUtterance' in window)){$('aiBasis').textContent+='（この環境では音声読み上げに非対応）';return;}
+ window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance($('aiSpeech').textContent);u.lang='ja-JP';u.rate=1.04;window.speechSynthesis.speak(u);
+});
+// Driver's-eye stylized pseudo-3D projection; samples the SAME simulation frames as the top-down view.
+const dc=$('driverView'),dx=dc.getContext('2d');
+function roadProjection(frame,z){
+ const far=(1-z),dist=7+320*Math.pow(far,1.75),ahead=atDistance(frame.d+dist);
+ const nx=-Math.sin(frame.heading),ny=Math.cos(frame.heading);
+ const lateral=(ahead.x-frame.x)*nx+(ahead.y-frame.y)*ny;
+ const curve=Math.max(-225,Math.min(225,lateral*1.42));
+ return {x:525+curve*(.19+.81*z),y:165+Math.pow(z,1.75)*345,half:18+515*Math.pow(z,1.85)};
+}
+function polygon(context,arr,color){context.fillStyle=color;context.beginPath();arr.forEach((p,i)=>i?context.lineTo(p[0],p[1]):context.moveTo(p[0],p[1]));context.closePath();context.fill();}
+function drawDriverView(frame,time){
+ const w=dc.width,h=dc.height,d=dx;
+ let sky=d.createLinearGradient(0,0,0,240);sky.addColorStop(0,'#071b38');sky.addColorStop(.65,'#4b7896');sky.addColorStop(1,'#bdd5c6');d.fillStyle=sky;d.fillRect(0,0,w,225);
+ d.fillStyle='#406c73';d.beginPath();d.moveTo(0,205);for(let x=0;x<=w;x+=55)d.lineTo(x,175+Math.sin(x*.017)*21);d.lineTo(w,240);d.lineTo(0,240);d.fill();
+ d.fillStyle='#2c625a';d.fillRect(0,215,w,h-200);
+ const bumps=(frame.d/35)%1;
+ for(let i=0;i<21;i++){
+   const z0=i/21,z1=(i+1)/21,a=roadProjection(frame,z0),b=roadProjection(frame,z1);
+   polygon(d,[[a.x-a.half-16,a.y],[a.x+a.half+16,a.y],[b.x+b.half+20,b.y],[b.x-b.half-20,b.y]],i%2?'#ded9bb':'#ceccb2');
+   polygon(d,[[a.x-a.half,a.y],[a.x+a.half,a.y],[b.x+b.half,b.y],[b.x-b.half,b.y]],i%2?'#35495b':'#304355');
+   for(const sign of [-1,1]){
+     polygon(d,[[a.x+sign*(a.half+2),a.y],[a.x+sign*(a.half-4),a.y],[b.x+sign*(b.half-6),b.y],[b.x+sign*(b.half+6),b.y]],((i+Math.floor(frame.d/24))%2)?'#fbf7e8':'#dd6765');
+   }
+   if((i+Math.floor(frame.d/18))%4<2){
+     polygon(d,[[a.x-2,a.y],[a.x+2,a.y],[b.x+5,b.y],[b.x-5,b.y]],'#a0bac2b5');
+   }
+ }
+ // Windshield and a clear cockpit driving interface.
+ const shake=(frame.spin?16:frame.offTrack?5:0)*Math.sin(time*30);
+ d.save();d.translate(shake,0);
+ polygon(d,[[0,462],[0,363],[124,442],[260,482],[791,482],[928,442],[1050,363],[1050,520],[0,520]],'#0a1726');
+ polygon(d,[[0,520],[0,439],[120,468],[320,505],[730,505],[940,468],[1050,439],[1050,520]],'#162a3a');
+ // Winglets
+ polygon(d,[[18,414],[158,467],[218,474],[101,432]],chosenTeam().color);
+ polygon(d,[[1032,414],[892,467],[832,474],[949,432]],chosenTeam().color);
+ d.strokeStyle='#121927';d.lineWidth=24;d.beginPath();d.arc(525,521,138,1.08*Math.PI,1.92*Math.PI);d.stroke();
+ const ahead=atDistance(frame.d+35);let delta=ahead.angle-frame.heading;delta=Math.atan2(Math.sin(delta),Math.cos(delta));
+ d.save();d.translate(525,502);d.rotate(Math.max(-.42,Math.min(.42,delta*1.5)));d.strokeStyle='#111927';d.lineWidth=31;d.beginPath();d.arc(0,0,88,Math.PI,2*Math.PI);d.stroke();d.fillStyle='#112838';d.beginPath();d.roundRect(-112,-43,224,79,19);d.fill();d.fillStyle='#83e5e7';d.font='900 45px system-ui';d.textAlign='center';d.fillText('G'+frame.gear,0,11);d.restore();
+ // windshield info -- small unobtrusive badges
+ d.fillStyle='#081929d9';d.beginPath();d.roundRect(20,19,306,67,13);d.fill();d.beginPath();d.roundRect(801,19,232,67,13);d.fill();
+ d.font='800 20px system-ui';d.fillStyle='#e9f8ff';d.textAlign='left';d.fillText('COCKPIT / '+chosenTeam().model,35,45);d.font='15px system-ui';d.fillStyle='#a6d0df';d.fillText(ACTIVE_COURSE.name+' ・ '+segmentName(sectorOf(frame.sector)),35,72);
+ d.fillStyle='#dff9f9';d.font='900 29px system-ui';d.fillText(Math.round(frame.speed)+' km/h',818,50);d.font='700 15px system-ui';d.fillStyle=frame.fuel<22?'#ff9b91':'#8cecc9';d.fillText('FUEL '+frame.fuel.toFixed(0)+'%  /  LAP '+(frame.lap+1)+'/3',818,74);
+ if(!frame.gearMatch){d.fillStyle='#fbbe6e';d.font='800 18px system-ui';d.textAlign='center';d.fillText('SHIFT ADVICE  G'+frame.gear+' → G'+frame.idealGear,525,116)}
+ if(frame.spin||frame.offTrack){d.fillStyle='#e96170df';d.beginPath();d.roundRect(317,121,417,45,12);d.fill();d.font='900 22px system-ui';d.fillStyle='white';d.textAlign='center';d.fillText(frame.spin?'SPIN / テスト判断の失敗':'WARNING / コースアウト',525,151)}
+ d.restore();
+}
+const canvas=$('track'),ctx=canvas.getContext('2d');
+function pathStroke(offset=0){ctx.beginPath();for(let j=0;j<=TRACK.raw.length;j++){let p=TRACK.raw[j%TRACK.raw.length];if(j===0)ctx.moveTo(p.x,p.y);else ctx.lineTo(p.x,p.y)}ctx.closePath()}
+function drawDecor(){ctx.fillStyle='#163f37';ctx.fillRect(0,0,W,H);const grd=ctx.createRadialGradient(600,300,40,600,300,670);grd.addColorStop(0,'#286249');grd.addColorStop(1,'#0c2c30');ctx.fillStyle=grd;ctx.fillRect(0,0,W,H);
+ for(let i=0;i<26;i++){let x=(i*229+93)%W,y=(i*137+47)%H;ctx.fillStyle=i%3===0?'#224a38':'#21423a';ctx.beginPath();ctx.arc(x,y,13+i%4*4,0,Math.PI*2);ctx.fill();ctx.fillStyle='#367553';ctx.beginPath();ctx.arc(x-3,y-4,7+i%3*2,0,Math.PI*2);ctx.fill()}
+ ctx.font='800 40px system-ui';ctx.fillStyle='#d2f0e820';ctx.fillText(ACTIVE_COURSE.name,340,326);ctx.font='700 16px system-ui';ctx.fillStyle='#d2f0e82c';ctx.fillText('AI DRIVEN CIRCUIT',407,351);
+ // track support shadow, curb, asphalt and dashed center
+ ctx.lineJoin='round';ctx.lineCap='round';ctx.shadowColor='#061a18a9';ctx.shadowBlur=18;pathStroke();ctx.lineWidth=112;ctx.strokeStyle='#09292d';ctx.stroke();ctx.shadowBlur=0;pathStroke();ctx.lineWidth=93;ctx.strokeStyle='#b9ced0';ctx.stroke();pathStroke();ctx.lineWidth=83;ctx.strokeStyle='#cc626a';ctx.setLineDash([14,14]);ctx.stroke();ctx.setLineDash([]);pathStroke();ctx.lineWidth=73;ctx.strokeStyle='#293b48';ctx.stroke();pathStroke();ctx.lineWidth=2;ctx.strokeStyle='#b9d1cb54';ctx.setLineDash([12,17]);ctx.stroke();ctx.setLineDash([]);
+ // start/finish stripe
+ const st=atDistance(0);ctx.save();ctx.translate(st.x,st.y);ctx.rotate(st.angle);for(let r=0;r<2;r++)for(let c=0;c<8;c++){ctx.fillStyle=(r+c)%2===0?'#f0f5ed':'#162329';ctx.fillRect(-8+r*8,-32+c*8,8,8)}ctx.restore();
+ // 10 sector numbered flags on outer edge
+ for(let i=0;i<10;i++){let p=atDistance((i+.5)/10*TRACK.len);let x=p.x+p.nx*57,y=p.y+p.ny*57;ctx.fillStyle='#091826d9';ctx.beginPath();ctx.arc(x,y,13,0,2*Math.PI);ctx.fill();ctx.strokeStyle='#9ec8ce';ctx.lineWidth=1;ctx.stroke();ctx.fillStyle='#e6f6ff';ctx.textAlign='center';ctx.textBaseline='middle';ctx.font='bold 12px sans-serif';ctx.fillText(String(i+1),x,y+1)}ctx.textAlign='left';ctx.textBaseline='alphabetic';}
+function drawTrace(frames,time,color,width,alpha=1){ctx.save();ctx.globalAlpha=alpha;ctx.strokeStyle=color;ctx.lineWidth=width;ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();let started=false;for(let i=0;i<frames.length;i+=3){let f=frames[i];if(f.t>time)break;if(!started){ctx.moveTo(f.x,f.y);started=true}else ctx.lineTo(f.x,f.y)}ctx.stroke();ctx.restore()}
+function drawCar(f,color,ghost=false){ctx.save();ctx.translate(f.x,f.y);ctx.rotate(f.heading);ctx.shadowColor=color;ctx.shadowBlur=ghost?10:18;ctx.fillStyle=color;ctx.strokeStyle=ghost?'#efffed':'#e3faff';ctx.lineWidth=1.4;ctx.beginPath();ctx.roundRect(-17,-10,34,20,5);ctx.fill();ctx.stroke();ctx.shadowBlur=0;ctx.fillStyle=ghost?'#286c4d':'#144b76';ctx.fillRect(-7,-8,14,16);ctx.fillStyle='#07111c';ctx.fillRect(-11,-13,8,4);ctx.fillRect(5,-13,8,4);ctx.fillRect(-11,9,8,4);ctx.fillRect(5,9,8,4);ctx.fillStyle='#fafbf2';ctx.fillRect(14,-7,3,5);ctx.fillRect(14,2,3,5);ctx.restore()}
+function updateGearHUD(f,time){
+ const ideal=f.idealGear,gear=f.gear,match=f.gearMatch;
+ $('gearNow').textContent='G'+gear;$('gearNow').classList.toggle('wrong',!match);
+ $('gearName').textContent=GEAR_NAMES[gear];
+ $('gearMatch').textContent=match?'適切なギア':'ギア選択にロス';$('gearMatch').className='pill '+(match?'good':'bad');
+ $('gearIdeal').textContent=`この地点の理想：G${ideal} ${GEAR_NAMES[ideal]}　／　現在：G${gear} ${GEAR_NAMES[gear]}`;
+ $('gearAdvice').textContent=match?('適切なシフト。必要な場面にだけ推論を配分し、走行効率を保っています。'):
+ (gear>ideal?'オーバーギア：単純作業に高エフォートを投入。速度改善は小さく、燃料を浪費します。':'アンダーギア：難所で推論が足りず、速度低下と手戻りが発生します。');
+ document.querySelectorAll('#gearChain span').forEach((el,i)=>{el.classList.toggle('on',i+1===gear);el.classList.toggle('wrong',i+1===gear&&!match)});
+ $('gearRpm').style.width=(16+gear*20)+'%';
+ document.querySelectorAll('.gear-cell').forEach((el,i)=>el.classList.toggle('active',i===f.sector));
+ const moves=STATE.sim.shifts.filter(x=>x.time<=time).slice(-4).reverse();
+ const box=$('gearShifts');box.replaceChildren();
+ for(const item of moves){const e=document.createElement('div');e.className='shift-entry'+(item.match?'':' wrong');e.textContent=`${item.from<item.to?'↑ UP':'↓ DOWN'}　G${item.from} → G${item.to}　/　L${item.lap+1}・Q${item.sector+1}`;box.append(e);}
+}
+function drawRace(time){if(!STATE.sim)return;const f=currentFrame(STATE.sim,time),g=currentFrame(STATE.ideal,time);ctx.clearRect(0,0,W,H);drawDecor();if($('showGhost').checked){drawTrace(STATE.ideal.frames,time,'#72edac',4,.55);drawCar(g,'#76e8a8',true)}drawTrace(STATE.sim.frames,time,chosenTeam().color,4,.85);drawCar(f,chosenTeam().color);
+ let d=getDecision(f.sector),k=d.kind;if(!d.correct){const p=atDistance((f.lap+(f.sector+.5)/QUESTIONS.length)*TRACK.len);ctx.save();ctx.fillStyle='#e15e48';ctx.strokeStyle='#ffbaa1';ctx.lineWidth=2;ctx.beginPath();ctx.arc(p.x,p.y,11,0,2*Math.PI);ctx.fill();ctx.stroke();ctx.fillStyle='#fff';ctx.textAlign='center';ctx.textBaseline='middle';ctx.font='bold 15px sans-serif';ctx.fillText('!',p.x,p.y+1);ctx.restore()}
+ if(f.spin){ctx.save();ctx.strokeStyle='#ffdd80';ctx.lineWidth=5;ctx.beginPath();ctx.arc(f.x,f.y,32,0,1.7*Math.PI);ctx.stroke();ctx.restore()}
+ const shiftEvent=STATE.sim.shifts.filter(x=>x.time<=time).slice(-1)[0];
+ if(shiftEvent&&shiftEvent.to===f.gear&&time-shiftEvent.time<1.15){
+  const direction=shiftEvent.to>shiftEvent.from?'SHIFT UP ↑':'SHIFT DOWN ↓';
+  ctx.save();ctx.fillStyle=shiftEvent.match?'#163b56ef':'#673721eb';ctx.beginPath();ctx.roundRect(393,13,268,42,11);ctx.fill();
+  ctx.fillStyle='#ffffff';ctx.font='bold 18px sans-serif';ctx.textAlign='center';ctx.fillText(`${direction}   G${shiftEvent.from}→G${shiftEvent.to}`,527,41);ctx.restore();
+ }
+ if(f.offTrack){ctx.font='bold 16px sans-serif';ctx.fillStyle='#ffbd73';ctx.fillText('コースアウト!',Math.max(12,f.x-35),Math.max(20,f.y-30))}
+ ctx.fillStyle='#0a1a2cb0';ctx.beginPath();ctx.roundRect(18,17,270,60,12);ctx.fill();ctx.fillStyle='#c3ebf9';ctx.font='bold 17px sans-serif';ctx.fillText('COURSE: '+ACTIVE_COURSE.name,32,40);ctx.font='13px sans-serif';ctx.fillStyle='#95b9ce';ctx.fillText('青: 判断結果　緑: 模範ゴースト',32,63);
+ ctx.fillStyle='#0a1a2ccb';ctx.beginPath();ctx.roundRect(820,17,214,60,11);ctx.fill();ctx.font='bold 17px sans-serif';ctx.fillStyle='#fff';ctx.fillText(chosenTeam().name+'  /  '+(f.lap+1)+'/3 LAP',836,41);ctx.fillStyle='#9dd4e2';ctx.font='13px sans-serif';ctx.fillText('FUEL  '+f.fuel.toFixed(0)+'%',836,63);
+ $('hudTime').textContent=clock(time);$('hudLap').textContent=`${Math.min(3,f.lap+1)} / 3`;$('hudSpeed').textContent=`${Math.round(f.speed)} km/h`;$('hudFuel').textContent=f.fuel.toFixed(0)+'%';$('fuelbar').style.width=f.fuel+'%';$('fuelbar').style.filter=f.fuel<20?'saturate(1.5) hue-rotate(315deg)':'';$('fuelMessage').textContent=f.fuel<22?'利用枠が逼迫。終盤の検証や修正に使える余力が少ない状態。':'区間ごとの選択が消費ペースを左右します。';$('scrubber').value=String(Math.round(time/STATE.duration*1000));$('timeStart').textContent=clock(time);
+ $('nowHeading').textContent=`${ACTIVE_COURSE.name} ／ ${segmentName(sectorOf(f.sector))} ／ Q${f.sector+1}. ${d.q.title}（${d.q.level}）`;$('nowDescription').innerHTML='';$('nowDescription').textContent=(d.correct?'適切な判断：':'判断ミス：')+d.explain;$('nowAnswer').textContent='AIからの推奨：'+d.q.choices[d.q.correct][0]+'\n人間・チームの選択：'+d.choice[0]+'\n'+(d.correct?'提案と判断が整合。':'この判断が速度・ライン・燃料に影響。');$('sectorCount').textContent=`${QUESTIONS.filter((q,i)=>isRight(i)).length}/${QUESTIONS.length} 適切`;
+ updateGearHUD(f,time);document.querySelectorAll('.checkpoint').forEach((el,i)=>el.classList.toggle('current',i===f.sector));}
+
+// Stage 06: separate cockpit playback and checkpoint coaching, distinct from stage 05 map replay.
+function stopReview(){
+ STATE.reviewPlaying=false;
+ if(STATE.reviewRaf)cancelAnimationFrame(STATE.reviewRaf);
+ STATE.reviewRaf=0;
+ $('reviewPlay').textContent='▶ 車載リプレイを再生';
+}
+function drawReviewFrame(){
+ if(!STATE.sim)return;
+ const t=Math.max(0,Math.min(STATE.duration,STATE.reviewTime));
+ const f=currentFrame(STATE.sim,t);
+ drawDriverView(f,t);
+ updatePitAI(f);
+ $('reviewTimeNow').textContent=clock(t);
+ $('reviewTimeTotal').textContent=clock(STATE.duration);
+ $('reviewScrubber').value=String(Math.round((t/Math.max(STATE.duration,.001))*1000));
+ $('reviewSectorTitle').textContent='L'+(f.lap+1)+' / CP'+String(f.sector+1).padStart(2,'0')+' '+segmentName(sectorOf(f.sector));
+ $('reviewGearFuel').textContent='G'+f.gear+' / 推奨G'+f.idealGear+'・速度'+Math.round(f.speed)+'km/h・燃料'+Math.round(f.fuel)+'%';
+ document.querySelectorAll('.review-cp').forEach(b=>b.classList.toggle('active',Number(b.dataset.sector)===f.sector));
+}
+function seekReview(t){stopReview();STATE.reviewTime=Math.max(0,Math.min(STATE.duration,t));STATE.lastAIKey='';drawReviewFrame();}
+function reviewLoop(now){
+ if(!STATE.reviewPlaying||currentView!=='result')return;
+ const dt=STATE.reviewLast?Math.min(.07,(now-STATE.reviewLast)/1000):0;
+ STATE.reviewLast=now;
+ const old=STATE.reviewTime;
+ STATE.reviewTime=Math.min(STATE.duration,STATE.reviewTime+dt*STATE.reviewSpeed);
+ const upcoming=STATE.sim.events.find(e=>e.time>old+.00001&&e.time<=STATE.reviewTime+.00001);
+ if($('reviewAutoPause').checked&&upcoming&&upcoming.lap===0){
+   STATE.reviewTime=Math.min(STATE.duration,upcoming.time+.04);
+   stopReview();
+ }
+ drawReviewFrame();
+ if(STATE.reviewTime>=STATE.duration){stopReview()}
+ else if(STATE.reviewPlaying){STATE.reviewRaf=requestAnimationFrame(reviewLoop)}
+}
+function startReview(){
+ if(!STATE.sim)return;
+ if(STATE.reviewTime>=STATE.duration)STATE.reviewTime=0;
+ STATE.reviewPlaying=true;STATE.reviewLast=0;
+ $('reviewPlay').textContent='⏸ 一時停止';
+ STATE.reviewRaf=requestAnimationFrame(reviewLoop);
+}
+function makeReviewCheckpoints(){
+ const holder=$('reviewCheckpointList');holder.replaceChildren();
+ QUESTIONS.forEach((q,i)=>{
+   const ev=STATE.sim.events.find(e=>e.lap===0&&e.sector===i);
+   const b=document.createElement('button');b.type='button';
+   b.className='review-cp '+(isRight(i)?'passed':'missed');b.dataset.sector=String(i);b.disabled=!ev;
+   const head=document.createElement('strong');head.textContent='CP'+String(i+1).padStart(2,'0')+' '+(isRight(i)?'✓':'!');
+   const body=document.createElement('small');body.textContent=segmentName(sectorOf(i));
+   b.append(head,body);
+   if(ev)b.addEventListener('click',()=>seekReview(ev.time+.04));
+   holder.append(b);
+ });
+}
+$('reviewPlay').addEventListener('click',()=>STATE.reviewPlaying?stopReview():startReview());
+$('reviewRestart').addEventListener('click',()=>{seekReview(0);startReview()});
+$('reviewNext').addEventListener('click',()=>{
+ const next=STATE.sim.events.find(e=>e.time>STATE.reviewTime+.12);
+ seekReview(next?next.time+.04:STATE.duration);
+});
+$('reviewScrubber').addEventListener('input',e=>seekReview(STATE.duration*Number(e.target.value)/1000));
+$('showResult').addEventListener('click',()=>{stop();makeResult();STATE.reviewTime=0;STATE.lastAIKey='';makeReviewCheckpoints();show('result')});$('replayQuiz').addEventListener('click',()=>{stop();prepareNewQuiz();renderQuestion();show('quiz')});
+function makeResult(){renderFusion('fusionResult');const sim=STATE.sim,ideal=STATE.ideal,wrong=QUESTIONS.map((q,i)=>({q,i,d:getDecision(i)})).filter(o=>!o.d.correct);$('finalStatus').className='result-hero '+(sim.finished?'good':'bad');$('finalStatus').textContent=!sim.finished?'ガス欠 / リタイア':sim.quality<ACTIVE_COURSE.pass?'完走・品質未達':'品質達成・完走！';renderTeamBadges();$('resultText').textContent=sim.finished?`${chosenTeam().name}の${STATE.machine.toUpperCase()}マシンで${ACTIVE_COURSE.name}を3周走行。設定と判断による品質 ${sim.quality} / 100（目標 ${ACTIVE_COURSE.pass}）を確認してください。`:`${STATE.machine.toUpperCase()}マシンは${Math.max(1,Math.floor(sim.distance/TRACK.len)+1)}周目で燃料切れ。高出力と判断ミスの組み合わせによって、最後まで走れませんでした。`;$('finalTime').textContent=sim.finished?clock(sim.duration):clock(sim.duration)+' *';$('ghostTime').textContent=clock(ideal.duration);$('finalFuel').textContent=sim.fuel.toFixed(1)+'%';$('finalPenalty').textContent='+'+sim.penalty.toFixed(1)+' 秒';const holder=$('resultFeedback');holder.innerHTML='';const gearSummary=document.createElement('p');gearSummary.className='note';const mismatches=QUESTIONS.filter((q,i)=>!gearPlan(i,.5,STATE.answers).match).length;gearSummary.textContent=`シフト診断：${QUESTIONS.length}地点中${QUESTIONS.length-mismatches}地点で適切なギアを選択。必要な難所だけシフトアップするのがコツです。`;holder.append(gearSummary);if(!wrong.length){holder.innerHTML='<p>全問適切な判断です。高性能のマシンを使っても、常にこのような判断ができるとは限らないため、実務でも継続的に記録・検証してください。</p>'}else{let list=document.createElement('ol');wrong.forEach(o=>{let li=document.createElement('li');let b=document.createElement('b');b.textContent=o.q.title;let p=document.createElement('div');p.className='note';p.textContent=`走行：${o.d.explain}　改善：${o.q.choices[o.q.correct][0]}`;li.append(b,p);list.append(li)});holder.append(list)}renderSetupResult();if(!sim.finished){let note=document.createElement('p');note.className='note';note.textContent='* タイムは途中停止までの経過時間。完走タイムとは比較できません。';holder.append(note)} saveCourseRecord();refreshChampionship();}
+$('driverReview').addEventListener('click',()=>{document.getElementById('stage06').scrollIntoView({behavior:'smooth',block:'start'});});
+$('raceAgain').addEventListener('click',()=>{STATE.playTime=0;$('endState').style.display='none';show('race');drawRace(0);start()});$('retry').addEventListener('click',()=>{stop();prepareNewQuiz();renderQuestion();show('quiz')});
+// Draw preview; preload visual world even before quiz.
+renderTeams();selectCourse(ACTIVE_COURSE.id);refreshChampionship();drawDecor();
+</script>
+</body></html>
