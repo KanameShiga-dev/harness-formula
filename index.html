@@ -177,6 +177,16 @@ details.fold>summary{cursor:pointer;padding:11px 0;font-weight:700;color:var(--m
 details.fold[open]>summary{color:var(--ink)}
 details.fold>.championship{margin-top:0}
 @media(max-width:680px){#view-start .illustration{display:none}.tabbar{gap:4px}.tabbar [role=tab]{padding:8px 10px;font-size:12px}}
+.track-wrap{position:relative}
+.race-telop{position:absolute;left:14px;right:14px;bottom:14px;z-index:2;background:#071423eb;border:1px solid #3b5d77;border-left:5px solid var(--mint);border-radius:10px;padding:9px 13px;color:var(--ink);font-size:14px;line-height:1.5;box-shadow:0 6px 20px #0008}
+.race-telop[hidden]{display:none}
+.race-telop.bad{border-left-color:var(--red)}
+.race-telop .telop-head{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.race-telop .telop-badge{font-weight:800;color:var(--mint)}.race-telop.bad .telop-badge{color:var(--red)}
+.race-telop p{margin:4px 0 0;color:#d7e7f3}
+.race-telop .telop-label{display:inline-block;min-width:7em;color:var(--muted);font-size:12px}
+.race-telop .mini-btn{margin-top:8px}
+@media(max-width:680px){.race-telop{position:static;margin-top:6px;font-size:13px;padding:8px 10px}.race-telop .telop-label{display:block;min-width:0}}
 </style>
 </head>
 <body>
@@ -228,14 +238,14 @@ details.fold>.championship{margin-top:0}
 </details>
 </section>
 <section class="view" id="view-start">
-  <div class="hero"><div class="panel"><div class="eyebrow">LEARNING EXPERIENCE / SIMULATION</div><h1>チーム全体で速く走るには、<br><span class="accent">AIとの連携が必要。</span></h1><p class="lead">8つの架空レーシングチームとPlus / Proを選び、10種類の案件で1レース10問の判断クイズに挑戦。130問の問題バンクから毎回ランダム出題し、回答がブレーキング・ライン取り・シフトチェンジ・燃料配分となって2Dサーキットに現れます。楽しみながら、人とAIのチーム連携を振り返ろう。</p><div class="strip"><div>実務判断を選ぶ</div><span>→</span><div>答え合わせ</div><span>→</span><div>レース再生</div><span>→</span><div>原因を振り返る</div></div><h3>レーシングチームを選択 <small class="note">8チームすべて架空。得意分野はゲーム用の能力値です。</small></h3>
+  <div class="hero"><div class="panel"><div class="eyebrow">LEARNING EXPERIENCE / SIMULATION</div><h1>チーム全体で速く走るには、<br><span class="accent">AIとの連携が必要。</span></h1><p class="lead">8つの架空レーシングチームとEntry / Expertを選び、10種類の案件で1レース10問の判断クイズに挑戦。130問の問題バンクから毎回ランダム出題し、回答がブレーキング・ライン取り・シフトチェンジ・燃料配分となって2Dサーキットに現れます。楽しみながら、人とAIのチーム連携を振り返ろう。</p><div class="strip"><div>実務判断を選ぶ</div><span>→</span><div>答え合わせ</div><span>→</span><div>レース再生</div><span>→</span><div>原因を振り返る</div></div><h3>レーシングチームを選択 <small class="note">8チームすべて架空。得意分野はゲーム用の能力値です。</small></h3>
 <div id="teamGrid" class="team-grid" aria-label="架空レーシングチーム選択"></div>
 <div id="teamDetail" class="team-detail" aria-live="polite"></div>
-<h3>マシンを選択 <small class="note">チームの特性と、Plus / Pro の出力枠は別々に設定</small></h3><div class="cards"><button class="machine selected" data-machine="plus"><span class="car">🚙</span><h3>PLUS</h3><p>標準出力 / 省燃料 / 安定。基礎が身についていれば着実に完走。</p></button><button class="machine" data-machine="pro"><span class="car">🏎️</span><h3>PRO</h3><p>高出力 / 高速 / 燃料管理がシビア。判断ミスが損失に直結。</p></button></div><div class="buttons"><button class="btn primary" id="startQuiz">10案件コース・セッティング選択へ →</button><button class="btn secondary" id="demoNovice">デモ：初心者の走り</button><button class="btn secondary" id="demoExpert">デモ：模範走行</button></div></div>
+<h3>マシンを選択 <small class="note">チームの特性と、Entry / Expert の出力枠は別々に設定</small></h3><div class="cards"><button class="machine selected" data-machine="plus"><span class="car">🚙</span><h3>ENTRY</h3><p>標準出力 / 省燃料 / 安定。基礎が身についていれば着実に完走。</p></button><button class="machine" data-machine="pro"><span class="car">🏎️</span><h3>EXPERT</h3><p>高出力 / 高速 / 燃料管理がシビア。判断ミスが損失に直結。</p></button></div><div class="buttons"><button class="btn primary" id="startQuiz">10案件コース・セッティング選択へ →</button><button class="btn secondary" id="demoNovice">デモ：初心者の走り</button><button class="btn secondary" id="demoExpert">デモ：模範走行</button></div></div>
   <div class="illustration"><div class="tracklogo">🏎️</div><div class="ribbon"><span class="strong">チーム特性 × 人とAIの協働 = 成果</span>　AIの提案と人間の判断を組織の成果に変える。</div></div></div>
   <details class="fold"><summary>レース用語の意味と注意事項</summary>
   <div class="legend"><div><b>① ブレーキング</b><span>要件確認・停止判断</span></div><div><b>② ライン取り</b><span>タスク分解・進め方</span></div><div><b>③ シフトチェンジ</b><span>エフォート選択・負荷適応</span></div><div><b>④ 燃料配分</b><span>利用量・コスト管理</span></div></div>
-  <p class="note">注：すべてのチーム名・車両型式・能力値・案件適性・10案件コース・出題・融合度スコアは教育目的の架空設定です。実在するAI企業・モデルとの一対一の対応付けではありません。PLUS / PRO は教育目的の架空のマシン区分です。実在サービスのプラン性能、課金額、トークン単価、実測の開発生産性を表すものではありません。自動走行もクイズ回答を因果関係として可視化した教材用シミュレーションです。ギアは推論エフォートの段階を示す比喩で、実車の変速機と同じ物理特性ではありません。画像制作の能力値は単独の言語モデルではなく、画像生成ツールを含む制作ワークフローの仮想評価です。実在のAIモデルのベンチマーク順位や実際のAPI料金を表すものではありません。</p>
+  <p class="note">注：すべてのチーム名・車両型式・能力値・案件適性・10案件コース・出題・融合度スコアは教育目的の架空設定です。実在するAI企業・モデルとの一対一の対応付けではありません。ENTRY / EXPERT は教育目的の架空のマシン区分です。実在サービスのプラン性能、課金額、トークン単価、実測の開発生産性を表すものではありません。自動走行もクイズ回答を因果関係として可視化した教材用シミュレーションです。ギアは推論エフォートの段階を示す比喩で、実車の変速機と同じ物理特性ではありません。画像制作の能力値は単独の言語モデルではなく、画像生成ツールを含む制作ワークフローの仮想評価です。実在のAIモデルのベンチマーク順位や実際のAPI料金を表すものではありません。</p>
   </details>
 </section>
 
@@ -262,8 +272,8 @@ details.fold>.championship{margin-top:0}
 <section class="view" id="view-quiz"><div class="panel" style="max-width:830px;margin:auto"><div class="qhead"><div><div class="eyebrow">TEAM DECISION CHECK / HUMAN × AI</div><h2 id="qTitle" style="margin:0"></h2></div><span class="pill" id="qCounter"></span></div><div class="progress"><i id="qProgress"></i></div><div class="q-meta"><span class="pill" id="qLevel"></span><span class="note" id="qSection"></span></div><div id="qScene" class="scenario"></div><div id="qOptions"></div><div class="buttons" style="justify-content:space-between;margin-top:25px"><button class="btn secondary" id="prevQuiz">← 前の問題</button><button class="btn primary" id="nextQuiz" disabled>次へ →</button></div></div></section>
 <section class="view" id="view-review"><div class="eyebrow">HUMAN × AI / ANSWER REVIEW</div><div id="teamReviewBadge" class="team-inline"></div><h1>判断が、どんな走りになるか。</h1><p class="lead">ここで答え合わせを行います。選択した案件コースとセッティングも評価します。正解数だけではなく、<b>選んだ回答に対応する運転のクセ</b>を10セクター・10チェックポイントに割り当てました。どこでロスが生じるか確認してからリプレイしてください。</p><div class="stats"><div class="stat"><span class="label">正解数</span><b id="reviewCorrect" class="cyan">—</b></div><div class="stat"><span class="label">選択マシン</span><b id="reviewMachine" style="font-size:clamp(13px,1.6vw,19px)">—</b></div><div class="stat"><span class="label">改善が必要な回答</span><b id="reviewBad" class="amber">—</b></div><div class="stat"><span class="label">リプレイ</span><b>3 LAPS</b></div></div><div class="tabbar" role="tablist" aria-label="答え合わせの表示切り替え" data-tabset="review"><button type="button" role="tab" data-tab="reviewTabSummary">サマリー</button><button type="button" role="tab" data-tab="reviewTabAll">全10問の解説</button></div><div id="reviewTabSummary"><h2 style="margin:8px 0 10px">10領域の判断傾向 <span class="note">（各領域1問・習熟度の認定ではありません）</span></h2><div id="fusionSummary" class="fusion-summary" aria-label="人とAIの協働評価"></div><div id="areaSummary" class="area-summary"></div></div><div id="reviewTabAll"><div class="buttons" style="margin:8px 0 6px"><button class="mini-btn active" id="reviewShowAll">全10問を表示</button><button class="mini-btn" id="reviewShowMiss">改善が必要な回答のみ</button></div><div id="reviewGrid" class="review-grid"></div></div><div class="buttons"><button class="btn primary" id="toReplay">05：俯瞰2D走行を再生 ▶</button><button class="btn secondary" id="backToQuiz">クイズを見直す</button></div></section>
 <section class="view" id="view-race"><div class="eyebrow">DECISION REPLAY / 2D TECHNICAL CIRCUIT</div><div id="teamReplayBadge" class="team-inline"></div><h1>案件に合わせた判断と設定を、コース上で再生。</h1><p class="lead">05ではコース全体を俯瞰で再生します。06では運転席で車載AIの助言を確認できます。青があなた、緑が理想判断のゴースト。回答に応じてエフォートが <b>G1 LOW → G2 MEDIUM → G3 HIGH → G4 XHIGH</b> とシフトチェンジします。難所だけ上げ、平易な区間では下げる判断が燃費・タイムを左右します。</p><div class="stats"><div class="stat"><span class="label">経過タイム</span><b id="hudTime" class="cyan">00:00.0</b></div><div class="stat"><span class="label">周回</span><b id="hudLap">1 / 3</b></div><div class="stat"><span class="label">速度（ゲーム内）</span><b id="hudSpeed">0</b></div><div class="stat"><span class="label">燃料（利用枠）</span><b id="hudFuel" class="amber">100%</b></div></div><div class="race-layout"><div>
-<div class="camera-unit" id="mapCamera"><div class="track-wrap"><canvas id="track" width="1050" height="635" role="img" aria-label="回答によって走行軌跡が変わる2Dコース俯瞰リプレイ"></canvas></div><div class="camera-caption">俯瞰2D：実際の走行軌跡・理想ゴースト・コースアウト地点を比較</div></div>
-<div class="gear-map" id="gearMap" aria-label="10問のエフォートギア選択マップ"></div><div class="track-controls"><button class="btn primary small" id="togglePlay">▶ 再生</button><button class="mini-btn" id="restartReplay">↺ 最初から</button><button class="mini-btn" id="nextEvent">⏭ 次の区間</button><div class="control-group"><span class="note">再生速度</span><button class="mini-btn" data-speed="1">1×</button><button class="mini-btn active" data-speed="3">3×</button><button class="mini-btn" data-speed="6">6×</button></div><label class="check"><input id="showGhost" type="checkbox" checked>理想ゴースト</label><label class="check"><input id="autoPause" type="checkbox">毎区間で解説停止</label></div><input class="scrub" type="range" min="0" max="1000" step="1" value="0" id="scrubber" aria-label="再生位置"><div class="timecode"><span id="timeStart">00:00.0</span><span id="timeTotal">00:00.0</span></div><div id="endState" style="display:none" class="outcome"></div></div><aside class="race-sidebar"><div class="panel gearbox-panel" aria-live="off">
+<div class="camera-unit" id="mapCamera"><div class="track-wrap"><canvas id="track" width="1050" height="635" role="img" aria-label="回答によって走行軌跡が変わる2Dコース俯瞰リプレイ"></canvas><div id="raceTelop" class="race-telop" hidden aria-live="polite"></div></div><div class="camera-caption">俯瞰2D：実際の走行軌跡・理想ゴースト・コースアウト地点を比較</div></div>
+<div class="gear-map" id="gearMap" aria-label="10問のエフォートギア選択マップ"></div><div class="track-controls"><button class="btn primary small" id="togglePlay">▶ 再生</button><button class="mini-btn" id="restartReplay">↺ 最初から</button><button class="mini-btn" id="nextEvent">⏭ 次の区間</button><div class="control-group"><span class="note">再生速度</span><button class="mini-btn" data-speed="1">1×</button><button class="mini-btn active" data-speed="3">3×</button><button class="mini-btn" data-speed="6">6×</button></div><label class="check"><input id="showGhost" type="checkbox" checked>理想ゴースト</label><label class="check"><input id="autoPause" type="checkbox">区間ごとに止めて解説</label></div><input class="scrub" type="range" min="0" max="1000" step="1" value="0" id="scrubber" aria-label="再生位置"><div class="timecode"><span id="timeStart">00:00.0</span><span id="timeTotal">00:00.0</span></div><div id="endState" style="display:none" class="outcome"></div></div><aside class="race-sidebar"><div class="panel gearbox-panel" aria-live="off">
 <div class="eyebrow">EFFORT / SHIFT CHANGE</div>
 <div class="gear-primary"><span class="gear-big" id="gearNow">G2</span><div class="gear-side"><strong id="gearName">MEDIUM</strong><span id="gearMatch" class="pill">走行準備</span></div></div>
 <div class="gear-chain" id="gearChain"><span>G1<small>LOW</small></span><span>G2<small>MEDIUM</small></span><span>G3<small>HIGH</small></span><span>G4<small>XHIGH</small></span></div>
@@ -656,6 +666,7 @@ $('titleResume').addEventListener('click',()=>{
  if(view==='result' && STATE.sim){makeResult();makeReviewCheckpoints();}
  show(view);
 });
+const MACHINE_LABEL={plus:'ENTRY',pro:'EXPERT'};const machineLabel=()=>MACHINE_LABEL[STATE.machine]||STATE.machine.toUpperCase();
 function chooseMachine(m){STATE.machine=m;document.querySelectorAll('.machine').forEach(el=>el.classList.toggle('selected',el.dataset.machine===m))}
 document.querySelectorAll('.machine').forEach(el=>el.addEventListener('click',()=>chooseMachine(el.dataset.machine)));
 $('startQuiz').addEventListener('click',()=>{selectCourse(ACTIVE_COURSE.id);show('course')});
@@ -688,7 +699,7 @@ function buildReview(){renderTeamBadges();let correct=QUESTIONS.reduce((n,q,i)=>
   summary.append(el);
  }
  $('reviewShowAll').classList.add('active');$('reviewShowMiss').classList.remove('active');
- renderFusion('fusionSummary');$('reviewCorrect').textContent=`${correct} / ${QUESTIONS.length}`;$('reviewBad').textContent=`${QUESTIONS.length-correct} 問`;$('reviewMachine').textContent=chosenTeam().name+' / '+STATE.machine.toUpperCase()+' / '+ACTIVE_COURSE.name;$('reviewGrid').innerHTML='';QUESTIONS.forEach((q,i)=>{const d=getDecision(i),node=document.createElement('article');node.className=`review-card ${d.correct?'good':'bad'}`;node.dataset.correct=String(d.correct);node.innerHTML=`<div class="review-title"><b></b><span class="pill ${d.correct?'good':'bad'}">${d.correct?'適切な判断':'改善が必要'}</span></div><p></p><p style="color:#9fc7db"></p><p class="drivehint"></p>`;node.querySelector('b').textContent=`${i+1}. ${q.title}［${q.level}］`;node.querySelectorAll('p')[0].textContent=`あなたの回答：${d.choice[0]}`;node.querySelectorAll('p')[1].textContent=`解説：${q.reason}`;node.querySelectorAll('p')[2].textContent=`走行への反映：${d.explain}　／　エフォート：G${gearPlan(i,.5,STATE.answers).gear}（理想G${Math.max(1,Math.min(4,q.idealGear+ACTIVE_COURSE.bias))}）`;$('reviewGrid').appendChild(node)});}
+ renderFusion('fusionSummary');$('reviewCorrect').textContent=`${correct} / ${QUESTIONS.length}`;$('reviewBad').textContent=`${QUESTIONS.length-correct} 問`;$('reviewMachine').textContent=chosenTeam().name+' / '+machineLabel()+' / '+ACTIVE_COURSE.name;$('reviewGrid').innerHTML='';QUESTIONS.forEach((q,i)=>{const d=getDecision(i),node=document.createElement('article');node.className=`review-card ${d.correct?'good':'bad'}`;node.dataset.correct=String(d.correct);node.innerHTML=`<div class="review-title"><b></b><span class="pill ${d.correct?'good':'bad'}">${d.correct?'適切な判断':'改善が必要'}</span></div><p></p><p style="color:#9fc7db"></p><p class="drivehint"></p>`;node.querySelector('b').textContent=`${i+1}. ${q.title}［${q.level}］`;node.querySelectorAll('p')[0].textContent=`あなたの回答：${d.choice[0]}`;node.querySelectorAll('p')[1].textContent=`解説：${q.reason}`;node.querySelectorAll('p')[2].textContent=`走行への反映：${d.explain}　／　エフォート：G${gearPlan(i,.5,STATE.answers).gear}（理想G${Math.max(1,Math.min(4,q.idealGear+ACTIVE_COURSE.bias))}）`;$('reviewGrid').appendChild(node)});}
 function setReviewFilter(showMiss){
  $('reviewShowAll').classList.toggle('active',!showMiss);
  $('reviewShowMiss').classList.toggle('active',showMiss);
@@ -816,7 +827,7 @@ function createGearMap(){
   holder.append(btn);
  });
 }
-function stop(){STATE.playing=false;if(STATE.tickRaf)cancelAnimationFrame(STATE.tickRaf);STATE.tickRaf=0;$('togglePlay').textContent='▶ 再生'}
+function stop(){STATE.playing=false;if(STATE.tickRaf)cancelAnimationFrame(STATE.tickRaf);STATE.tickRaf=0;$('togglePlay').textContent='▶ 再生';refreshTelop()}
 function start(){if(!STATE.sim)return;if(STATE.playTime>=STATE.duration)STATE.playTime=0;STATE.playing=true;STATE.lastNow=0;$('togglePlay').textContent='⏸ 一時停止';STATE.tickRaf=requestAnimationFrame(loop)}
 function loop(now){if(!STATE.playing)return;let dt=STATE.lastNow?Math.min(.07,(now-STATE.lastNow)/1000):0;STATE.lastNow=now;let old=STATE.playTime;STATE.playTime=Math.min(STATE.duration,STATE.playTime+dt*STATE.speed);if($('autoPause').checked && old>0){let prev=currentFrame(STATE.sim,old),next=currentFrame(STATE.sim,STATE.playTime);if(prev.sector!==next.sector || prev.lap!==next.lap){stop();STATE.playTime=STATE.playTime;}}
  drawRace(STATE.playTime);if(STATE.playTime>=STATE.duration){stop();$('endState').style.display='block';$('endState').className='outcome '+(STATE.sim.finished?'':'fail');$('endState').textContent=STATE.sim.finished?'3周完走。あなたの判断がタイムと燃費にどう反映されたか、結果画面で確認できます。':'燃料切れにより途中停止。どの判断で燃料を浪費したか、区間一覧と答え合わせを確認できます。'}else if(STATE.playing){STATE.tickRaf=requestAnimationFrame(loop)}}
@@ -894,6 +905,31 @@ function roadProjection(frame,z){
  return {x:525+curve*(.19+.81*z),y:165+Math.pow(z,1.75)*345,half:18+515*Math.pow(z,1.85)};
 }
 function polygon(context,arr,color){context.fillStyle=color;context.beginPath();arr.forEach((p,i)=>i?context.lineTo(p[0],p[1]):context.moveTo(p[0],p[1]));context.closePath();context.fill();}
+// Onboard AI robot sitting on the dashboard (original design). Eyes: green = good call, red = misjudgement.
+function drawDashRobot(d,frame,time,tilt){
+ const team=chosenTeam(),dec=QUESTIONS.length?getDecision(frame.sector):null,eye=!dec?'#9ff3ff':dec.correct?'#7dffb8':'#ff7f8c';
+ const blink=(time*.9)%4<.12,bob=Math.sin(time*3)*1.5;
+ d.save();d.translate(318,482);
+ // shadow and base
+ d.fillStyle='#00000055';d.beginPath();d.ellipse(0,0,34,6,0,0,Math.PI*2);d.fill();
+ d.fillStyle='#1b2c3d';d.beginPath();d.roundRect(-22,-12,44,12,5);d.fill();
+ // body
+ d.translate(0,bob);d.fillStyle=team.color;d.strokeStyle='#e9fbff';d.lineWidth=2;d.beginPath();d.roundRect(-20,-46,40,36,12);d.fill();d.stroke();
+ d.fillStyle='#0b1a29';d.beginPath();d.roundRect(-11,-38,22,13,4);d.fill();
+ d.fillStyle=eye;for(let i=0;i<3;i++){d.fillRect(-8+i*6,-34,4,(Math.sin(time*6+i)+1)*2.5+1)}
+ // arms
+ d.strokeStyle=team.color;d.lineWidth=6;d.lineCap='round';d.beginPath();d.moveTo(-19,-34);d.lineTo(-29,-22+Math.sin(time*2)*3);d.moveTo(19,-34);d.lineTo(29,-24);d.stroke();
+ // head
+ d.save();d.translate(0,-48);d.rotate(Math.max(-.3,Math.min(.3,tilt*.7)));
+ d.fillStyle='#dfeef7';d.strokeStyle=team.color;d.lineWidth=3;d.beginPath();d.roundRect(-26,-34,52,34,13);d.fill();d.stroke();
+ d.fillStyle='#0a1724';d.beginPath();d.roundRect(-20,-27,40,19,9);d.fill();
+ d.fillStyle=eye;d.shadowColor=eye;d.shadowBlur=12;
+ if(blink){d.fillRect(-13,-18,9,2.5);d.fillRect(4,-18,9,2.5)}else{d.beginPath();d.arc(-8.5,-17.5,4.6,0,Math.PI*2);d.arc(8.5,-17.5,4.6,0,Math.PI*2);d.fill()}
+ d.shadowBlur=0;
+ // antenna
+ d.strokeStyle='#dfeef7';d.lineWidth=2.5;d.beginPath();d.moveTo(0,-34);d.lineTo(0,-45);d.stroke();d.fillStyle=Math.sin(time*5)>0?eye:team.color;d.beginPath();d.arc(0,-48,4,0,Math.PI*2);d.fill();
+ d.restore();d.restore();
+}
 function drawDriverView(frame,time){
  const w=dc.width,h=dc.height,d=dx;
  let sky=d.createLinearGradient(0,0,0,240);sky.addColorStop(0,'#071b38');sky.addColorStop(.65,'#4b7896');sky.addColorStop(1,'#bdd5c6');d.fillStyle=sky;d.fillRect(0,0,w,225);
@@ -926,6 +962,7 @@ function drawDriverView(frame,time){
  d.fillStyle='#081929d9';d.beginPath();d.roundRect(20,19,306,67,13);d.fill();d.beginPath();d.roundRect(801,19,232,67,13);d.fill();
  d.font='800 20px system-ui';d.fillStyle='#e9f8ff';d.textAlign='left';d.fillText('COCKPIT / '+chosenTeam().model,35,45);d.font='15px system-ui';d.fillStyle='#a6d0df';d.fillText(ACTIVE_COURSE.name+' ・ '+segmentName(sectorOf(frame.sector)),35,72);
  d.fillStyle='#dff9f9';d.font='900 29px system-ui';d.fillText(Math.round(frame.speed)+' km/h',818,50);d.font='700 15px system-ui';d.fillStyle=frame.fuel<22?'#ff9b91':'#8cecc9';d.fillText('FUEL '+frame.fuel.toFixed(0)+'%  /  LAP '+(frame.lap+1)+'/3',818,74);
+ drawDashRobot(d,frame,time,delta);
  if(!frame.gearMatch){d.fillStyle='#fbbe6e';d.font='800 18px system-ui';d.textAlign='center';d.fillText('SHIFT ADVICE  G'+frame.gear+' → G'+frame.idealGear,525,116)}
  if(frame.spin||frame.offTrack){d.fillStyle='#e96170df';d.beginPath();d.roundRect(317,121,417,45,12);d.fill();d.font='900 22px system-ui';d.fillStyle='white';d.textAlign='center';d.fillText(frame.spin?'SPIN / テスト判断の失敗':'WARNING / コースアウト',525,151)}
  d.restore();
@@ -942,7 +979,53 @@ function drawDecor(){ctx.fillStyle='#163f37';ctx.fillRect(0,0,W,H);const grd=ctx
  // 10 sector numbered flags on outer edge
  for(let i=0;i<10;i++){let p=atDistance((i+.5)/10*TRACK.len);let x=p.x+p.nx*57,y=p.y+p.ny*57;ctx.fillStyle='#091826d9';ctx.beginPath();ctx.arc(x,y,13,0,2*Math.PI);ctx.fill();ctx.strokeStyle='#9ec8ce';ctx.lineWidth=1;ctx.stroke();ctx.fillStyle='#e6f6ff';ctx.textAlign='center';ctx.textBaseline='middle';ctx.font='bold 12px sans-serif';ctx.fillText(String(i+1),x,y+1)}ctx.textAlign='left';ctx.textBaseline='alphabetic';}
 function drawTrace(frames,time,color,width,alpha=1){ctx.save();ctx.globalAlpha=alpha;ctx.strokeStyle=color;ctx.lineWidth=width;ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();let started=false;for(let i=0;i<frames.length;i+=3){let f=frames[i];if(f.t>time)break;if(!started){ctx.moveTo(f.x,f.y);started=true}else ctx.lineTo(f.x,f.y)}ctx.stroke();ctx.restore()}
-function drawCar(f,color,ghost=false){ctx.save();ctx.translate(f.x,f.y);ctx.rotate(f.heading);ctx.shadowColor=color;ctx.shadowBlur=ghost?10:18;ctx.fillStyle=color;ctx.strokeStyle=ghost?'#efffed':'#e3faff';ctx.lineWidth=1.4;ctx.beginPath();ctx.roundRect(-17,-10,34,20,5);ctx.fill();ctx.stroke();ctx.shadowBlur=0;ctx.fillStyle=ghost?'#286c4d':'#144b76';ctx.fillRect(-7,-8,14,16);ctx.fillStyle='#07111c';ctx.fillRect(-11,-13,8,4);ctx.fillRect(5,-13,8,4);ctx.fillRect(-11,9,8,4);ctx.fillRect(5,9,8,4);ctx.fillStyle='#fafbf2';ctx.fillRect(14,-7,3,5);ctx.fillRect(14,2,3,5);ctx.restore()}
+// Team-specific near-future formula cars (original designs). +x is forward.
+const CAR_STYLES={
+ aurora:{nose:'round',pod:1,fw:2,rw:'std',fin:false,accent:'#ffffff',mark:'center'},
+ titan:{nose:'flat',pod:1.3,fw:1,rw:'wide',fin:false,accent:'#4a2a16',mark:'twin'},
+ prism:{nose:'needle',pod:.85,fw:2,rw:'std',fin:true,accent:'#fff07a',mark:'prism'},
+ vortex:{nose:'shark',pod:1,fw:1,rw:'twin',fin:true,accent:'#3a2306',mark:'chevron'},
+ vector:{nose:'needle',pod:.8,fw:1,rw:'std',fin:false,accent:'#f2f8ff',mark:'arrow'},
+ orbit:{nose:'round',pod:1.15,fw:1,rw:'ring',fin:false,accent:'#fff4b0',mark:'ring'},
+ fortress:{nose:'flat',pod:1.4,fw:2,rw:'wide',fin:false,accent:'#4d1612',mark:'twin'},
+ enduro:{nose:'shark',pod:1,fw:1,rw:'high',fin:true,accent:'#3c2f06',mark:'center'}
+};
+function drawCar(f,color,ghost=false,style=CAR_STYLES[chosenTeam().id]||CAR_STYLES.aurora){
+ const c=ctx,st=style,pw=7*st.pod,tip={needle:25,shark:23,round:22,flat:21}[st.nose],nw={needle:1.8,shark:2.4,round:3,flat:3.6}[st.nose];
+ c.save();c.translate(f.x,f.y);c.rotate(f.heading);if(ghost)c.globalAlpha=.6;
+ const dark='#07111c',edge=ghost?'#efffed':'#e3faff';
+ // rear wing
+ c.fillStyle=dark;c.strokeStyle=color;c.lineWidth=1.4;const rh=st.rw==='wide'?15:13;
+ if(st.rw==='twin'){c.fillRect(-23,-rh,3,rh*2);c.fillRect(-19,-rh+1,2,rh*2-2);c.strokeRect(-23,-rh,3,rh*2)}
+ else if(st.rw==='ring'){c.beginPath();c.ellipse(-20,0,3.5,rh,0,0,Math.PI*2);c.fill();c.stroke()}
+ else{c.fillRect(-23,-rh,5,rh*2);c.strokeRect(-23,-rh,5,rh*2);if(st.rw==='high'){c.fillStyle=color;c.fillRect(-24,-rh-1,7,2);c.fillRect(-24,rh-1,7,2)}}
+ // wheels
+ c.fillStyle='#050a12';for(const sy of[-1,1]){c.beginPath();c.roundRect(-15,sy>0?pw+1:-pw-6,9,5,1.5);c.fill();c.beginPath();c.roundRect(8,sy>0?pw-.5:-pw-4.5,8,5,1.5);c.fill()}
+ // body
+ c.shadowColor=color;c.shadowBlur=ghost?8:16;c.fillStyle=color;c.strokeStyle=edge;c.lineWidth=1.2;c.beginPath();
+ if(st.nose==='round'){c.moveTo(14,-nw);c.quadraticCurveTo(tip+1,-nw,tip,0);c.quadraticCurveTo(tip+1,nw,14,nw)}
+ else if(st.nose==='flat'){c.moveTo(14,-nw);c.lineTo(tip,-2.4);c.lineTo(tip,2.4);c.lineTo(14,nw)}
+ else{c.moveTo(14,-nw);c.lineTo(tip,0);c.lineTo(14,nw)}
+ c.lineTo(6,3.6);c.lineTo(2,pw);c.lineTo(-12,pw);c.lineTo(-17,4);c.lineTo(-17,-4);c.lineTo(-12,-pw);c.lineTo(2,-pw);c.lineTo(6,-3.6);c.closePath();c.fill();c.stroke();c.shadowBlur=0;
+ // front wing
+ c.fillStyle=dark;c.strokeStyle=color;const fx=st.nose==='needle'?16:15;c.fillRect(fx,-12,3,24);c.strokeRect(fx,-12,3,24);if(st.fw===2){c.fillRect(fx+4,-10.5,2,21)}
+ if(!ghost){
+   // team markings
+   c.fillStyle=st.accent;c.strokeStyle=st.accent;c.lineWidth=1.6;
+   if(st.mark==='center'){c.fillRect(-16,-.8,tip-18,1.6)}
+   else if(st.mark==='twin'){c.fillRect(-14,-3.2,26,1.3);c.fillRect(-14,1.9,26,1.3)}
+   else if(st.mark==='prism'){['#ff7ca8','#fff07a','#7cf0ff'].forEach((col,i)=>{c.fillStyle=col;c.fillRect(-9+i*3.5,-pw+1,2.4,pw*2-2)})}
+   else if(st.mark==='chevron'){for(const sy of[-1,1]){c.beginPath();c.moveTo(-10,sy*(pw-1));c.lineTo(-4,sy*(pw-3.5));c.lineTo(2,sy*(pw-1));c.stroke()}}
+   else if(st.mark==='arrow'){c.beginPath();c.moveTo(tip-3,0);c.lineTo(tip-8,-2.6);c.lineTo(tip-8,2.6);c.closePath();c.fill();c.fillRect(-14,-.6,tip-20,1.2)}
+   else if(st.mark==='ring'){for(const sy of[-1,1]){c.beginPath();c.arc(-6,sy*(pw-3),2.2,0,Math.PI*2);c.stroke()}}
+   if(st.fin){c.fillStyle='#ffffffcc';c.fillRect(-16,-.7,11,1.4)}
+   // glowing pod lines
+   c.strokeStyle='#e8fbffaa';c.lineWidth=.8;for(const sy of[-1,1]){c.beginPath();c.moveTo(1,sy*(pw-1.2));c.lineTo(-11,sy*(pw-1.2));c.stroke()}
+ }
+ // canopy
+ c.fillStyle=ghost?'#286c4d':'#06111d';c.strokeStyle=ghost?'#bfffd9':'#9ff3ff';c.lineWidth=1;c.beginPath();c.ellipse(-1,0,6,3.2,0,0,Math.PI*2);c.fill();c.stroke();
+ c.restore();
+}
 function updateGearHUD(f,time){
  const ideal=f.idealGear,gear=f.gear,match=f.gearMatch;
  $('gearNow').textContent='G'+gear;$('gearNow').classList.toggle('wrong',!match);
@@ -958,6 +1041,24 @@ function updateGearHUD(f,time){
  const box=$('gearShifts');box.replaceChildren();
  for(const item of moves){const e=document.createElement('div');e.className='shift-entry'+(item.match?'':' wrong');e.textContent=`${item.from<item.to?'↑ UP':'↓ DOWN'}　G${item.from} → G${item.to}　/　L${item.lap+1}・Q${item.sector+1}`;box.append(e);}
 }
+// Course telop: a short strip when a sector starts, the full explanation while paused mid-race.
+function updateTelop(f,d,time){
+ const el=$('raceTelop');if(!el)return;const now=performance.now();
+ if(f.sector!==STATE.telopSector||f.lap!==STATE.telopLap){STATE.telopSector=f.sector;STATE.telopLap=f.lap;STATE.telopAt=now;}
+ const paused=!STATE.playing&&time>0&&time<STATE.duration,fresh=STATE.playing&&now-STATE.telopAt<2200,mode=paused?'full':fresh?'brief':'';
+ const key=mode+':'+f.lap+':'+f.sector;if(key===STATE.telopKey)return;STATE.telopKey=key;
+ el.hidden=!mode;if(!mode){el.replaceChildren();return}
+ el.className='race-telop '+(d.correct?'good':'bad')+(mode==='full'?' full':'');
+ const head=document.createElement('div');head.className='telop-head';const badge=document.createElement('span');badge.className='telop-badge';badge.textContent=d.correct?'○ 適切な判断':'× 判断ミス';const title=document.createElement('b');title.textContent=`Q${f.sector+1}. ${d.q.title}`;head.append(badge,title);
+ const parts=[head];
+ if(mode==='full'){
+   const add=(label,text)=>{const p=document.createElement('p'),l=document.createElement('span');l.className='telop-label';l.textContent=label;p.append(l,text);parts.push(p)};
+   add('あなたの選択',d.choice[0]);if(!d.correct)add('推奨',d.q.choices[d.q.correct][0]);add('走りへの影響',d.explain);
+   const b=document.createElement('button');b.type='button';b.className='mini-btn';b.textContent='▶ 続きを再生';b.addEventListener('click',()=>start());parts.push(b);
+ }
+ el.replaceChildren(...parts);
+}
+function refreshTelop(){if(!STATE.sim)return;const f=currentFrame(STATE.sim,STATE.playTime);updateTelop(f,getDecision(f.sector),STATE.playTime)}
 function drawRace(time){if(!STATE.sim)return;const f=currentFrame(STATE.sim,time),g=currentFrame(STATE.ideal,time);ctx.clearRect(0,0,W,H);drawDecor();if($('showGhost').checked){drawTrace(STATE.ideal.frames,time,'#72edac',4,.55);drawCar(g,'#76e8a8',true)}drawTrace(STATE.sim.frames,time,chosenTeam().color,4,.85);drawCar(f,chosenTeam().color);
  let d=getDecision(f.sector),k=d.kind;if(!d.correct){const p=atDistance((f.lap+(f.sector+.5)/QUESTIONS.length)*TRACK.len);ctx.save();ctx.fillStyle='#e15e48';ctx.strokeStyle='#ffbaa1';ctx.lineWidth=2;ctx.beginPath();ctx.arc(p.x,p.y,11,0,2*Math.PI);ctx.fill();ctx.stroke();ctx.fillStyle='#fff';ctx.textAlign='center';ctx.textBaseline='middle';ctx.font='bold 15px sans-serif';ctx.fillText('!',p.x,p.y+1);ctx.restore()}
  if(f.spin){ctx.save();ctx.strokeStyle='#ffdd80';ctx.lineWidth=5;ctx.beginPath();ctx.arc(f.x,f.y,32,0,1.7*Math.PI);ctx.stroke();ctx.restore()}
@@ -972,7 +1073,7 @@ function drawRace(time){if(!STATE.sim)return;const f=currentFrame(STATE.sim,time
  ctx.fillStyle='#0a1a2ccb';ctx.beginPath();ctx.roundRect(820,17,214,60,11);ctx.fill();ctx.font='bold 17px sans-serif';ctx.fillStyle='#fff';ctx.fillText(chosenTeam().name+'  /  '+(f.lap+1)+'/3 LAP',836,41);ctx.fillStyle='#9dd4e2';ctx.font='13px sans-serif';ctx.fillText('FUEL  '+f.fuel.toFixed(0)+'%',836,63);
  $('hudTime').textContent=clock(time);$('hudLap').textContent=`${Math.min(3,f.lap+1)} / 3`;$('hudSpeed').textContent=`${Math.round(f.speed)} km/h`;$('hudFuel').textContent=f.fuel.toFixed(0)+'%';$('fuelbar').style.width=f.fuel+'%';$('fuelbar').style.filter=f.fuel<20?'saturate(1.5) hue-rotate(315deg)':'';$('fuelMessage').textContent=f.fuel<22?'利用枠が逼迫。終盤の検証や修正に使える余力が少ない状態。':'区間ごとの選択が消費ペースを左右します。';$('scrubber').value=String(Math.round(time/STATE.duration*1000));$('timeStart').textContent=clock(time);
  $('nowHeading').textContent=`${ACTIVE_COURSE.name} ／ ${segmentName(sectorOf(f.sector))} ／ Q${f.sector+1}. ${d.q.title}（${d.q.level}）`;$('nowDescription').innerHTML='';$('nowDescription').textContent=(d.correct?'適切な判断：':'判断ミス：')+d.explain;$('nowAnswer').textContent='AIからの推奨：'+d.q.choices[d.q.correct][0]+'\n人間・チームの選択：'+d.choice[0]+'\n'+(d.correct?'提案と判断が整合。':'この判断が速度・ライン・燃料に影響。');$('sectorCount').textContent=`${QUESTIONS.filter((q,i)=>isRight(i)).length}/${QUESTIONS.length} 適切`;
- updateGearHUD(f,time);document.querySelectorAll('.checkpoint').forEach((el,i)=>el.classList.toggle('current',i===f.sector));}
+ updateTelop(f,d,time);updateGearHUD(f,time);document.querySelectorAll('.checkpoint').forEach((el,i)=>el.classList.toggle('current',i===f.sector));}
 
 // Stage 06: separate cockpit playback and checkpoint coaching, distinct from stage 05 map replay.
 function stopReview(){
@@ -1038,7 +1139,7 @@ $('reviewNext').addEventListener('click',()=>{
 });
 $('reviewScrubber').addEventListener('input',e=>seekReview(STATE.duration*Number(e.target.value)/1000));
 $('showResult').addEventListener('click',()=>{stop();makeResult();STATE.reviewTime=0;STATE.lastAIKey='';makeReviewCheckpoints();show('result')});$('replayQuiz').addEventListener('click',()=>{stop();prepareNewQuiz();renderQuestion();show('quiz')});
-function makeResult(){renderFusion('fusionResult');const sim=STATE.sim,ideal=STATE.ideal,wrong=QUESTIONS.map((q,i)=>({q,i,d:getDecision(i)})).filter(o=>!o.d.correct);$('finalStatus').className='result-hero '+(sim.finished?'good':'bad');$('finalStatus').textContent=!sim.finished?'ガス欠 / リタイア':sim.quality<ACTIVE_COURSE.pass?'完走・品質未達':'品質達成・完走！';renderTeamBadges();$('resultText').textContent=sim.finished?`${chosenTeam().name}の${STATE.machine.toUpperCase()}マシンで${ACTIVE_COURSE.name}を3周走行。設定と判断による品質 ${sim.quality} / 100（目標 ${ACTIVE_COURSE.pass}）を確認してください。`:`${STATE.machine.toUpperCase()}マシンは${Math.max(1,Math.floor(sim.distance/TRACK.len)+1)}周目で燃料切れ。高出力と判断ミスの組み合わせによって、最後まで走れませんでした。`;$('finalTime').textContent=sim.finished?clock(sim.duration):clock(sim.duration)+' *';$('ghostTime').textContent=clock(ideal.duration);$('finalFuel').textContent=sim.fuel.toFixed(1)+'%';$('finalPenalty').textContent='+'+sim.penalty.toFixed(1)+' 秒';const holder=$('resultFeedback');holder.innerHTML='';const gearSummary=document.createElement('p');gearSummary.className='note';const mismatches=QUESTIONS.filter((q,i)=>!gearPlan(i,.5,STATE.answers).match).length;gearSummary.textContent=`シフト診断：${QUESTIONS.length}地点中${QUESTIONS.length-mismatches}地点で適切なギアを選択。必要な難所だけシフトアップするのがコツです。`;holder.append(gearSummary);if(!wrong.length){holder.innerHTML='<p>全問適切な判断です。高性能のマシンを使っても、常にこのような判断ができるとは限らないため、実務でも継続的に記録・検証してください。</p>'}else{let list=document.createElement('ol');wrong.forEach(o=>{let li=document.createElement('li');let b=document.createElement('b');b.textContent=o.q.title;let p=document.createElement('div');p.className='note';p.textContent=`走行：${o.d.explain}　改善：${o.q.choices[o.q.correct][0]}`;li.append(b,p);list.append(li)});holder.append(list)}renderSetupResult();if(!sim.finished){let note=document.createElement('p');note.className='note';note.textContent='* タイムは途中停止までの経過時間。完走タイムとは比較できません。';holder.append(note)} saveCourseRecord();refreshChampionship();}
+function makeResult(){renderFusion('fusionResult');const sim=STATE.sim,ideal=STATE.ideal,wrong=QUESTIONS.map((q,i)=>({q,i,d:getDecision(i)})).filter(o=>!o.d.correct);$('finalStatus').className='result-hero '+(sim.finished?'good':'bad');$('finalStatus').textContent=!sim.finished?'ガス欠 / リタイア':sim.quality<ACTIVE_COURSE.pass?'完走・品質未達':'品質達成・完走！';renderTeamBadges();$('resultText').textContent=sim.finished?`${chosenTeam().name}の${machineLabel()}マシンで${ACTIVE_COURSE.name}を3周走行。設定と判断による品質 ${sim.quality} / 100（目標 ${ACTIVE_COURSE.pass}）を確認してください。`:`${machineLabel()}マシンは${Math.max(1,Math.floor(sim.distance/TRACK.len)+1)}周目で燃料切れ。高出力と判断ミスの組み合わせによって、最後まで走れませんでした。`;$('finalTime').textContent=sim.finished?clock(sim.duration):clock(sim.duration)+' *';$('ghostTime').textContent=clock(ideal.duration);$('finalFuel').textContent=sim.fuel.toFixed(1)+'%';$('finalPenalty').textContent='+'+sim.penalty.toFixed(1)+' 秒';const holder=$('resultFeedback');holder.innerHTML='';const gearSummary=document.createElement('p');gearSummary.className='note';const mismatches=QUESTIONS.filter((q,i)=>!gearPlan(i,.5,STATE.answers).match).length;gearSummary.textContent=`シフト診断：${QUESTIONS.length}地点中${QUESTIONS.length-mismatches}地点で適切なギアを選択。必要な難所だけシフトアップするのがコツです。`;holder.append(gearSummary);if(!wrong.length){holder.innerHTML='<p>全問適切な判断です。高性能のマシンを使っても、常にこのような判断ができるとは限らないため、実務でも継続的に記録・検証してください。</p>'}else{let list=document.createElement('ol');wrong.forEach(o=>{let li=document.createElement('li');let b=document.createElement('b');b.textContent=o.q.title;let p=document.createElement('div');p.className='note';p.textContent=`走行：${o.d.explain}　改善：${o.q.choices[o.q.correct][0]}`;li.append(b,p);list.append(li)});holder.append(list)}renderSetupResult();if(!sim.finished){let note=document.createElement('p');note.className='note';note.textContent='* タイムは途中停止までの経過時間。完走タイムとは比較できません。';holder.append(note)} saveCourseRecord();refreshChampionship();}
 $('driverReview').addEventListener('click',()=>{selectTab('result','stage06');document.querySelector('[data-tabset="result"]').scrollIntoView({behavior:'smooth',block:'start'});});
 // Tabs (WAI-ARIA tabs pattern): each [data-tabset] bar switches the panels named by its tabs' data-tab ids.
 function selectTab(set,id,focus){
