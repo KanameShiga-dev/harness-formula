@@ -547,12 +547,13 @@ function readChampRecords(){
 const CHAMP_RECORDS=readChampRecords();
 function saveChampRecords(){try{localStorage.setItem(CHAMP_STORE_KEY,JSON.stringify(CHAMP_RECORDS));return true}catch(_){return false}}
 function championshipClears(){return COURSES.filter(c=>CHAMP_RECORDS[c.id]).length}
+const GAME_URL='https://kanameshiga-dev.github.io/harness-formula/';
 function bestRecordText(){
- const lines=['🏁 ハーネスフォーミュラ 全10コース制覇！','コースレコード（ゲーム内の自己ベスト）'];
+ const lines=['🏁 ハーネスフォーミュラ 全10コース制覇！','自己ベスト（ゲーム内記録）'];
  let chunks=[];
  for(const c of COURSES){const r=CHAMP_RECORDS[c.id];if(!r)return '';chunks.push(SHORT_COURSE_NAMES[c.id]+' '+clock(r.time));}
  for(let i=0;i<chunks.length;i+=3)lines.push(chunks.slice(i,i+3).join(' / '));
- lines.push('人×AI×チームで完走！','#ハーネスフォーミュラ');return lines.join('\n');
+ lines.push('人×AI×チームで完走！','#ハーネスフォーミュラ',GAME_URL);return lines.join('\n');
 }
 function saveCourseRecord(){
  const sim=STATE.sim,c=ACTIVE_COURSE;
