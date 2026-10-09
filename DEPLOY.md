@@ -21,7 +21,8 @@ PRIVACY.md             データ保存と外部通信について
 favicon.svg            ブラウザタブのアイコン
 .nojekyll              Jekyllの変換処理を無効化
 .gitignore             不要ファイルのGit登録を抑制
-assets/                README用スクリーンショット
+.gitattributes         改行コードをLFに固定（SHA256SUMS.txt の照合を保つ）
+assets/                README用スクリーンショットとSNSカード画像（og-image.png）
 ```
 
 ## 確認ポイント
@@ -40,7 +41,7 @@ assets/                README用スクリーンショット
 - **既存記録の移行**：`file://` で遊んだ記録や別URLの記録は、GitHub Pages上の記録へ自動移行しません。
 - **Xへのリンク**：全制覇時はXの投稿作成画面を新規タブで開きます。投稿には本人の操作が必要です。Xログインやブラウザ設定によっては開けないことがあります。その場合はゲーム内のコピー機能を利用してください。
 - **プレビュー画像**：README内のスクリーンショットはゲーム内では読み込まれません。ゲーム自体は `index.html` だけで動作します。
-- **SNSカード画像**：この版では公開URLが未確定のため `og:image` を付けていません。共有サムネイルを出したい場合は公開後に絶対HTTPS URLで指定してください。
+- **SNSカード画像**：`og:image` は `https://kanameshiga-dev.github.io/harness-formula/assets/og-image.png` を指しています。別のURLで公開する場合は、`index.html` の `og:url`・`og:image`・`twitter:image` と、X投稿文の `GAME_URL` を書き換えてください。
 - **利用条件**：OSSライセンスはこのパッケージに同梱していません。必要に応じて利用条件を明確にしてください。
 
 ## 公式ガイド

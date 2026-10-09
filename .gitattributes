@@ -1,0 +1,4 @@
+# Keep text files LF in the working tree so SHA256SUMS.txt stays valid on Windows checkouts.
+* text=auto eol=lf
+*.webp binary
+*.png binary

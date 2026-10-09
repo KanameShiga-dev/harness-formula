@@ -9,7 +9,14 @@
 <meta property="og:locale" content="ja_JP">
 <meta property="og:title" content="ハーネスフォーミュラ｜人 × AI × チームで走り切れ">
 <meta property="og:description" content="速いAIだけでは勝てない。10問の判断を2Dレースに変えて学ぶ、チームAI駆動開発ゲーム。">
-<meta name="twitter:card" content="summary">
+<meta property="og:url" content="https://kanameshiga-dev.github.io/harness-formula/">
+<meta property="og:image" content="https://kanameshiga-dev.github.io/harness-formula/assets/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ハーネスフォーミュラのタイトルと、近未来フォーミュラマシンが走るサーキットのイラスト">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kanameshiga-dev.github.io/harness-formula/assets/og-image.png">
 <link rel="icon" href="./favicon.svg" type="image/svg+xml">
 <style>
 :root{--bg:#09111f;--panel:#101d30;--panel2:#15243a;--line:#2a3b51;--ink:#eff7ff;--muted:#9db0c6;--cyan:#65e4fb;--mint:#75ebac;--amber:#ffca6a;--red:#ff7582;--blue:#90b8ff}
@@ -187,6 +194,7 @@ details.fold>.championship{margin-top:0}
 .race-telop .telop-label{display:inline-block;min-width:7em;color:var(--muted);font-size:12px}
 .race-telop .mini-btn{margin-top:8px}
 @media(max-width:680px){.race-telop{position:static;margin-top:6px;font-size:13px;padding:8px 10px}.race-telop .telop-label{display:block;min-width:0}}
+.team-car-preview{display:block;width:180px;height:60px;margin:4px 0 6px}
 </style>
 </head>
 <body>
@@ -372,6 +380,7 @@ function renderTeams(){
  b.addEventListener('click',()=>chooseTeam(t.id));grid.append(b)});
  const t=chosenTeam(),detail=document.getElementById('teamDetail');detail.replaceChildren();
  const head=document.createElement('h3');head.textContent=t.family+' / '+t.model;detail.append(head);
+ const car=document.createElement('canvas');car.width=360;car.height=120;car.className='team-car-preview';car.setAttribute('role','img');car.setAttribute('aria-label',t.name+'のマシン（上から見た図）');const cc=car.getContext('2d');cc.scale(3,3);drawCar({x:58,y:20,heading:0},t.color,false,CAR_STYLES[t.id],cc);detail.append(car);
  const p=document.createElement('p');p.textContent=t.brief+' '+t.tools;detail.append(p);
  const bars=document.createElement('div');bars.className='team-bars';t.skills.forEach((v,i)=>{const box=document.createElement('div');box.innerHTML='<div class="team-bar-label"><span></span><b></b></div><div class="team-bar-track"><i></i></div>';box.querySelector('span').textContent=TALENT_NAMES[i];box.querySelector('b').textContent=v;box.querySelector('i').style.width=v+'%';box.querySelector('i').style.background=t.color;bars.append(box)});detail.append(bars);
  const foot=document.createElement('p');foot.style.marginTop='12px';foot.textContent='燃料効率：'+t.economy+'/100（ゲーム値）｜全チーム共通で、勝敗の中心は人とAIの判断・設定・品質です。';detail.append(foot);
@@ -990,8 +999,8 @@ const CAR_STYLES={
  fortress:{nose:'flat',pod:1.4,fw:2,rw:'wide',fin:false,accent:'#4d1612',mark:'twin'},
  enduro:{nose:'shark',pod:1,fw:1,rw:'high',fin:true,accent:'#3c2f06',mark:'center'}
 };
-function drawCar(f,color,ghost=false,style=CAR_STYLES[chosenTeam().id]||CAR_STYLES.aurora){
- const c=ctx,st=style,pw=7*st.pod,tip={needle:25,shark:23,round:22,flat:21}[st.nose],nw={needle:1.8,shark:2.4,round:3,flat:3.6}[st.nose];
+function drawCar(f,color,ghost=false,style=CAR_STYLES[chosenTeam().id]||CAR_STYLES.aurora,target=ctx){
+ const c=target,st=style,pw=7*st.pod,tip={needle:25,shark:23,round:22,flat:21}[st.nose],nw={needle:1.8,shark:2.4,round:3,flat:3.6}[st.nose];
  c.save();c.translate(f.x,f.y);c.rotate(f.heading);if(ghost)c.globalAlpha=.6;
  const dark='#07111c',edge=ghost?'#efffed':'#e3faff';
  // rear wing
